@@ -1,0 +1,61 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>The Lone Ranger</title>
+        <meta name="description" content="">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="components/normalize-css/normalize.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="game-container"></div>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <!-- build:js scripts/jquery.js -->
+        <script src="components/jquery/jquery.js"></script>
+        <script src="scripts/vendor/greensock/TweenLite.min.js"></script>
+        <script src="scripts/vendor/pixi/pixi.dev.js"></script>
+        <script src="scripts/vendor/mrdoob/stats.min.js"></script>
+
+        <script src="scripts/game/Stats.js"></script>
+        <script src="scripts/game/Engine.js"></script>
+        <script src="scripts/game/View.js"></script>
+        
+
+        <script src="scripts/game/Player.js"></script>
+
+        <script src="scripts/game/FloorFactory.js"></script>
+        <script src="scripts/game/PlatformFactory.js"></script>
+
+        <script src="scripts/game/BackgroundManager.js"></script>      
+        <script src="scripts/game/ForegroundManager.js"></script>      
+        <script src="scripts/game/CollisionManager.js"></script>
+
+        <script src="scripts/game/ObjectPool.js"></script>
+
+        <script src="scripts/lone_ranger.js"></script>
+    
+        <!-- endbuild -->
+        <script src="scripts/main.js"></script>
+</body>
+</html>
