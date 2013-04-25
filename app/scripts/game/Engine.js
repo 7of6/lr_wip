@@ -25,14 +25,17 @@ GAME.Engine.constructor = GAME.Engine;
 
 
 GAME.Engine.prototype.update = function() {
-	GAME.time.update();
-    //var a = 0;
-    //0 < a && (a = 0); - 70 > a && (a = -70);
-    //GAME.camera.y = a;
-    this.player.update();
-    this.collisionManager.update();
-    this.foregroundManager.update();
-    this.view.update();
+
+    if (!GAME.pause){
+    	GAME.time.update();
+        //var a = 0;
+        //0 < a && (a = 0); - 70 > a && (a = -70);
+        //GAME.camera.y = a;
+        this.player.update();
+        this.collisionManager.update();
+        this.foregroundManager.update();
+        this.view.update();
+    }
 };
 
 GAME.Engine.prototype.onTouch = function() {

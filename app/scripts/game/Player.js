@@ -7,22 +7,20 @@ GAME.Player = function(){
 	this.position = new PIXI.Point;
 
 	// player state
-	// ON_GROUND, IS_JUMPING, IS_FALLING
-	this.state = 0;
 	this.onGround = 0;
-	this.isJumping = 1;
+	this.isJumping = 0;
 
 	// defaults
 	this.position.y = 229;
     this.position.x = 0;
     this.currentAnimSpeed = 0.3;
 
-    this.gravity = 0.3;
+    this.gravity = 0.4;
     this.baseSpeed = 8;
     this.speed = new PIXI.Point(this.baseSpeed, 0);
     this.accel = 0;
     this.width = 220;
-    this.height = 37;
+    this.height = 90;
 
 	// animation frames
 	this.runningFrames = [
@@ -73,9 +71,10 @@ GAME.Player.constructor = GAME.Player;
 
 GAME.Player.prototype.jump = function() {
 
-	if (!this.isJumping){
+	if (this.onGround){
 
 		this.isJumping = 1;
+		this.onGround = 0;
 
 		self = this;
 		this.onGround = 0;
@@ -105,15 +104,13 @@ GAME.Player.prototype.jump = function() {
 
 GAME.Player.prototype.update = function() {
 
-	if (this.onGround != 1){
 
-		this.speed.y += this.gravity * GAME.time.DELTA_TIME;
-   		
-	}else{
+	this.speed.y += this.gravity * GAME.time.DELTA_TIME;
 
-		this.speed.y = 0;
-
+	if (this.speed.y > 0 && this.isJumping){
+		this.isJumping = 0;
 	}
+   		
 
     this.position.x += this.speed.x * GAME.time.DELTA_TIME;
     this.position.y += this.speed.y * GAME.time.DELTA_TIME;

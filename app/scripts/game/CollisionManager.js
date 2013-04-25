@@ -14,13 +14,7 @@ GAME.CollisionManager.prototype.update = function() {
 
 
 GAME.CollisionManager.prototype.playerVsObstacle = function() {
-	/*
-    for (var a = this.engine.enemyManager.enemies, b = this.engine.steve, c = 0; c < a.length; c++) {
-        var d = a[c],
-            e = d.position.x - b.position.x;
-        e > -d.width / 2 && e < d.width / 2 && (e = d.position.y - b.position.y, e > -d.height / 2 - 20 && e < d.height / 2 && !b.joyRiding && (b.die(), this.engine.gameover(), d.hit()))
-    }
-    */
+	
 };
 
 GAME.CollisionManager.prototype.playerVsPlatform = function() {
@@ -28,34 +22,28 @@ GAME.CollisionManager.prototype.playerVsPlatform = function() {
     var platformArray = this.engine.foregroundManager.objectPools.platforms,
         player = this.engine.player;
 
-    for (var a = this.engine.foregroundManager.objectPools.platforms, b = this.engine.player, c = 0; c < a.length; c++) {
+    for (var i=0;i<platformArray.length;i++){
 
-        if (player.position.x + player.width / 2 > a[c].x){
+        var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(platformArray[i].x, platformArray[i].position.y - platformArray[i].height, platformArray[i].width, platformArray[i].height), player.speed.x, player.speed.y);
 
-            if (player.position.y >= a[c].position.y - a[c].height && player.isJumping){
+        if (collide && !player.isJumping){
 
+            if (collide.height - player.speed.y > 40) {
+
+                //player.speed.x = 0;
+                player.position.x -= collide.width;
+
+            } else {
+
+                player.speed.y = 0;
+                player.position.y -= collide.height;
                 player.onGround = 1;
-                player.position.y = a[c].position.y - a[c].height;
-                player.isJumping = 0;
-
 
             }
 
         }
 
     }
-
-/*
-    for (var a = this.engine.foregroundManager.objectPools.platforms, b = this.engine.player, c = 0; c < a.length; c++) {
-
-        var d = a[c];
-        var e = d.position.x - b.position.x;
-
-        //console.log(e);
-
-        e > -d.width / 2 && e < d.width / 2 && (e = d.position.y - b.position.y, e > -d.height / 2 && e < d.height / 2 && (console.log("hit")))
-        
-    }*/
 
 };
 
@@ -64,17 +52,53 @@ GAME.CollisionManager.prototype.playerVsFloor = function() {
 	var floorArr = this.engine.foregroundManager.objectPools.floor,
 	    player = this.engine.player;
 
-	 
-    	for (var i=0;i<floorArr.length;i++){
 
-    		if (player.position.y > floorArr[i].position.y){
+    for (var i=0;i<floorArr.length;i++){
 
-    			player.onGround = 1;
-                player.position.y = floorArr[i].position.y;
-                player.isJumping = 0;
+        var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(floorArr[i].x, floorArr[i].position.y, floorArr[i].width, floorArr[i].height), player.speed.x, player.speed.y);
 
-    		}
+        if (collide && !player.isJumping){
 
-    	}
+            player.onGround = 1;
+            player.speed.y = 0;
+            player.position.y -= collide.height;
 
+        }
+
+    }
+
+}
+
+GAME.CollisionManager.prototype.getPlayerBounds = function(){
+
+    var player = this.engine.player;
+
+    var bounds = new PIXI.Rectangle(player.position.x + 40, player.position.y - player.height, player.width - 80, player.height);
+
+    return bounds;
+
+}
+
+GAME.CollisionManager.prototype.calculateIntersection = function(rect1, rect2, x, y) {
+
+  // prevent x|y from being null||undefined
+  x = x || 0; y = y || 0;
+ 
+  // first we have to calculate the
+  // center of each rectangle and half of
+  // width and height
+  var dx, dy, r1={}, r2={};
+  r1.cx = rect1.x+x+(r1.hw = (rect1.width /2));
+  r1.cy = rect1.y+y+(r1.hh = (rect1.height/2));
+  r2.cx = rect2.x + (r2.hw = (rect2.width /2));
+  r2.cy = rect2.y + (r2.hh = (rect2.height/2));
+ 
+  dx = Math.abs(r1.cx-r2.cx) - (r1.hw + r2.hw);
+  dy = Math.abs(r1.cy-r2.cy) - (r1.hh + r2.hh);
+ 
+  if (dx < 0 && dy < 0) {
+    return {width:-dx,height:-dy};
+  } else {
+    return null;
+  }
 }
