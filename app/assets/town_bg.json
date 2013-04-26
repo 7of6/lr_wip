@@ -1,0 +1,92 @@
+{"frames": {
+
+"bg_town_house1.png":
+{
+	"frame": {"x":493,"y":158,"w":388,"h":268},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":388,"h":268},
+	"sourceSize": {"w":388,"h":268}
+},
+"bg_town_house2.png":
+{
+	"frame": {"x":1161,"y":229,"w":225,"h":250},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":225,"h":250},
+	"sourceSize": {"w":225,"h":250}
+},
+"bg_town_house3.png":
+{
+	"frame": {"x":2,"y":158,"w":489,"h":300},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":489,"h":300},
+	"sourceSize": {"w":489,"h":300}
+},
+"bg_town_house4.png":
+{
+	"frame": {"x":1029,"y":2,"w":383,"h":225},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":383,"h":225},
+	"sourceSize": {"w":383,"h":225}
+},
+"bg_town_house5.png":
+{
+	"frame": {"x":883,"y":229,"w":276,"h":226},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":276,"h":226},
+	"sourceSize": {"w":276,"h":226}
+},
+"bg_town_house6.png":
+{
+	"frame": {"x":1707,"y":2,"w":276,"h":242},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":276,"h":242},
+	"sourceSize": {"w":276,"h":242}
+},
+"bg_town_house7.png":
+{
+	"frame": {"x":1707,"y":246,"w":276,"h":231},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":276,"h":231},
+	"sourceSize": {"w":276,"h":231}
+},
+"bg_town_house8.png":
+{
+	"frame": {"x":1388,"y":289,"w":276,"h":192},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":276,"h":192},
+	"sourceSize": {"w":276,"h":192}
+},
+"corral.png":
+{
+	"frame": {"x":2,"y":2,"w":1025,"h":154},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1025,"h":154},
+	"sourceSize": {"w":1025,"h":154}
+},
+"gallows.png":
+{
+	"frame": {"x":1414,"y":2,"w":291,"h":285},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":291,"h":285},
+	"sourceSize": {"w":291,"h":285}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "town_bg.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:25454998d7155525dd67b975961f6cea$"
+}
+}

@@ -16,9 +16,11 @@ GAME.Player = function(){
     this.currentAnimSpeed = 0.3;
 
     this.gravity = 0.4;
-    this.baseSpeed = 8;
+    this.acceleration = 0.05;
+    this.baseSpeed = 4;
+    this.maxSpeed = 12;
     this.speed = new PIXI.Point(this.baseSpeed, 0);
-    this.accel = 0;
+
     this.width = 220;
     this.height = 90;
 
@@ -102,6 +104,15 @@ GAME.Player.prototype.jump = function() {
 
 };
 
+
+GAME.Player.prototype.hitObstacle = function() {
+
+	this.speed.x = this.baseSpeed;
+	TweenMax.to(this.view, 0.05, {alpha:0.3, yoyo:true, repeat:5, overwrite:"all", startAt:{alpha:1}});
+
+}
+
+
 GAME.Player.prototype.update = function() {
 
 
@@ -109,6 +120,12 @@ GAME.Player.prototype.update = function() {
 
 	if (this.speed.y > 0 && this.isJumping){
 		this.isJumping = 0;
+	}
+
+	if (this.onGround){
+		if (this.speed.x < this.maxSpeed){
+			this.speed.x += this.acceleration;
+		}
 	}
    		
 

@@ -7,9 +7,13 @@
 	var game;
 	var gameContainer;
 	var manifest = [
+		"assets/interface.json",
 		"assets/lone_ranger.json",
 		"assets/background.json",
 		"assets/town_platforms.json",
+		"assets/town_bg.json",
+		"assets/obstacles_desert.json",
+		"assets/silver_running.json"
 	];
 
 	//--------------------------------------------------------------------------
@@ -27,7 +31,9 @@
 		console.log("onReady");
 		gameContainer = document.getElementById("game-container");
 		preLoad();
-		onResize();
+		GAME.width = 800;
+		GAME.height = 450;
+
 	}
 
 	function onResize(){
@@ -36,8 +42,25 @@
 		var width = $(window).width();
     	var height = $(window).height();
 
-    	GAME.width = 800;
-    	GAME.height = 450;
+	    var ratio = height / 450;
+
+
+	    if (game) {
+	        var view = game.view.renderer.view;
+
+	        view.style.height = 450 * ratio + "px"
+
+	        var newWidth = (width / ratio);
+
+	        view.style.width = width + "px"
+
+	        game.view.resize(newWidth, 450);
+	   
+	    }
+
+	    GAME.width = (width / ratio);
+	    GAME.height = 450;
+    
 	}
 
 	//--------------------------------------------------------------------------
@@ -71,6 +94,8 @@
 
 	    game.view.renderer.view.addEventListener("touchstart", onTouchStart, true);
     	game.view.renderer.view.addEventListener("touchend", onTouchEnd, true);
+
+    	//onResize();
 	}
 
 	//--------------------------------------------------------------------------

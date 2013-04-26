@@ -12,6 +12,9 @@ GAME.LO_MODE = 0;
 GAME.Engine = function() {
 	console.log("Engine");
 
+    GAME.level = GAME_LEVEL.DESERT;
+    GAME.counter = 0;
+
 	this.player = new GAME.Player;
 	this.view = new GAME.View(this);
 
@@ -27,7 +30,7 @@ GAME.Engine.constructor = GAME.Engine;
 GAME.Engine.prototype.update = function() {
 
     if (!GAME.pause){
-    	GAME.time.update();
+    	//GAME.time.update();
         //var a = 0;
         //0 < a && (a = 0); - 70 > a && (a = -70);
         //GAME.camera.y = a;
@@ -40,6 +43,18 @@ GAME.Engine.prototype.update = function() {
 
 GAME.Engine.prototype.onTouch = function() {
 	this.player.jump();
+};
+
+//--------------------------------------------------------------------------
+//  Level Object
+//--------------------------------------------------------------------------
+var GAME_LEVEL = {
+    DESERT: 0,
+    INDIAN_VILLAGE: 1,
+    TOWN: 2,
+    TOWN_ROOFTOPS: 3,
+    DESERT2: 4,
+    CANYONS: 5
 };
 
 //--------------------------------------------------------------------------

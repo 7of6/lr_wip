@@ -8,7 +8,14 @@ GAME.View = function(engineRef) {
 	this.stage = new PIXI.Stage;
 
 	this.container = new PIXI.DisplayObjectContainer;
+
+    // hud
     this.hud = new PIXI.DisplayObjectContainer;
+    this.progressbar = new GAME.ProgressBar();
+    this.hud.addChild(this.progressbar);
+
+
+
     // non-interactive background items
     this.gameBG = new PIXI.DisplayObjectContainer;
     // interactive foreground items
@@ -20,7 +27,7 @@ GAME.View = function(engineRef) {
     this.stage.addChild(this.container);
     this.stage.addChild(this.hud);
 
-	this.background = GAME.LO_MODE ? new GAME.LoBackground : new GAME.BackgroundManager();
+	this.background = GAME.LO_MODE ? new GAME.LoBackground : new GAME.BackgroundManager(this.engine);
 
 	this.gameBG.addChild(this.background);
 
@@ -32,4 +39,20 @@ GAME.View.prototype.update = function() {
 
     this.renderer.render(this.stage);
 
+};
+
+GAME.View.prototype.resize = function(width, height) {
+    GAME.width = width;
+    GAME.height = height;
+    this.renderer.resize(width, height);
+    this.background.width = width;
+
+    console.log(this.progressbar.width);
+
+    this.progressbar.position.x = (width - this.progressbar.width) / 2;
+ 
+    /*this.white.scale.x = width / 16;
+    this.white.scale.y = height / 16;
+    this.powerBar.position.x = width - 295;
+    this.powerBar.position.y = 12*/
 };

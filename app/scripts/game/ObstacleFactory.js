@@ -1,10 +1,27 @@
 //--------------------------------------------------------------------------
-//  Obstacle Manager Class
+//  Obstacle Factory Class
 //--------------------------------------------------------------------------
-GAME.ObstacleManager = function(engineRef) {
-    this.engine = engineRef;
-    this.count = 0;
-    this.Obstacles = [];
-    this.ObstaclePool = new GAME.ObjectPool(GAME.Obstacle)
+GAME.ObstacleFactory = function(engineRef) {
+
+	obstacleTextures = ["bush1.png","bush2.png","bush3.png","bush4.png","bush5.png","rock1.png","rock2.png"];
+    this.obstaclePool = new GAME.ObjectPool(GAME.ObstacleItem);
+    
 };
-GAME.ObstacleManager.constructor = GAME.ObstacleManager;
+GAME.ObstacleFactory.constructor = GAME.ObstacleFactory;
+
+GAME.ObstacleFactory.prototype.getObstacle = function() {
+    var obj = this.obstaclePool.getObject();
+    return obj;
+};
+
+//--------------------------------------------------------------------------
+//  ObstacleItem Class
+//--------------------------------------------------------------------------
+GAME.ObstacleItem = function() {
+    PIXI.Sprite.call(this, PIXI.Texture.fromFrame(obstacleTextures[Math2.randomInt(0, obstacleTextures.length - 1)]));
+    this.anchor.x = 0;
+    this.anchor.y = 1;
+    this.isHit = 0;
+};
+GAME.ObstacleItem.constructor = GAME.ObstacleItem;
+GAME.ObstacleItem.prototype = Object.create(PIXI.Sprite.prototype);

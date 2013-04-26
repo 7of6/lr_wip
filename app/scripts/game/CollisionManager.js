@@ -7,13 +7,38 @@ GAME.CollisionManager = function(engineRef) {
 GAME.CollisionManager.constructor = GAME.CollisionManager;
 
 GAME.CollisionManager.prototype.update = function() {
-    //this.playerVsObstacle();
+    this.playerVsObstacle();
     this.playerVsPlatform();
     this.playerVsFloor();
 };
 
 
 GAME.CollisionManager.prototype.playerVsObstacle = function() {
+
+  var obstacleArr = this.engine.foregroundManager.objectPools.obstacles,
+      player = this.engine.player;
+
+
+    for (var i=0;i<obstacleArr.length;i++){
+
+      if (!obstacleArr[i].isHit && player.onGround){
+
+        var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(obstacleArr[i].x, obstacleArr[i].position.y - obstacleArr[i].height, obstacleArr[i].width, obstacleArr[i].height), player.speed.x, player.speed.y);
+
+        if (collide && !player.isJumping){
+
+
+            obstacleArr[i].isHit = 1;
+            player.hitObstacle();
+
+            TweenMax.to(obstacleArr[i], 0.6, {alpha:0});
+            TweenMax.to(obstacleArr[i].position, 0.2, {x:obstacleArr[i].position.x + 30,y:obstacleArr[i].position.y - 10, yoyo:true, repeat:1});
+
+        }
+
+      }
+
+    }
 	
 };
 
@@ -73,7 +98,7 @@ GAME.CollisionManager.prototype.getPlayerBounds = function(){
 
     var player = this.engine.player;
 
-    var bounds = new PIXI.Rectangle(player.position.x + 40, player.position.y - player.height, player.width - 80, player.height);
+    var bounds = new PIXI.Rectangle(player.position.x + 80, player.position.y - player.height, player.width - 120, player.height);
 
     return bounds;
 

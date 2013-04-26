@@ -2,6 +2,9 @@
 //  Platform Factory Class
 //--------------------------------------------------------------------------
 GAME.PlatformFactory = function() {
+
+	this.platformAssets = ["crates.png", "wagon.png"];
+
     this.platformPool = new GAME.ObjectPool(GAME.Platform)
 };
 GAME.PlatformFactory.constructor = GAME.PlatformFactory;

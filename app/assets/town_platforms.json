@@ -7,14 +7,22 @@
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":481,"h":76},
 	"sourceSize": {"w":481,"h":76}
+},
+"wagon.png":
+{
+	"frame": {"x":2,"y":80,"w":264,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":146},
+	"sourceSize": {"w":264,"h":146}
 }},
 "meta": {
 	"app": "http://www.texturepacker.com",
 	"version": "1.0",
 	"image": "town_platforms.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":128},
+	"size": {"w":512,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:f63142b12062df550f7ccd4fce78125b$"
+	"smartupdate": "$TexturePacker:SmartUpdate:8f3f2424d37e47a3c45e203ca744fa99$"
 }
 }

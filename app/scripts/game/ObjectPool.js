@@ -14,4 +14,6 @@ GAME.ObjectPool.prototype.getObject = function() {
     return obj
 };
 
-GAME.ObjectPool.prototype.returnObject = function() {};
+GAME.ObjectPool.prototype.returnObject = function(obj) {
+	//this.pool.push(obj);
+};
