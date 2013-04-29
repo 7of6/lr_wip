@@ -8,12 +8,11 @@
 	var gameContainer;
 	var manifest = [
 		"assets/interface.json",
-		//"assets/lone_ranger.json",
 		"assets/background.json",
 		"assets/town_platforms.json",
 		"assets/town_bg.json",
 		"assets/obstacles_desert.json",
-		"assets/silver_run_and_jump.json"
+		"assets/silver_complete.json"
 	];
 
 	//--------------------------------------------------------------------------
@@ -102,7 +101,7 @@
 	//  Interaction
 	//--------------------------------------------------------------------------
 	function onTouch() {
-		console.log("touch");
+		//console.log("touch");
 		if (game){
 			game.onTouch();
 		}

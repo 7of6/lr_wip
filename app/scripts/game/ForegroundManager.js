@@ -45,6 +45,9 @@ GAME.ForegroundManager.prototype.initFloor = function(){
 
 	}
 
+	//this.addStepUp(floor.position.x, floor.x, 329);
+	this.addPlatform(floor.position.x, floor.x, 329);
+
 }
 
 GAME.ForegroundManager.prototype.update = function(){
@@ -104,30 +107,11 @@ GAME.ForegroundManager.prototype.update = function(){
 			this.objectPools.platforms.splice(i, 1);
 			i--;
 			this.engine.view.gameFG.removeChild(obj);
+
+			this.addPlatform(obj.position.x + GAME.width + 500, obj.x + GAME.width + 500, 329);
 		}
 
 	}
-
-	/*
-
-	
-	// add new platforms
-	if (obj.position.x + obj.width < GAME.width){
-
-		var platform = this.platformFactory.getPlatform();
-		platform.position.x = Math.round(obj.position.x + obj.width);
-		platform.x = this.platformPos;
-		platform.position.y = 329;
-		platform.y = 329;
-
-		this.engine.view.gameFG.addChild(platform);
-		this.objectPools.platforms.push(platform);
-
-		this.platformPos += platform.width + 500;
-
-	}
-
-	*/
 
 	// move everything in the obstacle pool
 	for (var i=0; i<this.objectPools.obstacles.length;i++){
@@ -145,6 +129,56 @@ GAME.ForegroundManager.prototype.update = function(){
 
 	}
 	
+
+}
+
+GAME.ForegroundManager.prototype.addPlatform = function(a,b,c) {
+
+	var platform = this.platformFactory.getPlatform();
+		platform.position.x = a;
+		platform.x = b;
+		platform.position.y = c;
+		platform.y = c;
+
+		this.engine.view.gameFG.addChild(platform);
+		this.objectPools.platforms.push(platform);
+
+
+	// add obstacles
+	for (var i=0; i<Math2.randomInt(1,3); i++){
+
+		if (Math2.randomInt(0,2) == 0){
+
+			var randomOffset = Math2.randomInt(40, platform.width-40);
+			this.addObstacle(platform.position.x + randomOffset, platform.x + randomOffset, platform.y - platform.height);
+
+		}
+
+	}
+
+}
+
+GAME.ForegroundManager.prototype.addStepUp = function(a,b,c) {
+
+	var obj = this.platformFactory.getStepUp();
+
+	var platform = obj.step1;
+		platform.position.x = a;
+		platform.x = b;
+		platform.position.y = c;
+		platform.y = c;
+
+	var platform2 = obj.step2;
+		platform2.position.x = a + platform.width + 10;
+		platform2.x = b + platform.width + 10;
+		platform2.position.y = c;
+		platform2.y = c;
+
+		this.engine.view.gameFG.addChild(platform);
+		this.objectPools.platforms.push(platform);
+
+		this.engine.view.gameFG.addChild(platform2);
+		this.objectPools.platforms.push(platform2);
 
 }
 

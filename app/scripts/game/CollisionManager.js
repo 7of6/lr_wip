@@ -7,6 +7,9 @@ GAME.CollisionManager = function(engineRef) {
 GAME.CollisionManager.constructor = GAME.CollisionManager;
 
 GAME.CollisionManager.prototype.update = function() {
+
+    this.engine.player.onGround = 0;
+
     this.playerVsObstacle();
     this.playerVsPlatform();
     this.playerVsFloor();
@@ -21,12 +24,11 @@ GAME.CollisionManager.prototype.playerVsObstacle = function() {
 
     for (var i=0;i<obstacleArr.length;i++){
 
-      if (!obstacleArr[i].isHit && player.onGround){
+      if (!obstacleArr[i].isHit){
 
         var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(obstacleArr[i].x, obstacleArr[i].position.y - obstacleArr[i].height, obstacleArr[i].width, obstacleArr[i].height), player.speed.x, player.speed.y);
 
         if (collide && !player.isJumping){
-
 
             obstacleArr[i].isHit = 1;
             player.hitObstacle();
@@ -47,6 +49,7 @@ GAME.CollisionManager.prototype.playerVsPlatform = function() {
     var platformArray = this.engine.foregroundManager.objectPools.platforms,
         player = this.engine.player;
 
+
     for (var i=0;i<platformArray.length;i++){
 
         var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(platformArray[i].x, platformArray[i].position.y - platformArray[i].height, platformArray[i].width, platformArray[i].height), player.speed.x, player.speed.y);
@@ -55,14 +58,22 @@ GAME.CollisionManager.prototype.playerVsPlatform = function() {
 
             if (collide.height - player.speed.y > 40) {
 
-                //player.speed.x = 0;
-                player.position.x -= collide.width;
+                player.speed.x = 0;
+                player.position.x -= Math.round(collide.width);
+
+                // game over
 
             } else {
 
+                if (player.wasJumping || player.isFalling){
+                  player.jumpComplete();
+                }
+
                 player.speed.y = 0;
-                player.position.y -= collide.height;
+                player.position.y -= Math.round(collide.height) - 4;
                 player.onGround = 1;
+
+                break;
 
             }
 
@@ -77,16 +88,21 @@ GAME.CollisionManager.prototype.playerVsFloor = function() {
 	var floorArr = this.engine.foregroundManager.objectPools.floor,
 	    player = this.engine.player;
 
-
     for (var i=0;i<floorArr.length;i++){
 
         var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(floorArr[i].x, floorArr[i].position.y, floorArr[i].width, floorArr[i].height), player.speed.x, player.speed.y);
 
         if (collide && !player.isJumping){
 
+            if (player.wasJumping || player.isFalling){
+              player.jumpComplete();
+            }
+
             player.onGround = 1;
             player.speed.y = 0;
-            player.position.y -= collide.height;
+            player.position.y -= Math.round(collide.height) - 4;
+
+            break;
 
         }
 

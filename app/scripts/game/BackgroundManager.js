@@ -13,6 +13,7 @@ GAME.BackgroundManager = function(engineRef){
 
     this.width = 1600;
 	this.scrollPosition;
+    scrollOffset = 10000;
 
 	this.distance = new GAME.MultiTileBackgroundElement(["bg1.jpg","bg2.jpg","bg1.jpg","bg2.jpg"], this);
 	this.distance.speed = 0.2;
@@ -33,7 +34,7 @@ GAME.BackgroundManager.prototype = Object.create(PIXI.DisplayObjectContainer.pro
 	//--------------------------------------------------------------------------
 	GAME.BackgroundManager.prototype.updateTransform = function() {
 
-		this.scrollPosition = GAME.camera.x + 10000;
+		this.scrollPosition = GAME.camera.x + scrollOffset;
         this.distance.setPosition(this.scrollPosition);
 
         // move everything in the backgrounds pool

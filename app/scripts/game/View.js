@@ -39,6 +39,8 @@ GAME.View.prototype.update = function() {
 
     this.renderer.render(this.stage);
 
+    this.progressbar.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
+
 };
 
 GAME.View.prototype.resize = function(width, height) {

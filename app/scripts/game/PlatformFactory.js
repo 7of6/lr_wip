@@ -9,8 +9,27 @@ GAME.PlatformFactory = function() {
 };
 GAME.PlatformFactory.constructor = GAME.PlatformFactory;
 
+//--------------------------------------------------------------------------
+//  API
+//--------------------------------------------------------------------------
 GAME.PlatformFactory.prototype.getPlatform = function() {
     var obj = this.platformPool.getObject();
+    return obj;
+};
+
+GAME.PlatformFactory.prototype.getStepUp = function() {
+    var s1 = new PIXI.Sprite(PIXI.Texture.fromFrame("crates.png"));
+    	s1.anchor.x = 0;
+    	s1.anchor.y = 1;
+    var s2 = new PIXI.Sprite(PIXI.Texture.fromFrame("wagon.png"));
+    	s2.anchor.x = 0;
+    	s2.anchor.y = 1;
+
+    var obj = {
+    	'step1': s1,
+    	'step2': s2
+    };
+
     return obj;
 };
 
@@ -24,3 +43,5 @@ GAME.Platform = function() {
 };
 GAME.Platform.constructor = GAME.Platform;
 GAME.Platform.prototype = Object.create(PIXI.Sprite.prototype);
+
+

@@ -4,12 +4,16 @@
 GAME.ProgressBar = function(){
 	PIXI.DisplayObjectContainer.call(this);
 
-	var bar = PIXI.Texture.fromFrame("progress_bar.png");
+	BULLET_START = 110;
+	BAR_MAX = 285;
 
-	this.width = bar.width;
-	this.addChild(new PIXI.Sprite(bar));
+	var barContainer = PIXI.Texture.fromFrame("progress_bar.png");
+
+	this.width = barContainer.width;
+	this.addChild(new PIXI.Sprite(barContainer));
 	this.position.x = Math.round((GAME.width - this.width) / 2);
- 
+
+	// text 
 	distanceText = new PIXI.Text(" ", "25px haettenschweilerregular", "#f26622", "#333333", 4);
 		distanceText.anchor.x = 0;
 		distanceText.anchor.y = 0;
@@ -34,13 +38,46 @@ GAME.ProgressBar = function(){
 
 	this.addChild(timeDisplay);
 
+	// progress
+	var barLeft = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner_left.png"));
+	barLeft.position.x = 106;
+	barLeft.position.y = 27;
+	this.addChild(barLeft);
+
+	bar = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner.png"));
+	bar.position.x = 108;
+	bar.position.y = 26;
+	bar.width = 1;
+	this.addChild(bar);
+
+
+	bullet = new PIXI.Sprite(PIXI.Texture.fromFrame("silver_bullet.png"));
+	bullet.position.y = 15;
+	bullet.position.x = BULLET_START;
+	this.addChild(bullet);
+
 	this.startTime();
+
+	this.setProgress(0);
 
 	TweenMax.delayedCall(0.2, this.localiseText);
 
 }
 GAME.ProgressBar.constructor = GAME.ProgressBar;
 GAME.ProgressBar.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
+
+//--------------------------------------------------------------------------
+//  API
+//--------------------------------------------------------------------------
+
+GAME.ProgressBar.prototype.setProgress = function(perc){
+
+	perc = (perc > 1) ? 1 : perc;
+
+	bar.width = BAR_MAX * perc;
+	bullet.position.x = BAR_MAX * perc + BULLET_START - bullet.width;
+
+}
 
 GAME.ProgressBar.prototype.startTime = function(){
 
