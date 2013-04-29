@@ -8,12 +8,12 @@
 	var gameContainer;
 	var manifest = [
 		"assets/interface.json",
-		"assets/lone_ranger.json",
+		//"assets/lone_ranger.json",
 		"assets/background.json",
 		"assets/town_platforms.json",
 		"assets/town_bg.json",
 		"assets/obstacles_desert.json",
-		"assets/silver_running.json"
+		"assets/silver_run_and_jump.json"
 	];
 
 	//--------------------------------------------------------------------------

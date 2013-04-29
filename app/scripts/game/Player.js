@@ -26,7 +26,7 @@ GAME.Player = function(){
 
 	// animation frames
 	this.runningFrames = [
-		PIXI.Texture.fromFrame("lone-ranger-run.swf/0000"),
+		/*PIXI.Texture.fromFrame("lone-ranger-run.swf/0000"),
 		PIXI.Texture.fromFrame("lone-ranger-run.swf/0001"),
 		PIXI.Texture.fromFrame("lone-ranger-run.swf/0002"),
 		PIXI.Texture.fromFrame("lone-ranger-run.swf/0003"),
@@ -35,11 +35,19 @@ GAME.Player = function(){
 		PIXI.Texture.fromFrame("lone-ranger-run.swf/0006"),
 		PIXI.Texture.fromFrame("lone-ranger-run.swf/0007"),
 		PIXI.Texture.fromFrame("lone-ranger-run.swf/0008"),
-		PIXI.Texture.fromFrame("lone-ranger-run.swf/0009")
+		PIXI.Texture.fromFrame("lone-ranger-run.swf/0009")*/
+		PIXI.Texture.fromFrame("silver_run_final.swf/0000"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0001"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0002"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0003"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0004"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0005"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0006"),
+		PIXI.Texture.fromFrame("silver_run_final.swf/0007")
 	];
 
 	this.jumpingFrames = [
-		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0000"),
+		/*PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0000"),
 		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0001"),
 		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0002"),
 		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0003"),
@@ -48,10 +56,32 @@ GAME.Player = function(){
 		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0006"),
 		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0007"),
 		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0008"),
-		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0009")
+		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0009")*/
+
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0000"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0001"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0002"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0003"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0004"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0005"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0006"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0007"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0008"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0009"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0010"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0011"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0012"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0013"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0014"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0015"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0016"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0017"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0018"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0019"),
+		PIXI.Texture.fromFrame("silver_jump_final.swf/0020")
 	];
 	this.fallingFrames = [
-		PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0004")
+		//PIXI.Texture.fromFrame("lone-ranger-jumps.swf/0004")
 	];
 	this.dyingFrames = [];
     
@@ -80,12 +110,12 @@ GAME.Player.prototype.jump = function() {
 
 		self = this;
 		this.onGround = 0;
-		this.speed.y = -7;
+		this.speed.y = -9.5;
 
 		this.view.stop();
 		this.view.currentFrame = 0;
 		this.view.textures = this.jumpingFrames;
-		this.view.animationSpeed = 0.2;
+		this.view.animationSpeed = 0.4;
 		this.view.loop = false;
 		this.view.onComplete = jumpComplete;
 		this.view.play();
