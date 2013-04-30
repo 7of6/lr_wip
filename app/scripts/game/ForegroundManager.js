@@ -5,6 +5,13 @@ GAME.ForegroundManager = function(engineRef){
 	console.log("ForegroundManager");
 
 	this.engine = engineRef;
+	this.obstacleMax = 2;
+
+	this.hasFloorGaps = 0;
+	gapAdded = 0;
+
+	FLOOR_Y = 329;
+	FLOOR_GAP_WIDTH = 400;
 
 	// object pools
 	this.objectPools = {
@@ -35,8 +42,8 @@ GAME.ForegroundManager.prototype.initFloor = function(){
 		var floor = this.floorFactory.getFloor();
 		floor.position.x = this.floorPos;
 		floor.x = this.floorPos;
-		floor.position.y = 329;
-		floor.y = 329;
+		floor.position.y = FLOOR_Y;
+		floor.y = FLOOR_Y;
 
 		this.engine.view.gameFG.addChild(floor);
 		this.objectPools.floor.push(floor);
@@ -44,9 +51,6 @@ GAME.ForegroundManager.prototype.initFloor = function(){
 		this.floorPos += floor.width - 1;
 
 	}
-
-	//this.addStepUp(floor.position.x, floor.x, 329);
-	this.addPlatform(floor.position.x, floor.x, 329);
 
 }
 
@@ -71,25 +75,52 @@ GAME.ForegroundManager.prototype.update = function(){
 	// add new floor tile
 	if (obj.position.x + obj.width < GAME.width + this.engine.player.speed.x * 40){		
 
+		var cap = null;
+
+		if (gapAdded == 1){
+			// add cap left
+			cap = this.floorFactory.getFloorCap("left");
+			cap.position.x = Math.round(obj.position.x + obj.width - 1);
+			cap.x = this.floorPos;
+			cap.position.y = FLOOR_Y;
+			this.objectPools.floor.push(cap);
+			gapAdded = 0;
+		}
+
 		var floor = this.floorFactory.getFloor();
 		floor.position.x = Math.round(obj.position.x + obj.width);
 		floor.x = this.floorPos;
-		floor.position.y = 329;
+		floor.position.y = FLOOR_Y;
 
 		this.engine.view.gameFG.addChild(floor);
+
+		if (cap){
+			this.engine.view.gameFG.addChild(cap);
+		}
+
 		this.objectPools.floor.push(floor);
 
 		this.floorPos += floor.width - 1;
 
-		// add obstacles
-		for (var i=0; i<Math2.randomInt(1,3); i++){
+		if (this.hasFloorGaps == 1){
 
-			if (Math2.randomInt(0,2) == 0){
+			// add cap right
+			cap = this.floorFactory.getFloorCap("right");
+			cap.position.x = Math.round(floor.position.x + floor.width - 1);
+			cap.x = this.floorPos;
+			cap.position.y = FLOOR_Y;
+			this.engine.view.gameFG.addChild(cap);
+			this.objectPools.floor.push(cap);
+			// declare gap
+			this.floorPos += FLOOR_GAP_WIDTH;
+			gapAdded = 1;
+		}
+
+		// add obstacles
+		for (var i=0; i<Math2.randomInt(0,this.obstacleMax); i++){
 
 				var randomOffset = Math2.randomInt(0, floor.width);
-				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, 329);
-
-			}
+				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, FLOOR_Y + 5);
 
 		}
 
@@ -108,7 +139,7 @@ GAME.ForegroundManager.prototype.update = function(){
 			i--;
 			this.engine.view.gameFG.removeChild(obj);
 
-			this.addPlatform(obj.position.x + GAME.width + 500, obj.x + GAME.width + 500, 329);
+			this.addPlatform(obj.position.x + GAME.width + 500, obj.x + GAME.width + 500, FLOOR_Y);
 		}
 
 	}
@@ -145,7 +176,7 @@ GAME.ForegroundManager.prototype.addPlatform = function(a,b,c) {
 
 
 	// add obstacles
-	for (var i=0; i<Math2.randomInt(1,3); i++){
+	for (var i=0; i<Math2.randomInt(1,this.obstacleMax); i++){
 
 		if (Math2.randomInt(0,2) == 0){
 
@@ -192,3 +223,26 @@ GAME.ForegroundManager.prototype.addObstacle = function(a,b,c) {
     this.engine.view.gameFG.addChild(d)
 
 }
+
+GAME.ForegroundManager.prototype.reset = function() {
+
+    for (var i = 0; i < this.objectPools.floor.length; i++) {
+        var obj = this.objectPools.floor[i];
+        this.engine.view.gameFG.removeChild(obj);
+    }
+    this.objectPools.floor = [];
+
+    for (var i = 0; i < this.objectPools.obstacles.length; i++) {
+        var obj = this.objectPools.obstacles[i];
+        this.engine.view.gameFG.removeChild(obj);
+    }
+    this.objectPools.obstacles = [];
+
+    for (var i = 0; i < this.objectPools.platforms.length; i++) {
+        var obj = this.objectPools.platforms[i];
+        this.engine.view.gameFG.removeChild(obj);
+    }
+    this.objectPools.platforms = [];
+
+    this.initFloor();
+};

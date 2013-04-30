@@ -16,6 +16,14 @@ body {
     padding: 0;
 }
 
+#loader {
+    font-family: "haettenschweilerregular";
+    text-align: center;
+    color: #000000;
+    line-height: 450px;
+    width:800px;
+}
+
 /* =============================================================================
    Disable selection
    ========================================================================== */

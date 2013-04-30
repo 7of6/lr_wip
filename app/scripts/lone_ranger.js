@@ -11,8 +11,12 @@
 		"assets/background.json",
 		"assets/town_platforms.json",
 		"assets/town_bg.json",
+		"assets/indian_bg.json",
 		"assets/obstacles_desert.json",
-		"assets/silver_complete.json"
+		"assets/silver_complete.json",
+		"assets/train_complete.json",
+		"assets/carriage_reflections_1st_class.json",
+		"assets/carriage_reflections_2nd_class.json"
 	];
 
 	//--------------------------------------------------------------------------
@@ -77,6 +81,7 @@
 	//--------------------------------------------------------------------------
 	function initApp(){
 		console.log("init");
+		$("#loader").css("display", "none");
 		game = new GAME.Engine();
 		gameContainer.appendChild(game.view.renderer.view);
 

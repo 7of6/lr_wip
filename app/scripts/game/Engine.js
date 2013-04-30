@@ -13,7 +13,7 @@ GAME.GOAL_DISTANCE = 20000;
 GAME.Engine = function() {
 	console.log("Engine");
 
-    GAME.level = GAME_LEVEL.DESERT;
+    GAME.level = GAME_LEVEL.TUTORIAL;
     GAME.counter = 0;
 
 	this.player = new GAME.Player;
@@ -38,24 +38,25 @@ GAME.Engine.prototype.update = function() {
         this.collisionManager.update();
         this.foregroundManager.update();
         this.view.update();
+        this.sectionManager.update();
 
         //console.log(GAME.camera.y);
 
     }
 };
 
+GAME.Engine.prototype.reset = function(){
+
+    this.player.reset();
+    this.view.reset();
+    this.foregroundManager.reset();
+    this.sectionManager.reset();
+    this.view.gameFG.addChild(this.player.view);
+    GAME.level = GAME_LEVEL.TUTORIAL;
+    GAME.counter = 0;
+
+}
+
 GAME.Engine.prototype.onTouch = function() {
 	this.player.jump();
-};
-
-//--------------------------------------------------------------------------
-//  Level Object
-//--------------------------------------------------------------------------
-var GAME_LEVEL = {
-    DESERT: 0,
-    INDIAN_VILLAGE: 1,
-    TOWN: 2,
-    TOWN_ROOFTOPS: 3,
-    DESERT2: 4,
-    CANYONS: 5
 };

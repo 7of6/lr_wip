@@ -30,7 +30,7 @@ GAME.ProgressBar = function(){
 
 	this.addChild(timeText);
 
-	timeDisplay = new PIXI.Text(" ", "40px haettenschweilerregular", "#ffffff", "#333333", 4);
+	timeDisplay = new PIXI.Text("0:00", "40px haettenschweilerregular", "#ffffff", "#333333", 4);
 		timeDisplay.anchor.x = 0;
 		timeDisplay.anchor.y = 0;
 		timeDisplay.position.x = 490;

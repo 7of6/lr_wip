@@ -90,9 +90,18 @@ GAME.CollisionManager.prototype.playerVsFloor = function() {
 
     for (var i=0;i<floorArr.length;i++){
 
+      if (floorArr[i].collidable){
+
         var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(floorArr[i].x, floorArr[i].position.y, floorArr[i].width, floorArr[i].height), player.speed.x, player.speed.y);
 
         if (collide && !player.isJumping){
+
+          if (collide.height - player.speed.y > 40) {
+
+            player.speed.x = 0;
+            player.position.x -= Math.round(collide.width);
+
+          } else {
 
             if (player.wasJumping || player.isFalling){
               player.jumpComplete();
@@ -100,13 +109,18 @@ GAME.CollisionManager.prototype.playerVsFloor = function() {
 
             player.onGround = 1;
             player.speed.y = 0;
-            player.position.y -= Math.round(collide.height) - 4;
+            player.position.y -= Math.round(collide.height) - 8;
 
             break;
 
+          }
+
         }
 
+      }
+
     }
+
 
 }
 

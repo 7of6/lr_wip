@@ -10,6 +10,7 @@ GAME.BackgroundManager = function(engineRef){
     // object pool
     this.backgrounds = [];
     this.nextbg = this.spawnCount = 0;
+    this.hasMiddistance = 0;
 
     this.width = 1600;
 	this.scrollPosition;
@@ -22,6 +23,13 @@ GAME.BackgroundManager = function(engineRef){
     this.addChild(this.middistance);
     this.middistance.speed = 0.4;
 
+    this.train = new GAME.Train();
+    this.train.position.x = GAME.width + 40;
+    this.train.position.y = 128;
+    this.train.speed = 0.05;
+    this.addChild(this.train);
+
+   
     this.backgroundFactory = new GAME.BackgroundFactory();
 
 }
@@ -29,47 +37,57 @@ GAME.BackgroundManager = function(engineRef){
 GAME.BackgroundManager.constructor = GAME.BackgroundManager;
 GAME.BackgroundManager.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 
-	//--------------------------------------------------------------------------
-	//  Override Update
-	//--------------------------------------------------------------------------
-	GAME.BackgroundManager.prototype.updateTransform = function() {
+//--------------------------------------------------------------------------
+//  Override Update
+//--------------------------------------------------------------------------
+GAME.BackgroundManager.prototype.updateTransform = function() {
 
-		this.scrollPosition = GAME.camera.x + scrollOffset;
-        this.distance.setPosition(this.scrollPosition);
+	this.scrollPosition = GAME.camera.x + scrollOffset;
+    this.distance.setPosition(this.scrollPosition);
 
-        // move everything in the backgrounds pool
-        for (var i=0; i<this.backgrounds.length;i++){
+    // move everything in the backgrounds pool
+    for (var i=0; i<this.backgrounds.length;i++){
 
-            obj = this.backgrounds[i];
+        obj = this.backgrounds[i];
 
-            obj.position.x -= this.engine.player.speed.x * this.middistance.speed;
+        obj.position.x -= this.engine.player.speed.x * this.middistance.speed;
 
-            if (obj.position.x < 0 - obj.width){
-                this.backgroundFactory.backgroundPool.returnObject(obj);
-                this.backgrounds.splice(i, 1);
-                i--;
-                this.middistance.removeChild(obj);
-            }
-
+        if (obj.position.x < 0 - obj.width){
+            this.backgroundFactory.backgroundPool.returnObject(obj);
+            this.backgrounds.splice(i, 1);
+            i--;
+            this.middistance.removeChild(obj);
         }
 
-        // randomly add a background to the middistance
-        this.spawnCount += this.engine.player.speed.x * this.middistance.speed;
-        this.nextbg < this.spawnCount && (this.spawnCount = 0, this.addBackground(GAME.width + 40, 329));
-	    
-	    PIXI.DisplayObjectContainer.prototype.updateTransform.call(this)
-	};
-
-    GAME.BackgroundManager.prototype.addBackground = function(a,b) {
-
-        var c = this.backgroundFactory.getBackground();
-        c.position.x = a;
-        c.position.y = b;
-        this.backgrounds.push(c);
-        this.middistance.addChild(c)
-
-        this.nextbg = c.width;
     }
+
+    // move the train
+    this.train.position.x -= this.engine.player.speed.x * this.train.speed;
+
+    // randomly add a background to the middistance
+    this.spawnCount += this.engine.player.speed.x * this.middistance.speed;
+
+    if (this.hasMiddistance){
+        this.nextbg < this.spawnCount && (this.spawnCount = 0, this.addBackground(GAME.width + 40, 339));
+    }
+    
+    PIXI.DisplayObjectContainer.prototype.updateTransform.call(this)
+};
+
+GAME.BackgroundManager.prototype.addBackground = function(a,b) {
+
+    var c = this.backgroundFactory.getBackground();
+    c.position.x = a;
+    c.position.y = b;
+    this.backgrounds.push(c);
+    this.middistance.addChild(c)
+
+    this.nextbg = c.width;
+}
+
+GAME.BackgroundManager.prototype.reset = function(){
+
+}
 
 //--------------------------------------------------------------------------
 //  Repeatable Background Element Class

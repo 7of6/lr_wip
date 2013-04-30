@@ -27,7 +27,7 @@ GAME.View = function(engineRef) {
     this.stage.addChild(this.container);
     this.stage.addChild(this.hud);
 
-	this.background = GAME.LO_MODE ? new GAME.LoBackground : new GAME.BackgroundManager(this.engine);
+	this.background = new GAME.BackgroundManager(this.engine);
 
 	this.gameBG.addChild(this.background);
 
@@ -42,6 +42,11 @@ GAME.View.prototype.update = function() {
     this.progressbar.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
 
 };
+
+GAME.View.prototype.reset = function(){
+    this.background.reset();
+    
+}
 
 GAME.View.prototype.resize = function(width, height) {
     GAME.width = width;
