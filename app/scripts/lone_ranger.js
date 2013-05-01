@@ -35,7 +35,7 @@
 		gameContainer = document.getElementById("game-container");
 		preLoad();
 		GAME.width = 800;
-		GAME.height = 450;
+		GAME.height = 480;
 
 	}
 
@@ -45,24 +45,24 @@
 		var width = $(window).width();
     	var height = $(window).height();
 
-	    var ratio = height / 450;
+	    var ratio = height / 480;
 
 
 	    if (game) {
 	        var view = game.view.renderer.view;
 
-	        view.style.height = 450 * ratio + "px"
+	        view.style.height = 480 * ratio + "px"
 
 	        var newWidth = (width / ratio);
 
 	        view.style.width = width + "px"
 
-	        game.view.resize(newWidth, 450);
+	        game.view.resize(newWidth, 480);
 	   
 	    }
 
 	    GAME.width = (width / ratio);
-	    GAME.height = 450;
+	    GAME.height = 480;
     
 	}
 
@@ -99,7 +99,10 @@
 	    game.view.renderer.view.addEventListener("touchstart", onTouchStart, true);
     	game.view.renderer.view.addEventListener("touchend", onTouchEnd, true);
 
-    	//onResize();
+    	if ($(window).width() <= 1024){
+    		onResize();
+    	}
+    	
 	}
 
 	//--------------------------------------------------------------------------

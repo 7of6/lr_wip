@@ -16,7 +16,7 @@ GAME.Engine = function() {
     GAME.level = GAME_LEVEL.TUTORIAL;
     GAME.counter = 0;
 
-	this.player = new GAME.Player;
+	this.player = new GAME.Player(this);
 	this.view = new GAME.View(this);
 
 	this.foregroundManager = new GAME.ForegroundManager(this);
@@ -26,6 +26,8 @@ GAME.Engine = function() {
 
 	this.view.gameFG.addChild(this.player.view);
 
+    this.gameover = new GAME.GameOver(this);
+
 }
 GAME.Engine.constructor = GAME.Engine;
 
@@ -34,27 +36,43 @@ GAME.Engine.prototype.update = function() {
 
     if (!GAME.pause){
 
-        this.player.update();
-        this.collisionManager.update();
-        this.foregroundManager.update();
+        if (!GAME.gameover){
+            this.player.update();
+            this.collisionManager.update();
+            this.foregroundManager.update();
+            this.sectionManager.update();
+        }
         this.view.update();
-        this.sectionManager.update();
-
-        //console.log(GAME.camera.y);
 
     }
 };
 
 GAME.Engine.prototype.reset = function(){
 
+    this.view.container.removeChild(this.gameover);
     this.player.reset();
     this.view.reset();
     this.foregroundManager.reset();
     this.sectionManager.reset();
-    this.view.gameFG.addChild(this.player.view);
+    //this.view.gameFG.addChild(this.player.view);
     GAME.level = GAME_LEVEL.TUTORIAL;
     GAME.counter = 0;
 
+    GAME.gameover = 0;
+
+}
+
+GAME.Engine.prototype.onGameOver = function(){
+
+    this.view.progressbar.alpha = 0;
+
+    // set some things in game over
+    // ???
+
+    this.view.container.addChild(this.gameover);
+    this.view.update();
+
+    //GAME.pause = 1;
 }
 
 GAME.Engine.prototype.onTouch = function() {

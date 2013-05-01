@@ -1,8 +1,10 @@
 //--------------------------------------------------------------------------
 //  Player Class
 //--------------------------------------------------------------------------
-GAME.Player = function(){
+GAME.Player = function(engineRef){
 	console.log("Player");
+
+	this.engine = engineRef;
 
 	this.position = new PIXI.Point;
 
@@ -130,8 +132,8 @@ GAME.Player.prototype.update = function() {
 
 	if (this.position.y - this.height - 40 > GAME.height){
 		// game over
-		console.log("game over");
-		GAME.pause = true;
+		GAME.gameover = 1;
+		this.engine.onGameOver();
 	}
 
     this.position.x += this.speed.x;
@@ -150,6 +152,8 @@ GAME.Player.prototype.reset = function(){
 
 	this.view.animationSpeed = this.currentAnimSpeed;
     this.view.play();
+
+    GAME.camera.x = this.position.x - 140;
 
     this.view.position.x = this.position.x;
     this.view.position.y = this.position.y;

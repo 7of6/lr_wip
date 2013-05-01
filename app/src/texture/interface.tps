@@ -150,6 +150,11 @@
             <filename>../images/interface/bar_inner.png</filename>
             <filename>../images/interface/progress_bar.png</filename>
             <filename>../images/interface/silver_bullet.png</filename>
+            <filename>../images/interface/facebook_button.png</filename>
+            <filename>../images/interface/game_over_fail.jpg</filename>
+            <filename>../images/interface/play_button.png</filename>
+            <filename>../images/interface/twitter_button.png</filename>
+            <filename>../images/interface/footer.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

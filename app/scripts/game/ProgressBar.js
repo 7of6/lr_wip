@@ -14,7 +14,7 @@ GAME.ProgressBar = function(){
 	this.position.x = Math.round((GAME.width - this.width) / 2);
 
 	// text 
-	distanceText = new PIXI.Text(" ", "25px haettenschweilerregular", "#f26622", "#333333", 4);
+	distanceText = new PIXI.Text(" ", "25px InGameFont", "#f26622", "#333333", 4);
 		distanceText.anchor.x = 0;
 		distanceText.anchor.y = 0;
 		distanceText.position.x = 15;
@@ -22,7 +22,7 @@ GAME.ProgressBar = function(){
 
 	this.addChild(distanceText);
 
-	timeText = new PIXI.Text(" ", "25px haettenschweilerregular", "#f26622", "#333333", 4);
+	timeText = new PIXI.Text(" ", "25px InGameFont", "#f26622", "#333333", 4);
 		timeText.anchor.x = 0;
 		timeText.anchor.y = 0;
 		timeText.position.x = 440;
@@ -30,7 +30,7 @@ GAME.ProgressBar = function(){
 
 	this.addChild(timeText);
 
-	timeDisplay = new PIXI.Text("0:00", "40px haettenschweilerregular", "#ffffff", "#333333", 4);
+	timeDisplay = new PIXI.Text("0:00", "40px InGameFont", "#ffffff", "#333333", 4);
 		timeDisplay.anchor.x = 0;
 		timeDisplay.anchor.y = 0;
 		timeDisplay.position.x = 490;

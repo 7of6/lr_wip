@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'haettenschweilerregular';
+    font-family: 'InGameFont';
     src: url('haettenschweiler-webfont.eot');
     src: url('haettenschweiler-webfont.eot?#iefix') format('embedded-opentype'),
          url('haettenschweiler-webfont.woff') format('woff'),
@@ -17,7 +17,7 @@ body {
 }
 
 #loader {
-    font-family: "haettenschweilerregular";
+    font-family: "InGameFont";
     text-align: center;
     color: #000000;
     line-height: 450px;

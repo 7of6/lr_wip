@@ -4,8 +4,8 @@
 GAME.View = function(engineRef) {
 	console.log("View");
 	this.engine = engineRef;
-	this.renderer = PIXI.autoDetectRenderer(800, 450);
-	this.stage = new PIXI.Stage;
+	this.renderer = PIXI.autoDetectRenderer(800, 480);
+	this.stage = new PIXI.Stage(0x000000, true);
 
 	this.container = new PIXI.DisplayObjectContainer;
 
@@ -13,6 +13,11 @@ GAME.View = function(engineRef) {
     this.hud = new PIXI.DisplayObjectContainer;
     this.progressbar = new GAME.ProgressBar();
     this.hud.addChild(this.progressbar);
+
+    // footer
+    this.footer = new PIXI.Sprite(PIXI.Texture.fromFrame("footer.jpg"));
+    this.footer.position.y = 405;
+    this.hud.addChild(this.footer);
 
 
 

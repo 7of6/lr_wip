@@ -25,7 +25,7 @@ GAME.SectionManager.prototype.update = function(){
 
 				// desert obstacles, no midbackground, no platforms, no gaps
 				this.engine.view.background.hasMiddistance = 0;
-				this.engine.foregroundManager.hasFloorGaps = 0;
+				this.engine.foregroundManager.hasFloorGaps = 1;
 
 			break;
 			case GAME_LEVEL.INDIAN_VILLAGE:
@@ -76,6 +76,10 @@ GAME.SectionManager.prototype.update = function(){
 
 		
 	}
+
+}
+
+GAME.SectionManager.prototype.reset = function(){
 
 }
 
