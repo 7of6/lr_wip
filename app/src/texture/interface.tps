@@ -140,7 +140,7 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>
@@ -155,6 +155,8 @@
             <filename>../images/interface/play_button.png</filename>
             <filename>../images/interface/twitter_button.png</filename>
             <filename>../images/interface/footer.jpg</filename>
+            <filename>../../../../../../../../Volumes/Tech_and_Creative_temp/WDSMP/The Lone Ranger/Hi Ho Silver game/05_Flash_assets/01_WIP/brush_stroke.swf</filename>
+            <filename>../images/interface/title_screen.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

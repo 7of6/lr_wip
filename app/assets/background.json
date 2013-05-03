@@ -2,19 +2,19 @@
 
 "bg1.jpg":
 {
-	"frame": {"x":2,"y":377,"w":822,"h":373},
+	"frame": {"x":826,"y":297,"w":822,"h":450},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":822,"h":373},
-	"sourceSize": {"w":822,"h":373}
+	"spriteSourceSize": {"x":0,"y":0,"w":822,"h":450},
+	"sourceSize": {"w":822,"h":450}
 },
 "bg2.jpg":
 {
-	"frame": {"x":2,"y":2,"w":822,"h":373},
+	"frame": {"x":2,"y":152,"w":822,"h":450},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":822,"h":373},
-	"sourceSize": {"w":822,"h":373}
+	"spriteSourceSize": {"x":0,"y":0,"w":822,"h":450},
+	"sourceSize": {"w":822,"h":450}
 },
 "floor_face_left.png":
 {
@@ -26,7 +26,7 @@
 },
 "floor_face_right.png":
 {
-	"frame": {"x":826,"y":2,"w":151,"h":145},
+	"frame": {"x":1251,"y":150,"w":151,"h":145},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":16,"y":0,"w":151,"h":145},
@@ -34,7 +34,7 @@
 },
 "floor_tile.png":
 {
-	"frame": {"x":2,"y":752,"w":1247,"h":148},
+	"frame": {"x":2,"y":2,"w":1247,"h":148},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":1247,"h":148},
@@ -47,6 +47,6 @@
 	"format": "RGBA8888",
 	"size": {"w":2048,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:86ce764129cbed20c95e877cc32da315$"
+	"smartupdate": "$TexturePacker:SmartUpdate:dfa9670c4e76047b293a0b77d96b931c$"
 }
 }

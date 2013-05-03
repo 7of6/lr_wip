@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>../../assets/background.png</filename>
+        <filename>../../assets/canyon_platforms.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../assets/background.java</filename>
+            <filename>../../assets/canyon_platforms.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../assets/background.json</filename>
+        <filename>../../assets/canyon_platforms.json</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -140,17 +140,21 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../images/floor/floor_face_left.png</filename>
-            <filename>../images/floor/floor_face_right.png</filename>
-            <filename>../images/floor/floor_tile.png</filename>
-            <filename>../images/floor/bg1.jpg</filename>
-            <filename>../images/floor/bg2.jpg</filename>
+            <filename>../images/platforms_canyon/canyon_end_left1.png</filename>
+            <filename>../images/platforms_canyon/canyon_end_left2.png</filename>
+            <filename>../images/platforms_canyon/canyon_end_right1.png</filename>
+            <filename>../images/platforms_canyon/canyon_end_right2.png</filename>
+            <filename>../images/platforms_canyon/canyon_platform_large.png</filename>
+            <filename>../images/platforms_canyon/canyon_platform_loop.png</filename>
+            <filename>../images/platforms_canyon/canyon_platform_medium.png</filename>
+            <filename>../images/platforms_canyon/canyon_platform_small.png</filename>
+            <filename>../images/platforms_canyon/canyon_step_up.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -23,11 +23,11 @@ GAME.BackgroundManager = function(engineRef){
     this.addChild(this.middistance);
     this.middistance.speed = 0.4;
 
-    this.train = new GAME.Train();
+    /*this.train = new GAME.Train();
     this.train.position.x = GAME.width + 40;
     this.train.position.y = 128;
     this.train.speed = 0.05;
-    this.addChild(this.train);
+    this.addChild(this.train);*/
 
    
     this.backgroundFactory = new GAME.BackgroundFactory();
@@ -62,7 +62,9 @@ GAME.BackgroundManager.prototype.updateTransform = function() {
     }
 
     // move the train
-    this.train.position.x -= this.engine.player.speed.x * this.train.speed;
+    if (this.train){
+        this.train.position.x -= this.engine.player.speed.x * this.train.speed;
+    }
 
     // randomly add a background to the middistance
     this.spawnCount += this.engine.player.speed.x * this.middistance.speed;
@@ -87,6 +89,11 @@ GAME.BackgroundManager.prototype.addBackground = function(a,b) {
 
 GAME.BackgroundManager.prototype.reset = function(){
 
+    for (var i=0; i<this.backgrounds.length;i++){
+        var obj = this.backgrounds[i];
+        this.middistance.removeChild(obj);
+    }
+    this.backgrounds = [];
 }
 
 //--------------------------------------------------------------------------

@@ -14,12 +14,13 @@ GAME.View = function(engineRef) {
     this.progressbar = new GAME.ProgressBar();
     this.hud.addChild(this.progressbar);
 
+    // screens
+    this.screens = new PIXI.DisplayObjectContainer;
+
     // footer
     this.footer = new PIXI.Sprite(PIXI.Texture.fromFrame("footer.jpg"));
     this.footer.position.y = 405;
     this.hud.addChild(this.footer);
-
-
 
     // non-interactive background items
     this.gameBG = new PIXI.DisplayObjectContainer;
@@ -28,6 +29,7 @@ GAME.View = function(engineRef) {
     
     this.container.addChild(this.gameBG);
     this.container.addChild(this.gameFG);
+    this.container.addChild(this.screens);
     
     this.stage.addChild(this.container);
     this.stage.addChild(this.hud);
@@ -58,13 +60,22 @@ GAME.View.prototype.resize = function(width, height) {
     GAME.height = height;
     this.renderer.resize(width, height);
     this.background.width = width;
-
-    console.log(this.progressbar.width);
-
     this.progressbar.position.x = (width - this.progressbar.width) / 2;
  
-    /*this.white.scale.x = width / 16;
-    this.white.scale.y = height / 16;
-    this.powerBar.position.x = width - 295;
-    this.powerBar.position.y = 12*/
 };
+
+GAME.View.prototype.toPlatformView = function(){
+
+    // move the view up for rooftops
+    TweenMax.to(this.gameFG.position, 1, {y:100, delay:1});
+    TweenMax.to(this.background.middistance.position, 1, {y:100, delay:1});
+
+}
+
+GAME.View.prototype.toNormalView = function(){
+
+    // move the view back down to floor level
+    TweenMax.to(this.gameFG.position, 1, {y:0, delay:1});
+    TweenMax.to(this.background.middistance.position, 1, {y:0, delay:1});
+
+}

@@ -13,7 +13,7 @@
 		"assets/town_bg.json",
 		"assets/indian_bg.json",
 		"assets/obstacles_desert.json",
-		"assets/silver_complete.json",
+		"assets/horses_complete.json",
 		"assets/train_complete.json",
 		"assets/carriage_reflections_1st_class.json",
 		"assets/carriage_reflections_2nd_class.json"
@@ -102,7 +102,7 @@
     	if ($(window).width() <= 1024){
     		onResize();
     	}
-    	
+
 	}
 
 	//--------------------------------------------------------------------------

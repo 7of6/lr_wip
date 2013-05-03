@@ -4,8 +4,10 @@
 GAME.ProgressBar = function(){
 	PIXI.DisplayObjectContainer.call(this);
 
-	BULLET_START = 110;
-	BAR_MAX = 285;
+	this.position.y = -100;
+	this.BULLET_START = 110;
+	this.BAR_MAX = 285;
+	this.time = 0;
 
 	var barContainer = PIXI.Texture.fromFrame("progress_bar.png");
 
@@ -14,29 +16,29 @@ GAME.ProgressBar = function(){
 	this.position.x = Math.round((GAME.width - this.width) / 2);
 
 	// text 
-	distanceText = new PIXI.Text(" ", "25px InGameFont", "#f26622", "#333333", 4);
-		distanceText.anchor.x = 0;
-		distanceText.anchor.y = 0;
-		distanceText.position.x = 15;
-		distanceText.position.y = 15;
+	this.distanceText = new PIXI.Text(" ", "25px InGameFont", "#f26622", "#333333", 4);
+	this.distanceText.anchor.x = 0;
+	this.distanceText.anchor.y = 0;
+	this.distanceText.position.x = 15;
+	this.distanceText.position.y = 15;
 
-	this.addChild(distanceText);
+	this.addChild(this.distanceText);
 
-	timeText = new PIXI.Text(" ", "25px InGameFont", "#f26622", "#333333", 4);
-		timeText.anchor.x = 0;
-		timeText.anchor.y = 0;
-		timeText.position.x = 440;
-		timeText.position.y = 15;
+	this.timeText = new PIXI.Text(" ", "25px InGameFont", "#f26622", "#333333", 4);
+	this.timeText.anchor.x = 0;
+	this.timeText.anchor.y = 0;
+	this.timeText.position.x = 440;
+	this.timeText.position.y = 15;
 
-	this.addChild(timeText);
+	this.addChild(this.timeText);
 
-	timeDisplay = new PIXI.Text("0:00", "40px InGameFont", "#ffffff", "#333333", 4);
-		timeDisplay.anchor.x = 0;
-		timeDisplay.anchor.y = 0;
-		timeDisplay.position.x = 490;
-		timeDisplay.position.y = 5;
+	this.timeDisplay = new PIXI.Text("0:00", "40px InGameFont", "#ffffff", "#333333", 4);
+	this.timeDisplay.anchor.x = 0;
+	this.timeDisplay.anchor.y = 0;
+	this.timeDisplay.position.x = 490;
+	this.timeDisplay.position.y = 5;
 
-	this.addChild(timeDisplay);
+	this.addChild(this.timeDisplay);
 
 	// progress
 	var barLeft = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner_left.png"));
@@ -44,23 +46,23 @@ GAME.ProgressBar = function(){
 	barLeft.position.y = 27;
 	this.addChild(barLeft);
 
-	bar = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner.png"));
-	bar.position.x = 108;
-	bar.position.y = 26;
-	bar.width = 1;
-	this.addChild(bar);
+	this.bar = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner.png"));
+	this.bar.position.x = 108;
+	this.bar.position.y = 26;
+	this.bar.width = 1;
+	this.addChild(this.bar);
 
 
-	bullet = new PIXI.Sprite(PIXI.Texture.fromFrame("silver_bullet.png"));
-	bullet.position.y = 15;
-	bullet.position.x = BULLET_START;
-	this.addChild(bullet);
+	this.bullet = new PIXI.Sprite(PIXI.Texture.fromFrame("silver_bullet.png"));
+	this.bullet.position.y = 15;
+	this.bullet.position.x = this.BULLET_START;
+	this.addChild(this.bullet);
 
 	this.startTime();
 
 	this.setProgress(0);
 
-	TweenMax.delayedCall(0.2, this.localiseText);
+	this.localiseText();
 
 }
 GAME.ProgressBar.constructor = GAME.ProgressBar;
@@ -69,45 +71,63 @@ GAME.ProgressBar.prototype = Object.create(PIXI.DisplayObjectContainer.prototype
 //--------------------------------------------------------------------------
 //  API
 //--------------------------------------------------------------------------
+GAME.ProgressBar.prototype.reset = function(){
+	this.time = 0;
+}
+
+GAME.ProgressBar.prototype.show = function(){
+	TweenMax.to(this.position, 0.5, {y:0});
+}
+
+GAME.ProgressBar.prototype.hide = function(){
+	TweenMax.to(this.position, 0.5, {y:-100});
+}
+
 
 GAME.ProgressBar.prototype.setProgress = function(perc){
 
-	perc = (perc > 1) ? 1 : perc;
+	var perc = (perc > 1) ? 1 : perc;
 
-	bar.width = BAR_MAX * perc;
-	bullet.position.x = BAR_MAX * perc + BULLET_START - bullet.width;
+	this.bar.width = this.BAR_MAX * perc;
+	this.bullet.position.x = this.BAR_MAX * perc + this.BULLET_START - this.bullet.width;
 
 }
 
 GAME.ProgressBar.prototype.startTime = function(){
 
-	var time = 0,
-	minutes = 0,
+	var minutes = 0,
 	seconds = 0,
-    elapsed = "0:00";
+    elapsed = "0:00",
+    self = this;
+    
 	window.setInterval(function()
 	{
-	    time += 100;
-	    elapsed = Math.floor(time / 100);
 
-	    if (elapsed >= 60){
-	    	minutes = Math.floor(elapsed / 60);
-	    }
+		if (!GAME.paused && !GAME.gameover){
 
-	    seconds = elapsed - (60 * minutes);
+			self.time += 100;
+		    elapsed = Math.floor(self.time / 100);
 
-	    if (seconds < 10){
-	    	seconds = "0" + seconds;
-	    }
-	    
-	    timeDisplay.setText( minutes + ":" + seconds );
+		    if (elapsed >= 60){
+		    	minutes = Math.floor(elapsed / 60);
+		    }
+
+		    seconds = elapsed - (60 * minutes);
+
+		    if (seconds < 10){
+		    	seconds = "0" + seconds;
+		    }
+		    
+		    self.timeDisplay.setText( minutes + ":" + seconds );
+
+		}
 
 	}, 1000);
 }
 
 GAME.ProgressBar.prototype.localiseText = function(){
 
-	distanceText.setText("Distance:");
-	timeText.setText("Time:");
+	this.distanceText.setText("Distance:");
+	this.timeText.setText("Time:");
 
 }

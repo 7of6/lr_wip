@@ -4,10 +4,9 @@
 GAME.GameOver = function(engineRef, gameWon){
 	console.log("Game Over");
 
-    self = this;
+    PIXI.DisplayObjectContainer.call(this);
 
-
-	PIXI.DisplayObjectContainer.call(this);
+    var self = this;
 
     this.engine = engineRef;
 
@@ -43,7 +42,7 @@ GAME.GameOver = function(engineRef, gameWon){
 
     this.addChild(this.playButton);
     this.playButton.setInteractive(true);
-    this.playButton.mousedown = this.playButton.touchstart = this.handlePlay;
+    this.playButton.mousedown = this.playButton.touchstart = function(data){self.handlePlay(data)};
 
 
 }
@@ -61,5 +60,5 @@ GAME.GameOver.prototype.handleTwitter = function(data){
 
 GAME.GameOver.prototype.handlePlay = function(data){
     console.log("play click");
-    self.engine.reset();
+    this.engine.reset();
 }

@@ -1,0 +1,84 @@
+{"frames": {
+
+"canyon_end_left1.png":
+{
+	"frame": {"x":1902,"y":2,"w":127,"h":362},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":127,"h":362},
+	"sourceSize": {"w":127,"h":362}
+},
+"canyon_end_left2.png":
+{
+	"frame": {"x":453,"y":366,"w":148,"h":362},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":148,"h":362},
+	"sourceSize": {"w":148,"h":362}
+},
+"canyon_end_right1.png":
+{
+	"frame": {"x":603,"y":366,"w":164,"h":361},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":164,"h":361},
+	"sourceSize": {"w":164,"h":361}
+},
+"canyon_end_right2.png":
+{
+	"frame": {"x":1677,"y":366,"w":191,"h":358},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":191,"h":358},
+	"sourceSize": {"w":191,"h":358}
+},
+"canyon_platform_large.png":
+{
+	"frame": {"x":2,"y":2,"w":1147,"h":362},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1147,"h":362},
+	"sourceSize": {"w":1147,"h":362}
+},
+"canyon_platform_loop.png":
+{
+	"frame": {"x":769,"y":366,"w":906,"h":359},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":906,"h":359},
+	"sourceSize": {"w":906,"h":359}
+},
+"canyon_platform_medium.png":
+{
+	"frame": {"x":1151,"y":2,"w":749,"h":362},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":749,"h":362},
+	"sourceSize": {"w":749,"h":362}
+},
+"canyon_platform_small.png":
+{
+	"frame": {"x":2,"y":366,"w":449,"h":362},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":449,"h":362},
+	"sourceSize": {"w":449,"h":362}
+},
+"canyon_step_up.png":
+{
+	"frame": {"x":2,"y":730,"w":219,"h":281},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":219,"h":281},
+	"sourceSize": {"w":219,"h":281}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "canyon_platforms.png",
+	"format": "RGBA8888",
+	"size": {"w":2048,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:cd11b92d5fdccb1961d668d86d151778$"
+}
+}

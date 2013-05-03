@@ -2,15 +2,63 @@
 
 "crates.png":
 {
-	"frame": {"x":2,"y":2,"w":481,"h":76},
+	"frame": {"x":1489,"y":2,"w":481,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":481,"h":76},
 	"sourceSize": {"w":481,"h":76}
 },
+"hay_barn.png":
+{
+	"frame": {"x":268,"y":790,"w":604,"h":109},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":604,"h":109},
+	"sourceSize": {"w":604,"h":109}
+},
+"house1.png":
+{
+	"frame": {"x":1202,"y":334,"w":668,"h":241},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":668,"h":241},
+	"sourceSize": {"w":668,"h":241}
+},
+"house2.png":
+{
+	"frame": {"x":540,"y":2,"w":474,"h":330},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":474,"h":330},
+	"sourceSize": {"w":474,"h":330}
+},
+"house3.png":
+{
+	"frame": {"x":1016,"y":2,"w":471,"h":330},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":330},
+	"sourceSize": {"w":471,"h":330}
+},
+"house4.png":
+{
+	"frame": {"x":2,"y":2,"w":536,"h":402},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":536,"h":402},
+	"sourceSize": {"w":536,"h":402}
+},
+"long_house.png":
+{
+	"frame": {"x":2,"y":406,"w":1198,"h":382},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1198,"h":382},
+	"sourceSize": {"w":1198,"h":382}
+},
 "wagon.png":
 {
-	"frame": {"x":2,"y":80,"w":264,"h":146},
+	"frame": {"x":2,"y":790,"w":264,"h":146},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":146},
@@ -21,8 +69,8 @@
 	"version": "1.0",
 	"image": "town_platforms.png",
 	"format": "RGBA8888",
-	"size": {"w":512,"h":256},
+	"size": {"w":2048,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:8f3f2424d37e47a3c45e203ca744fa99$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b43db25373a8750dfedef37632bd81f2$"
 }
 }

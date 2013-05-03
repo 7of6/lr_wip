@@ -5,7 +5,7 @@ GAME.ForegroundManager = function(engineRef){
 	console.log("ForegroundManager");
 
 	this.engine = engineRef;
-	this.obstacleMax = 2;
+	this.obstacleMax = 0;
 
 	this.hasFloorGaps = 0;
 	gapAdded = 0;
@@ -243,6 +243,8 @@ GAME.ForegroundManager.prototype.reset = function() {
         this.engine.view.gameFG.removeChild(obj);
     }
     this.objectPools.platforms = [];
+
+    this.floorPos = 0;
 
     this.initFloor();
 };

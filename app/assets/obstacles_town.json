@@ -1,0 +1,60 @@
+{"frames": {
+
+"bales.png":
+{
+	"frame": {"x":112,"y":60,"w":97,"h":58},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":58},
+	"sourceSize": {"w":97,"h":58}
+},
+"barrels.png":
+{
+	"frame": {"x":2,"y":188,"w":67,"h":45},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":67,"h":45},
+	"sourceSize": {"w":67,"h":45}
+},
+"box.png":
+{
+	"frame": {"x":2,"y":138,"w":57,"h":48},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":48},
+	"sourceSize": {"w":57,"h":48}
+},
+"cart.png":
+{
+	"frame": {"x":2,"y":2,"w":222,"h":56},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":56},
+	"sourceSize": {"w":222,"h":56}
+},
+"crate.png":
+{
+	"frame": {"x":2,"y":60,"w":108,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":76},
+	"sourceSize": {"w":108,"h":76}
+},
+"sack.png":
+{
+	"frame": {"x":226,"y":2,"w":23,"h":38},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
+	"sourceSize": {"w":23,"h":38}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "obstacles_town.png",
+	"format": "RGBA8888",
+	"size": {"w":256,"h":256},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:75ea30b44106dfc57580110be38e9db4$"
+}
+}

@@ -2,7 +2,7 @@
 
 "bush1.png":
 {
-	"frame": {"x":89,"y":2,"w":30,"h":18},
+	"frame": {"x":188,"y":105,"w":30,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":18},
@@ -10,7 +10,7 @@
 },
 "bush2.png":
 {
-	"frame": {"x":80,"y":50,"w":24,"h":23},
+	"frame": {"x":188,"y":125,"w":24,"h":23},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":23},
@@ -18,7 +18,7 @@
 },
 "bush3.png":
 {
-	"frame": {"x":89,"y":22,"w":27,"h":26},
+	"frame": {"x":220,"y":105,"w":27,"h":26},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":26},
@@ -26,7 +26,7 @@
 },
 "bush4.png":
 {
-	"frame": {"x":2,"y":144,"w":70,"h":35},
+	"frame": {"x":2,"y":217,"w":70,"h":35},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":70,"h":35},
@@ -34,7 +34,7 @@
 },
 "bush5.png":
 {
-	"frame": {"x":2,"y":96,"w":73,"h":46},
+	"frame": {"x":80,"y":153,"w":73,"h":46},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":73,"h":46},
@@ -42,15 +42,23 @@
 },
 "fire.png":
 {
-	"frame": {"x":2,"y":32,"w":76,"h":62},
+	"frame": {"x":2,"y":153,"w":76,"h":62},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":76,"h":62},
 	"sourceSize": {"w":76,"h":62}
 },
+"large_rock.png":
+{
+	"frame": {"x":2,"y":73,"w":184,"h":78},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":184,"h":78},
+	"sourceSize": {"w":184,"h":78}
+},
 "rock1.png":
 {
-	"frame": {"x":2,"y":2,"w":85,"h":28},
+	"frame": {"x":74,"y":217,"w":85,"h":28},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":85,"h":28},
@@ -58,19 +66,27 @@
 },
 "rock2.png":
 {
-	"frame": {"x":2,"y":181,"w":65,"h":30},
+	"frame": {"x":188,"y":73,"w":65,"h":30},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":65,"h":30},
 	"sourceSize": {"w":65,"h":30}
+},
+"wall.png":
+{
+	"frame": {"x":2,"y":2,"w":234,"h":69},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":234,"h":69},
+	"sourceSize": {"w":234,"h":69}
 }},
 "meta": {
 	"app": "http://www.texturepacker.com",
 	"version": "1.0",
 	"image": "obstacles_desert.png",
 	"format": "RGBA8888",
-	"size": {"w":128,"h":256},
+	"size": {"w":256,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:aa9519df731930c39935d6e0526016dd$"
+	"smartupdate": "$TexturePacker:SmartUpdate:79ac9da2ce0f21bcc8b6a3e06cc72baf$"
 }
 }

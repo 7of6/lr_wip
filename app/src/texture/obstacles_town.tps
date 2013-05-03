@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>../../assets/background.png</filename>
+        <filename>../../assets/obstacles_town.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../assets/background.java</filename>
+            <filename>../../assets/obstacles_town.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../assets/background.json</filename>
+        <filename>../../assets/obstacles_town.json</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -140,17 +140,18 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../images/floor/floor_face_left.png</filename>
-            <filename>../images/floor/floor_face_right.png</filename>
-            <filename>../images/floor/floor_tile.png</filename>
-            <filename>../images/floor/bg1.jpg</filename>
-            <filename>../images/floor/bg2.jpg</filename>
+            <filename>../images/obstacles_town/bales.png</filename>
+            <filename>../images/obstacles_town/barrels.png</filename>
+            <filename>../images/obstacles_town/box.png</filename>
+            <filename>../images/obstacles_town/cart.png</filename>
+            <filename>../images/obstacles_town/crate.png</filename>
+            <filename>../images/obstacles_town/sack.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
