@@ -1,29 +1,5 @@
 {"frames": {
 
-"bush1.png":
-{
-	"frame": {"x":188,"y":105,"w":30,"h":18},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":18},
-	"sourceSize": {"w":30,"h":18}
-},
-"bush2.png":
-{
-	"frame": {"x":188,"y":125,"w":24,"h":23},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":24,"h":23},
-	"sourceSize": {"w":24,"h":23}
-},
-"bush3.png":
-{
-	"frame": {"x":220,"y":105,"w":27,"h":26},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":26},
-	"sourceSize": {"w":27,"h":26}
-},
 "bush4.png":
 {
 	"frame": {"x":2,"y":217,"w":70,"h":35},
@@ -87,6 +63,6 @@
 	"format": "RGBA8888",
 	"size": {"w":256,"h":256},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:79ac9da2ce0f21bcc8b6a3e06cc72baf$"
+	"smartupdate": "$TexturePacker:SmartUpdate:5c17783c68cdef31d7a8856195f725f3$"
 }
 }

@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>../../assets/obstacles_desert.png</filename>
+        <filename>../../assets/town_bg.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../assets/obstacles_desert.java</filename>
+            <filename>../../assets/town_bg.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../assets/obstacles_desert.json</filename>
+        <filename>../../assets/town_bg.json</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -140,19 +140,23 @@
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">None</enum>
+            <enum type="SpriteSettings::TrimMode">Trim</enum>
             <key>heuristicMask</key>
             <false/>
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../images/obstacles_desert/bush4.png</filename>
-            <filename>../images/obstacles_desert/bush5.png</filename>
-            <filename>../images/obstacles_desert/fire.png</filename>
-            <filename>../images/obstacles_desert/large_rock.png</filename>
-            <filename>../images/obstacles_desert/rock1.png</filename>
-            <filename>../images/obstacles_desert/rock2.png</filename>
-            <filename>../images/obstacles_desert/wall.png</filename>
+            <filename>../images/bg_town/bg_town_house1.png</filename>
+            <filename>../images/bg_town/bg_town_house2.png</filename>
+            <filename>../images/bg_town/bg_town_house3.png</filename>
+            <filename>../images/bg_town/bg_town_house4.png</filename>
+            <filename>../images/bg_town/bg_town_house5.png</filename>
+            <filename>../images/bg_town/bg_town_house6.png</filename>
+            <filename>../images/bg_town/bg_town_house7.png</filename>
+            <filename>../images/bg_town/bg_town_house8.png</filename>
+            <filename>../images/bg_town/corral.png</filename>
+            <filename>../images/bg_town/gallows.png</filename>
+            <filename>../images/bg_town/train_station.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -10,9 +10,14 @@ GAME.CollisionManager.prototype.update = function() {
 
     this.engine.player.onGround = 0;
 
-    this.playerVsObstacle();
-    this.playerVsPlatform();
-    this.playerVsFloor();
+    if (!this.engine.player.dead){
+
+      this.playerVsObstacle();
+      this.playerVsPlatform();
+      this.playerVsFloor();
+
+    }
+
 };
 
 
@@ -30,11 +35,20 @@ GAME.CollisionManager.prototype.playerVsObstacle = function() {
 
         if (collide && !player.isJumping){
 
-            obstacleArr[i].isHit = 1;
-            player.hitObstacle();
+            if (obstacleArr[i].isLarge){
 
-            TweenMax.to(obstacleArr[i], 0.6, {alpha:0});
-            TweenMax.to(obstacleArr[i].position, 0.2, {x:obstacleArr[i].position.x + 30,y:obstacleArr[i].position.y - 10, yoyo:true, repeat:1});
+              obstacleArr[i].isHit = 1;
+              player.hitWall();
+
+            }else{
+
+              obstacleArr[i].isHit = 1;
+              player.hitObstacle();
+
+              TweenMax.to(obstacleArr[i], 0.6, {alpha:0});
+              TweenMax.to(obstacleArr[i].position, 0.2, {x:obstacleArr[i].position.x + 30,y:obstacleArr[i].position.y - 10, yoyo:true, repeat:1});
+
+            }
 
         }
 
@@ -70,7 +84,7 @@ GAME.CollisionManager.prototype.playerVsPlatform = function() {
                 }
 
                 player.speed.y = 0;
-                player.position.y -= Math.round(collide.height) - 4;
+                player.position.y -= Math.round(collide.height) - 24;
                 player.onGround = 1;
 
                 break;
@@ -109,7 +123,7 @@ GAME.CollisionManager.prototype.playerVsFloor = function() {
 
             player.onGround = 1;
             player.speed.y = 0;
-            player.position.y -= Math.round(collide.height) - 8;
+            player.position.y -= Math.round(collide.height) - 4;
 
             break;
 
@@ -128,7 +142,7 @@ GAME.CollisionManager.prototype.getPlayerBounds = function(){
 
     var player = this.engine.player;
 
-    var bounds = new PIXI.Rectangle(player.position.x + 80, player.position.y - player.height, player.width - 120, player.height);
+    var bounds = new PIXI.Rectangle(player.position.x + 100, player.position.y - player.height, 60, 70);
 
     return bounds;
 

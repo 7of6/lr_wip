@@ -17,16 +17,20 @@ GAME.Title = function(engineRef){
     this.playButton = new PIXI.DisplayObjectContainer();
     this.playButton.position.x = 600;
     this.playButton.position.y = 298;
-    var playText = new PIXI.Text("PLAY", "40px InGameFont", "#ffffff");
+    var playText = new PIXI.Text("PLAY", {font: "40px InGameFont", fill: "#ffffff", align: "left"});
+    console.log(playText.width, playText.height);
     this.playButton.addChild(playText);
 
     var arrow = new PIXI.Sprite(PIXI.Texture.fromFrame("play_button.png"));
-    arrow.position.x = playText.position.x + playText.width + 10;
+    arrow.position.x = 74;
     arrow.position.y = 8;
     this.playButton.addChild(arrow);
 
+    
+
     this.addChild(this.playButton);
     this.playButton.setInteractive(true);
+    this.playButton.buttonMode = true;
     this.playButton.mousedown = this.playButton.touchstart = function(data){self.handlePlay(data)};
 
 

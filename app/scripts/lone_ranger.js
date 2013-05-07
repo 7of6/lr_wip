@@ -3,20 +3,28 @@
 	//--------------------------------------------------------------------------
 	//  Vars
 	//--------------------------------------------------------------------------
-	var loader;
+	var loader, audio_loader;
+	var audio_assets = [];
 	var game;
 	var gameContainer;
+	var loaded = 0;
 	var manifest = [
-		"assets/interface.json",
-		"assets/background.json",
-		"assets/town_platforms.json",
-		"assets/town_bg.json",
-		"assets/indian_bg.json",
-		"assets/obstacles_desert.json",
-		"assets/horses_complete.json",
-		"assets/train_complete.json",
-		"assets/carriage_reflections_1st_class.json",
-		"assets/carriage_reflections_2nd_class.json"
+		"assets/sprites/interface.json",
+		"assets/sprites/background.json",
+		"assets/sprites/town_platforms.json",
+		"assets/sprites/town_bg.json",
+		"assets/sprites/indian_bg.json",
+		"assets/sprites/obstacles_desert.json",
+		"assets/sprites/obstacles_town.json",
+		"assets/sprites/horses_complete_75percent.json",
+		"assets/sprites/train_complete.json",
+		"assets/sprites/carriage_reflections_1st_class.json",
+		"assets/sprites/carriage_reflections_2nd_class.json"
+	];
+	var audio_manifest = [
+		{src:"assets/audio/game_intro_coup_de_grace_v1.mp3", id:"intro-music"},
+		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3", id:"failed-music"},
+		{src:"assets/audio/gameplay_coup_de_grace_v1.mp3", id:"game-music"},
 	];
 
 	//--------------------------------------------------------------------------
@@ -31,7 +39,7 @@
 	//  Window handlers
 	//--------------------------------------------------------------------------
 	function onReady(){
-		console.log("onReady");
+
 		gameContainer = document.getElementById("game-container");
 		preLoad();
 		GAME.width = 800;
@@ -40,29 +48,32 @@
 	}
 
 	function onResize(){
-		console.log("onResize");
-		// resize canvas
-		var width = $(window).width();
-    	var height = $(window).height();
 
-	    var ratio = height / 480;
+		if ($(window).width() <= 1024){
+			console.log("onResize");
+			// resize canvas
+			var width = $(window).width();
+	    	var height = $(window).height();
+
+		    var ratio = height / 480;
 
 
-	    if (game) {
-	        var view = game.view.renderer.view;
+		    if (game) {
+		        var view = game.view.renderer.view;
 
-	        view.style.height = 480 * ratio + "px"
+		        view.style.height = 480 * ratio + "px"
 
-	        var newWidth = (width / ratio);
+		        var newWidth = (width / ratio);
 
-	        view.style.width = width + "px"
+		        view.style.width = width + "px"
 
-	        game.view.resize(newWidth, 480);
-	   
-	    }
+		        game.view.resize(newWidth, 480);
+		   
+		    }
 
-	    GAME.width = (width / ratio);
-	    GAME.height = 480;
+		    GAME.width = (width / ratio);
+		    GAME.height = 480;
+		}
     
 	}
 
@@ -72,21 +83,52 @@
 	function preLoad(){
 		// load assets
 		loader = new PIXI.AssetLoader(manifest);
-		loader.onComplete = initApp;
+		loader.onComplete = onAssetsPreloaded;
 		loader.load();
+
+		audioloader = new createjs.LoadQueue()
+        audioloader.installPlugin(createjs.Sound)
+        
+        audioloader.onComplete = onAudioPreloaded
+        audioloader.onFileLoad = onAudioFileLoaded
+        audioloader.loadManifest(audio_manifest)
 	}
+
+	function onAudioFileLoaded(o){
+		audio_assets[o.item.id] = o.result
+	}
+
+	function onAudioPreloaded(){
+		GAME.audio_assets = audio_assets;
+		loaded++;
+		checkLoaded();
+	}
+
+	function onAssetsPreloaded(){
+		loaded++;
+		checkLoaded();
+	}
+
 
 	//--------------------------------------------------------------------------
 	//  Initialization
 	//--------------------------------------------------------------------------
+	function checkLoaded(){
+		if (loaded >= 2){
+			initApp();
+		}
+	}
+
 	function initApp(){
-		console.log("init");
+		
+		//GAME.LO_MODE = true;
+
 		$("#loader").css("display", "none");
 		game = new GAME.Engine();
 		gameContainer.appendChild(game.view.renderer.view);
 
 		if (GAME.LO_MODE) {
-	        setInterval(update, 1000 / 30);
+	        setInterval(update, 1000 / 40);
 	    } else {
 	        requestAnimFrame(update);
 	    }
@@ -99,9 +141,7 @@
 	    game.view.renderer.view.addEventListener("touchstart", onTouchStart, true);
     	game.view.renderer.view.addEventListener("touchend", onTouchEnd, true);
 
-    	if ($(window).width() <= 1024){
-    		onResize();
-    	}
+    	onResize();
 
 	}
 
@@ -129,7 +169,7 @@
 	//--------------------------------------------------------------------------
 	function update() {
 
-		stats.begin();
+		//stats.begin();
 
 	    game.update();
 
@@ -137,7 +177,7 @@
 	        requestAnimFrame(update);
 	    }
 
-	    stats.end();
+	    //stats.end();
 
 	}
 

@@ -22,15 +22,21 @@ GAME.SectionManager.prototype.update = function(){
 
 		switch (GAME.level){
 			case GAME_LEVEL.TUTORIAL:
-				this.engine.view.hud.addChild(new GAME.Message("3, 2, 1, GO!"));
+				//this.engine.view.hud.addChild(new GAME.Message("3, 2, 1, GO!"));
 			break;
 			case GAME_LEVEL.DESERT:
 				this.engine.view.hud.addChild(new GAME.Message("GET TO THE INDIAN VILLAGE"));
 				// desert obstacles, no midbackground, no platforms, no gaps
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.view.background.hasMiddistance = 0;
 				this.engine.foregroundManager.hasFloorGaps = 1;
 				this.engine.foregroundManager.obstacleMax = 2;
+	
 
+			break;
+			case GAME_LEVEL.DESERT_END:
+				this.engine.foregroundManager.hasFloorGaps = 0;
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 			break;
 			case GAME_LEVEL.INDIAN_VILLAGE:
 
@@ -38,6 +44,7 @@ GAME.SectionManager.prototype.update = function(){
 				this.engine.view.background.hasMiddistance = 1;
 				this.engine.foregroundManager.hasFloorGaps = 0;
 				this.engine.view.background.backgroundFactory.setTextures(GAME_LEVEL.INDIAN_VILLAGE);
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.INDIAN_VILLAGE);
 
 			break;
 			case GAME_LEVEL.INDIAN_VILLAGE_RANGER:
@@ -48,12 +55,14 @@ GAME.SectionManager.prototype.update = function(){
 			case GAME_LEVEL.DESERT_INTERLUDE:
 				this.engine.view.hud.addChild(new GAME.Message("GET TO THE TRAIN"));
 				this.engine.view.background.hasMiddistance = 0;
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 			break;
 			case GAME_LEVEL.TOWN:
 
 				// town obstacles, town midbackground, no platforms, no gaps
 				this.engine.view.background.hasMiddistance = 1;
 				this.engine.view.background.backgroundFactory.setTextures(GAME_LEVEL.TOWN);
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.TOWN);
 
 			break;
 			case GAME_LEVEL.TOWN_ROOFTOPS:
@@ -66,6 +75,7 @@ GAME.SectionManager.prototype.update = function(){
 				// desert obstacles, train midbackground, no platforms, gaps
 				this.engine.view.hud.addChild(new GAME.Message("CATCH THAT TRAIN"));
 				this.engine.view.background.hasMiddistance = 0;
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 
 			break;
 			case GAME_LEVEL.CANYONS:
@@ -87,7 +97,11 @@ GAME.SectionManager.prototype.update = function(){
 }
 
 GAME.SectionManager.prototype.reset = function(){
-
+	// no obstacles, no midbackground, no platforms, no gaps
+	this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
+	this.engine.view.background.hasMiddistance = 0;
+	this.engine.foregroundManager.hasFloorGaps = 0;
+	this.engine.foregroundManager.obstacleMax = 0;
 }
 
 //--------------------------------------------------------------------------
@@ -97,14 +111,15 @@ var GAME_LEVEL = {
 	START: 0,
 	TUTORIAL: 1,
     DESERT: 2,
-    INDIAN_VILLAGE: 3,
-    INDIAN_VILLAGE_RANGER: 4,
-    DESERT_INTERLUDE: 5,
-    TOWN: 6,
-    TOWN_ROOFTOPS: 7,
-    TRAIN: 8,
-    CANYONS: 9,
-    DESERT_TRAIN: 10
+    DESERT_END: 3,
+    INDIAN_VILLAGE: 4,
+    INDIAN_VILLAGE_RANGER: 5,
+    DESERT_INTERLUDE: 6,
+    TOWN: 7,
+    TOWN_ROOFTOPS: 8,
+    TRAIN: 9,
+    CANYONS: 10,
+    DESERT_TRAIN: 11
 };
 
 var GAME_MILESTONES = {};
@@ -115,31 +130,34 @@ var GAME_MILESTONES = {};
 GAME_MILESTONES[0] = 0;
 
 // TUTORIAL
-GAME_MILESTONES[1] = GAME_MILESTONES[0] + 500;
+GAME_MILESTONES[1] = GAME_MILESTONES[0] + 200;
 
 // DESERT
-GAME_MILESTONES[2] = GAME_MILESTONES[1] + 500;
+GAME_MILESTONES[2] = GAME_MILESTONES[1] + 1000;
+
+// DESERT END
+GAME_MILESTONES[3] = GAME_MILESTONES[2] + 400;
 
 // INDIAN VILLAGE
-GAME_MILESTONES[3] = GAME_MILESTONES[2] + 500;
-
-// GET RANGER CUTSCENE
 GAME_MILESTONES[4] = GAME_MILESTONES[3] + 500;
 
-// DESERT INTERLUDE
-GAME_MILESTONES[5] = GAME_MILESTONES[4] + 500;
+// GET RANGER CUTSCENE
+GAME_MILESTONES[5] = GAME_MILESTONES[4] + 200;
 
-// TOWN
+// DESERT INTERLUDE
 GAME_MILESTONES[6] = GAME_MILESTONES[5] + 500;
 
+// TOWN
+GAME_MILESTONES[7] = GAME_MILESTONES[6] + 1000;
+
 // ROOFTOPS
-GAME_MILESTONES[7] = GAME_MILESTONES[6] + 500;
+GAME_MILESTONES[8] = GAME_MILESTONES[7] + 50000;
 
 // TRAIN STATION
-GAME_MILESTONES[8] = GAME_MILESTONES[7] + 500;
-
-// CANYONS
 GAME_MILESTONES[9] = GAME_MILESTONES[8] + 500;
 
-// TRAIN CAUGHT CUTSCENE
+// CANYONS
 GAME_MILESTONES[10] = GAME_MILESTONES[9] + 500;
+
+// TRAIN CAUGHT CUTSCENE
+GAME_MILESTONES[11] = GAME_MILESTONES[10] + 500;

@@ -18,7 +18,7 @@ GAME.View = function(engineRef) {
     this.screens = new PIXI.DisplayObjectContainer;
 
     // footer
-    this.footer = new PIXI.Sprite(PIXI.Texture.fromFrame("footer.jpg"));
+    this.footer = new GAME.Footer;
     this.footer.position.y = 405;
     this.hud.addChild(this.footer);
 
@@ -61,6 +61,8 @@ GAME.View.prototype.resize = function(width, height) {
     this.renderer.resize(width, height);
     this.background.width = width;
     this.progressbar.position.x = (width - this.progressbar.width) / 2;
+    this.footer.position.x = (width - 800) / 2;
+    this.screens.position.x = (width - 800) / 2;
  
 };
 

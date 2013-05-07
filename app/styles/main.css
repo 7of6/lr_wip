@@ -11,17 +11,19 @@
 
 
 body {
-    background: #fafafa;
+    background: #ffffff;
     margin:0;
     padding: 0;
 }
 
 #loader {
     font-family: "InGameFont";
+    font-size: 40px;
     text-align: center;
     color: #000000;
     line-height: 450px;
     width:800px;
+    margin:0 auto;
 }
 
 /* =============================================================================

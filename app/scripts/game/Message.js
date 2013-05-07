@@ -17,7 +17,7 @@ GAME.Message = function(message){
 		PIXI.Texture.fromFrame("brush_stroke.swf/0010")
 	]);
 
-	this.messageText = new PIXI.Text(message, "40px InGameFont", "#000000");
+	this.messageText = new PIXI.Text(message, {font:"40px InGameFont", fill:"#000000"});
 	this.messageText.anchor.x = 0.5;
 	this.messageText.anchor.y = 0.5;
 	this.messageText.position.x = Math.round(GAME.width / 2);

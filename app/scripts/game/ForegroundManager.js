@@ -8,10 +8,12 @@ GAME.ForegroundManager = function(engineRef){
 	this.obstacleMax = 0;
 
 	this.hasFloorGaps = 0;
-	gapAdded = 0;
+	this.toNextGap = 0;
+	this.gapAdded = 0;
 
-	FLOOR_Y = 329;
-	FLOOR_GAP_WIDTH = 400;
+
+	this.FLOOR_Y = 329;
+	this.FLOOR_GAP_WIDTH = 350;
 
 	// object pools
 	this.objectPools = {
@@ -42,8 +44,8 @@ GAME.ForegroundManager.prototype.initFloor = function(){
 		var floor = this.floorFactory.getFloor();
 		floor.position.x = this.floorPos;
 		floor.x = this.floorPos;
-		floor.position.y = FLOOR_Y;
-		floor.y = FLOOR_Y;
+		floor.position.y = this.FLOOR_Y;
+		floor.y = this.FLOOR_Y;
 
 		this.engine.view.gameFG.addChild(floor);
 		this.objectPools.floor.push(floor);
@@ -77,20 +79,20 @@ GAME.ForegroundManager.prototype.update = function(){
 
 		var cap = null;
 
-		if (gapAdded == 1){
+		if (this.gapAdded == 1){
 			// add cap left
 			cap = this.floorFactory.getFloorCap("left");
 			cap.position.x = Math.round(obj.position.x + obj.width - 1);
 			cap.x = this.floorPos;
-			cap.position.y = FLOOR_Y;
+			cap.position.y = this.FLOOR_Y;
 			this.objectPools.floor.push(cap);
-			gapAdded = 0;
+			this.gapAdded = 0;
 		}
 
 		var floor = this.floorFactory.getFloor();
 		floor.position.x = Math.round(obj.position.x + obj.width);
 		floor.x = this.floorPos;
-		floor.position.y = FLOOR_Y;
+		floor.position.y = this.FLOOR_Y;
 
 		this.engine.view.gameFG.addChild(floor);
 
@@ -108,19 +110,19 @@ GAME.ForegroundManager.prototype.update = function(){
 			cap = this.floorFactory.getFloorCap("right");
 			cap.position.x = Math.round(floor.position.x + floor.width - 1);
 			cap.x = this.floorPos;
-			cap.position.y = FLOOR_Y;
+			cap.position.y = this.FLOOR_Y;
 			this.engine.view.gameFG.addChild(cap);
 			this.objectPools.floor.push(cap);
 			// declare gap
-			this.floorPos += FLOOR_GAP_WIDTH;
-			gapAdded = 1;
+			this.floorPos += Math2.randomInt(250, this.FLOOR_GAP_WIDTH);
+			this.gapAdded = 1;
 		}
 
 		// add obstacles
 		for (var i=0; i<Math2.randomInt(0,this.obstacleMax); i++){
 
-				var randomOffset = Math2.randomInt(0, floor.width);
-				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, FLOOR_Y + 5);
+				var randomOffset = Math2.randomInt(100, floor.width - 150);
+				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5);
 
 		}
 
@@ -139,7 +141,7 @@ GAME.ForegroundManager.prototype.update = function(){
 			i--;
 			this.engine.view.gameFG.removeChild(obj);
 
-			this.addPlatform(obj.position.x + GAME.width + 500, obj.x + GAME.width + 500, FLOOR_Y);
+			this.addPlatform(obj.position.x + GAME.width + 500, obj.x + GAME.width + 500, this.FLOOR_Y);
 		}
 
 	}

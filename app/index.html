@@ -10,7 +10,7 @@
         <title>The Lone Ranger</title>
         <meta name="description" content="">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="stylesheet" href="components/normalize-css/normalize.css">
+        <link rel="stylesheet" href="styles/normalize.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="components/modernizr/modernizr.js"></script>
@@ -35,42 +35,43 @@
 
         <!-- build:js scripts/jquery.js -->
         <script src="components/jquery/jquery.js"></script>
+        <!-- endbuild -->
+
         <script src="scripts/vendor/greensock/TweenMax.min.js"></script>
+        <script src="scripts/vendor/createjs/preloadjs.min.js"></script>
+        <script src="scripts/vendor/createjs/soundjs.min.js"></script>
         <script src="scripts/vendor/pixi/pixi.dev.js"></script>
         <script src="scripts/vendor/mrdoob/stats.min.js"></script>
 
-        <script src="scripts/Utils.js"></script>
-
+        <!-- build:js scripts/app.js -->
         <script src="scripts/game/Stats.js"></script>
-        <script src="scripts/game/Engine.js"></script>
+        <script src="scripts/game/Game.js"></script>
+        <script src="scripts/game/SoundManager.js"></script>
+        <script src="scripts/game/Footer.js"></script>
         <script src="scripts/game/View.js"></script>
-
         <script src="scripts/game/ProgressBar.js"></script>
         <script src="scripts/game/Message.js"></script>
-        
-
         <script src="scripts/game/Player.js"></script>
         <script src="scripts/game/Tonto.js"></script>
         <script src="scripts/game/Train.js"></script>
-
         <script src="scripts/game/FloorFactory.js"></script>
         <script src="scripts/game/PlatformFactory.js"></script>
         <script src="scripts/game/BackgroundFactory.js"></script>
         <script src="scripts/game/ObstacleFactory.js"></script>
-
         <script src="scripts/game/BackgroundManager.js"></script>      
         <script src="scripts/game/ForegroundManager.js"></script>      
         <script src="scripts/game/CollisionManager.js"></script>
         <script src="scripts/game/SectionManager.js"></script>
-
         <script src="scripts/game/ObjectPool.js"></script>
-
         <script src="scripts/game/GameOver.js"></script>
         <script src="scripts/game/Title.js"></script>
-
-        <script src="scripts/lone_ranger.js"></script>
-    
+        <script src="scripts/game/Engine.js"></script>
         <!-- endbuild -->
-        <script src="scripts/main.js"></script>
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/Utils.js"></script>
+        <script src="scripts/lone_ranger.js"></script>
+        <!-- endbuild -->
+    
 </body>
 </html>

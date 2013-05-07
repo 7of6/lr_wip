@@ -1,14 +1,4 @@
 //--------------------------------------------------------------------------
-//  Declare Game Object
-//--------------------------------------------------------------------------
-var GAME = GAME || {};
-GAME.camera = new PIXI.Point;
-GAME.width, GAME.height;
-GAME.LO_MODE = 0;
-GAME.gameover = 1;
-GAME.GOAL_DISTANCE = 20000;
-
-//--------------------------------------------------------------------------
 //  Game Engine Class
 //--------------------------------------------------------------------------
 GAME.Engine = function() {
@@ -18,12 +8,13 @@ GAME.Engine = function() {
     GAME.counter = 0;
 
 	this.player = new GAME.Player(this);
-    this.tonto = new GAME.Tonto(this);
+    //this.tonto = new GAME.Tonto(this);
 	this.view = new GAME.View(this);
 
 	this.foregroundManager = new GAME.ForegroundManager(this);
 	this.collisionManager = new GAME.CollisionManager(this);
     this.sectionManager = new GAME.SectionManager(this);
+    this.soundManager = new GAME.SoundManager();
 
     //this.view.gameFG.addChild(this.tonto.view);
     this.view.gameFG.addChild(this.player.view);
@@ -32,6 +23,9 @@ GAME.Engine = function() {
     this.titleScreen = new GAME.Title(this);
 
     this.view.screens.addChild(this.titleScreen);
+    //this.view.screens.addChild(this.gameoverScreen);
+
+    this.soundManager.playMusic("intro-music");
 
 }
 GAME.Engine.constructor = GAME.Engine;
@@ -64,6 +58,7 @@ GAME.Engine.prototype.reset = function(){
     GAME.level = GAME_LEVEL.START;
     GAME.counter = 0;
     GAME.gameover = 0;
+    this.soundManager.playMusic("game-music");
 
 }
 
@@ -77,6 +72,7 @@ GAME.Engine.prototype.onGameOver = function(){
     // ???
 
     this.view.screens.addChild(this.gameoverScreen);
+    this.soundManager.playMusic("failed-music");
 
 }
 
