@@ -12,6 +12,7 @@
 		"assets/sprites/interface.json",
 		"assets/sprites/background.json",
 		"assets/sprites/town_platforms.json",
+		"assets/sprites/canyon_platforms.json",
 		"assets/sprites/town_bg.json",
 		"assets/sprites/indian_bg.json",
 		"assets/sprites/obstacles_desert.json",
@@ -137,6 +138,13 @@
 	        event.preventDefault();
 	        onTouch();
 	    });
+
+	    $(document).keydown(function(event) {
+            if (event.keyCode == 32) {
+                event.preventDefault()
+            	onTouch();
+           	}
+        });
 
 	    game.view.renderer.view.addEventListener("touchstart", onTouchStart, true);
     	game.view.renderer.view.addEventListener("touchend", onTouchEnd, true);

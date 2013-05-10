@@ -18,11 +18,10 @@ GAME.Title = function(engineRef){
     this.playButton.position.x = 600;
     this.playButton.position.y = 298;
     var playText = new PIXI.Text("PLAY", {font: "40px InGameFont", fill: "#ffffff", align: "left"});
-    console.log(playText.width, playText.height);
     this.playButton.addChild(playText);
 
     var arrow = new PIXI.Sprite(PIXI.Texture.fromFrame("play_button.png"));
-    arrow.position.x = 74;
+    arrow.position.x = playText.width + 10;
     arrow.position.y = 8;
     this.playButton.addChild(arrow);
 

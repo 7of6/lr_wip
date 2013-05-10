@@ -2,7 +2,7 @@
 
 "crates.png":
 {
-	"frame": {"x":1489,"y":2,"w":481,"h":76},
+	"frame": {"x":2,"y":585,"w":481,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":481,"h":76},
@@ -10,7 +10,7 @@
 },
 "hay_barn.png":
 {
-	"frame": {"x":268,"y":790,"w":604,"h":109},
+	"frame": {"x":2,"y":291,"w":604,"h":109},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":604,"h":109},
@@ -18,59 +18,59 @@
 },
 "house1.png":
 {
-	"frame": {"x":1202,"y":334,"w":668,"h":241},
+	"frame": {"x":2,"y":402,"w":501,"h":181},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":668,"h":241},
-	"sourceSize": {"w":668,"h":241}
+	"spriteSourceSize": {"x":0,"y":0,"w":501,"h":181},
+	"sourceSize": {"w":501,"h":181}
 },
 "house2.png":
 {
-	"frame": {"x":540,"y":2,"w":474,"h":330},
+	"frame": {"x":2,"y":663,"w":356,"h":248},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":474,"h":330},
-	"sourceSize": {"w":474,"h":330}
+	"spriteSourceSize": {"x":0,"y":0,"w":356,"h":248},
+	"sourceSize": {"w":356,"h":248}
 },
 "house3.png":
 {
-	"frame": {"x":1016,"y":2,"w":471,"h":330},
+	"frame": {"x":360,"y":663,"w":353,"h":248},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":471,"h":330},
-	"sourceSize": {"w":471,"h":330}
+	"spriteSourceSize": {"x":0,"y":0,"w":353,"h":248},
+	"sourceSize": {"w":353,"h":248}
 },
 "house4.png":
 {
-	"frame": {"x":2,"y":2,"w":536,"h":402},
+	"frame": {"x":608,"y":291,"w":402,"h":302},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":536,"h":402},
-	"sourceSize": {"w":536,"h":402}
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":302},
+	"sourceSize": {"w":402,"h":302}
 },
 "long_house.png":
 {
-	"frame": {"x":2,"y":406,"w":1198,"h":382},
+	"frame": {"x":2,"y":2,"w":899,"h":287},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":1198,"h":382},
-	"sourceSize": {"w":1198,"h":382}
+	"spriteSourceSize": {"x":0,"y":0,"w":899,"h":287},
+	"sourceSize": {"w":899,"h":287}
 },
 "wagon.png":
 {
-	"frame": {"x":2,"y":790,"w":264,"h":146},
+	"frame": {"x":715,"y":595,"w":198,"h":110},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":264,"h":146},
-	"sourceSize": {"w":264,"h":146}
+	"spriteSourceSize": {"x":0,"y":0,"w":198,"h":110},
+	"sourceSize": {"w":198,"h":110}
 }},
 "meta": {
 	"app": "http://www.texturepacker.com",
 	"version": "1.0",
 	"image": "town_platforms.png",
 	"format": "RGBA8888",
-	"size": {"w":2048,"h":1024},
+	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b43db25373a8750dfedef37632bd81f2$"
+	"smartupdate": "$TexturePacker:SmartUpdate:7971fb5f941c440fef1ff09dd0964b3e$"
 }
 }

@@ -29,14 +29,39 @@ GAME.SectionManager.prototype.update = function(){
 				// desert obstacles, no midbackground, no platforms, no gaps
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.view.background.hasMiddistance = 0;
-				this.engine.foregroundManager.hasFloorGaps = 1;
-				this.engine.foregroundManager.obstacleMax = 2;
+				this.engine.foregroundManager.hasFloorGaps = 0;
+				this.engine.foregroundManager.obstacleMax = 0;
+
+
+				// testing
+				/*
+				this.engine.foregroundManager.obstacleMax = 1;
+				this.engine.view.background.hasMiddistance = 1;
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.TOWN);
+				this.engine.view.background.backgroundFactory.setTextures(GAME_LEVEL.TOWN);
+				this.engine.foregroundManager.platformFactory.setTextures(GAME_LEVEL.TOWN);
+				this.engine.foregroundManager.hasPlatforms = 1;
+				this.engine.foregroundManager.addStepUp();
+				*/
+				this.engine.foregroundManager.obstacleMax = 1;
+				this.engine.view.background.hasMiddistance = 1;
+				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.CANYONS);
+				this.engine.view.background.backgroundFactory.setTextures(GAME_LEVEL.CANYONS);
+				this.engine.foregroundManager.platformFactory.setTextures(GAME_LEVEL.CANYONS);
+				this.engine.foregroundManager.hasPlatforms = 1;
+				this.engine.foregroundManager.addStepUp();
+				this.engine.foregroundManager.hasFloor = 0;
 	
 
 			break;
 			case GAME_LEVEL.DESERT_END:
+
+				// testing
+				this.engine.foregroundManager.resetFloor();
+
 				this.engine.foregroundManager.hasFloorGaps = 0;
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
+				this.engine.foregroundManager.hasPlatforms = 0;
 			break;
 			case GAME_LEVEL.INDIAN_VILLAGE:
 
@@ -102,6 +127,7 @@ GAME.SectionManager.prototype.reset = function(){
 	this.engine.view.background.hasMiddistance = 0;
 	this.engine.foregroundManager.hasFloorGaps = 0;
 	this.engine.foregroundManager.obstacleMax = 0;
+	this.engine.foregroundManager.hasFloor = 1;
 }
 
 //--------------------------------------------------------------------------

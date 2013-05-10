@@ -13,7 +13,6 @@ GAME.Player = function(engineRef){
 	this.isJumping = 0;
 	this.wasJumping = 0;
 	this.isFalling = 0;
-	this.fallCounter = 0;
 	this.dead = 0;
 
 	// defaults
@@ -37,9 +36,9 @@ GAME.Player = function(engineRef){
 	this.jumpingFrames = [
 		PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0005"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0006"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0007"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0008"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0009"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0010"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0011"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0012"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0013"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0014"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0015"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0016"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0017"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0018"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0019"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0020")
 	];
-	/*this.fallingFrames = [
+	this.fallingFrames = [
 		PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0005")
-	];*/
+	];
 
 	// animation frames solo
 	/*this.runningFrames = [
@@ -98,8 +97,7 @@ GAME.Player.prototype.jumpComplete = function() {
 	this.onGround = 1;
 	this.wasJumping = 0;
 	this.isFalling = 0;
-	this.fallCounter = 0;
-	//GAME.camera.y = this.position.y - 329;
+
 }
 
 GAME.Player.prototype.fall = function() {
@@ -125,7 +123,6 @@ GAME.Player.prototype.hitWall = function() {
 	this.onGround = 0;
 	this.wasJumping = 0;
 	this.isFalling = 0;
-	this.fallCounter = 0;
 
 	this.view.stop();
 	this.view.currentFrame = 0;
@@ -162,10 +159,6 @@ GAME.Player.prototype.update = function() {
 			this.fall();
 		}
 
-		if (this.isFalling){
-			this.fallCounter += this.speed.y;
-		}
-
 		if (this.position.y - this.height - 40 > GAME.height){
 			// game over
 			this.engine.onGameOver();
@@ -189,7 +182,6 @@ GAME.Player.prototype.reset = function(){
 	this.isJumping = 0;
 	this.wasJumping = 0;
 	this.isFalling = 0;
-	this.fallCounter = 0;
 	this.dead = 0;
 
 	this.position.x = 0;
@@ -202,7 +194,7 @@ GAME.Player.prototype.reset = function(){
 	this.view.animationSpeed = this.currentAnimSpeed;
     this.view.play();
 
-    GAME.camera.x = this.position.x - 140;
+    GAME.camera.x = this.position.x - 100;
 
     this.view.position.x = this.position.x - GAME.camera.x;
     this.view.position.y = this.position.y - GAME.camera.y;

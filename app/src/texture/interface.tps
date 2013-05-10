@@ -157,6 +157,9 @@
             <filename>../images/interface/footer.jpg</filename>
             <filename>../../../../../../../../Volumes/Tech_and_Creative_temp/WDSMP/The Lone Ranger/Hi Ho Silver game/05_Flash_assets/01_WIP/brush_stroke.swf</filename>
             <filename>../images/interface/title_screen.jpg</filename>
+            <filename>../images/interface/sound_off.png</filename>
+            <filename>../images/interface/sound_on.png</filename>
+            <filename>../images/interface/game_over_win.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -17,7 +17,7 @@ GAME.Engine = function() {
     this.soundManager = new GAME.SoundManager();
 
     //this.view.gameFG.addChild(this.tonto.view);
-    this.view.gameFG.addChild(this.player.view);
+    this.view.playerHolder.addChild(this.player.view);
 
     this.gameoverScreen = new GAME.GameOver(this);
     this.titleScreen = new GAME.Title(this);
@@ -40,6 +40,15 @@ GAME.Engine.prototype.update = function() {
             this.collisionManager.update();
             this.foregroundManager.update();
             this.sectionManager.update();
+
+            if (this.player.position.y < 200 && !this.view.platformView){
+                this.view.toPlatformView();
+            }
+
+            if (this.player.position.y > GAME.height - 200 && this.view.platformView){
+                this.view.toNormalView();
+            }
+
         }
         this.view.update();
 

@@ -69,7 +69,7 @@ GAME.GameOver = function(engineRef, gameWon){
     this.playButton.addChild(playText);
 
     var arrow = new PIXI.Sprite(PIXI.Texture.fromFrame("play_button.png"));
-    arrow.position.x = 140;
+    arrow.position.x = playText.width + 10;
     arrow.position.y = 8;
     this.playButton.addChild(arrow);
 

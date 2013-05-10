@@ -66,16 +66,13 @@ GAME.CollisionManager.prototype.playerVsPlatform = function() {
 
     for (var i=0;i<platformArray.length;i++){
 
-        var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(platformArray[i].x, platformArray[i].position.y - platformArray[i].height, platformArray[i].width, platformArray[i].height), player.speed.x, player.speed.y);
+        var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(platformArray[i].x + 40, platformArray[i].position.y - platformArray[i].hitHeight, platformArray[i].width - 40, platformArray[i].hitHeight), player.speed.x, player.speed.y);
 
         if (collide && !player.isJumping){
 
-            if (collide.height - player.speed.y > 40) {
+            if (collide.height - player.speed.y > 35) {
 
-                player.speed.x = 0;
-                player.position.x -= Math.round(collide.width);
-
-                // game over
+                player.hitWall();
 
             } else {
 
@@ -84,7 +81,7 @@ GAME.CollisionManager.prototype.playerVsPlatform = function() {
                 }
 
                 player.speed.y = 0;
-                player.position.y -= Math.round(collide.height) - 24;
+                player.position.y -= Math.round(collide.height) - 4;
                 player.onGround = 1;
 
                 break;
