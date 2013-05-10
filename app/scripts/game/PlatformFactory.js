@@ -81,7 +81,7 @@ GAME.PlatformFactory.prototype.getStepUp = function() {
         s2.addChild(cap);
         s2.addChild(end);
         s2.hitHeight = 160;
-        s2.width = platform.width + 100;
+        s2.width = platform.width + 150;
     }
 
     
@@ -103,34 +103,26 @@ GAME.Platform = function() {
     this.anchor.x = 0;
     this.anchor.y = 1;
 
-    if(GAME.platformTextures === this.townTextures){
-
-        // define hitbox for houses
-        switch (texture) {
-            case "house1.png":
-                this.hitHeight = 133;
-            break;
-            case "house2.png":
-                this.hitHeight = 195;
-            break;
-            case "house3.png":
-                this.hitHeight = 195;
-            break;
-            case "house4.png":
-                this.hitHeight = 240;
-            break;
-            case "long_house.png":
-                this.hitHeight = 183;
-            break;
-            default:
-                this.hitHeight = this.height + 5;
-            break;
-        }
-
-    } else {
-
-        this.hitHeight = this.height;
-
+    // define hitbox for houses
+    switch (texture) {
+        case "house1.png":
+            this.hitHeight = 133;
+        break;
+        case "house2.png":
+            this.hitHeight = 195;
+        break;
+        case "house3.png":
+            this.hitHeight = 195;
+        break;
+        case "house4.png":
+            this.hitHeight = 240;
+        break;
+        case "long_house.png":
+            this.hitHeight = 183;
+        break;
+        default:
+            this.hitHeight = this.height;
+        break;
     }
 
 };

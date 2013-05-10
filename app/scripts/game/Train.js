@@ -9,14 +9,14 @@ GAME.Train = function(engineRef){
 
     // animations
     this.wheelFrames = [
-        PIXI.Texture.fromFrame("train_running_gear.swf/0000"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0001"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0002"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0003"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0004"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0005"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0006"),
-        PIXI.Texture.fromFrame("train_running_gear.swf/0007")
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0000"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0001"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0002"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0003"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0004"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0005"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0006"),
+        PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0007")
     ];
 
     // carriage
@@ -25,14 +25,14 @@ GAME.Train = function(engineRef){
     this.addChild(carriage);
 
     carriage = new GAME.TrainCarriage("first");
-    carriage.position.x = carriage.position.x + carriage.width - 48;
+    carriage.position.x = carriage.position.x + carriage.width - 33;
     this.addChild(carriage);
 
 
     // tender
     this.tender_body = new PIXI.Sprite(PIXI.Texture.fromFrame("coal_tender.png"));
     this.tender_body.position.x = carriage.position.x + carriage.width - 25;
-    this.tender_body.position.y = 44;
+    this.tender_body.position.y = 35;
     this.addChild(this.tender_body);
 
     // engine
@@ -41,10 +41,10 @@ GAME.Train = function(engineRef){
     this.running_gear.play();
     this.addChild(this.running_gear);
 
-    this.engine_body = new PIXI.Sprite(PIXI.Texture.fromFrame("train_engine_body.png"));
-    this.engine_body.position.x = this.tender_body.position.x + this.tender_body.width - 70;
-    this.running_gear.position.x = this.engine_body.position.x + 25;
-    this.running_gear.position.y = 123;
+    this.engine_body = new PIXI.Sprite(PIXI.Texture.fromFrame("locomotive.png"));
+    this.engine_body.position.x = this.tender_body.position.x + this.tender_body.width - 52;
+    this.running_gear.position.x = this.engine_body.position.x - 40;
+    this.running_gear.position.y = 82;
     this.addChild(this.engine_body);
 
 }
@@ -95,7 +95,7 @@ GAME.TrainCarriage = function(type){
 
         this.carriage_body = new PIXI.Sprite(PIXI.Texture.fromFrame("carriage_1st_class.png"));
         this.carriage_body.position.x = 0;
-        this.carriage_body.position.y = -6;
+        this.carriage_body.position.y = -2;
         this.addChild(this.carriage_body);
 
         this.reflection = new PIXI.MovieClip(this.firstclassreflectionFrames);

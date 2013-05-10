@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>../../assets/background.png</filename>
+        <filename>../../assets/sprites/background.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../assets/background.json</filename>
+        <filename>../../assets/sprites/background.json</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -151,6 +151,8 @@
             <filename>../images/floor/floor_tile.png</filename>
             <filename>../images/floor/bg1.jpg</filename>
             <filename>../images/floor/bg2.jpg</filename>
+            <filename>../images/train/track.png</filename>
+            <filename>../images/train/bridge.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

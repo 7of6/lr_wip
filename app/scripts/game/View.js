@@ -58,9 +58,9 @@ GAME.View = function(engineRef) {
     this.stage.addChild(this.container);
     this.stage.addChild(this.hud);
 
-	this.background = new GAME.BackgroundManager(this.engine);
+	this.backgroundManager = new GAME.BackgroundManager(this.engine);
 
-	this.gameBG.addChild(this.background);
+	this.gameBG.addChild(this.backgroundManager);
 
 }
 GAME.View.constructor = GAME.View;
@@ -75,11 +75,11 @@ GAME.View.prototype.update = function() {
 };
 
 GAME.View.prototype.reset = function(){
-    this.background.reset();
+    this.backgroundManager.reset();
 
     this.gameFG.position.y = 0;
     this.playerHolder.position.y = 0;
-    this.background.middistance.position.y = 0;
+    this.backgroundManager.middistance.position.y = 0;
     this.platformView = false;
     
 }
@@ -88,7 +88,7 @@ GAME.View.prototype.resize = function(width, height) {
     GAME.width = width;
     GAME.height = height;
     this.renderer.resize(width, height);
-    this.background.width = width;
+    this.backgroundManager.width = width;
     this.progressbar.position.x = (width - this.progressbar.width) / 2;
     this.footer.position.x = (width - 800) / 2;
     this.screens.position.x = (width - 800) / 2;
@@ -112,9 +112,10 @@ GAME.View.prototype.toPlatformView = function(){
 
     this.platformView = true;
     // move the view up for rooftops
-    TweenMax.to(this.gameFG.position, 1, {y:150, delay:1});
-    TweenMax.to(this.playerHolder.position, 1, {y:150, delay:1});
-    TweenMax.to(this.background.middistance.position, 1, {y:150, delay:1});
+    TweenMax.to(this.gameFG.position, 1, {y:150, delay:0});
+    TweenMax.to(this.playerHolder.position, 1, {y:150, delay:0});
+    TweenMax.to(this.backgroundManager.middistance.position, 1, {y:150, delay:0});
+    TweenMax.to(this.backgroundManager.train.position, 1, {y:150 + 171, delay:0});
 
 }
 
@@ -124,6 +125,7 @@ GAME.View.prototype.toNormalView = function(){
     // move the view back down to floor level
     TweenMax.to(this.gameFG.position, 1, {y:0, delay:0});
     TweenMax.to(this.playerHolder.position, 1, {y:0, delay:0});
-    TweenMax.to(this.background.middistance.position, 1, {y:0, delay:0});
+    TweenMax.to(this.backgroundManager.middistance.position, 1, {y:0, delay:0});
+    TweenMax.to(this.backgroundManager.train.position, 1, {y:171, delay:0});
 
 }

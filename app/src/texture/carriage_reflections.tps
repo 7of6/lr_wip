@@ -146,7 +146,8 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../../../../../../Volumes/Tech_and_Creative_temp/WDSMP/The Lone Ranger/Hi Ho Silver game/05_Flash_assets/01_WIP/carriage_reflections_1st_class.swf</filename>
+            <filename>../../../../../../../../Volumes/Tech_and_Creative_temp-1/WDSMP/The Lone Ranger/Hi Ho Silver game/05_Flash_assets/01_WIP/carriage_reflections_1st_class.swf</filename>
+            <filename>../../../../../../../../Volumes/Tech_and_Creative_temp-1/WDSMP/The Lone Ranger/Hi Ho Silver game/05_Flash_assets/01_WIP/carriage_reflections_2nd_class.swf</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

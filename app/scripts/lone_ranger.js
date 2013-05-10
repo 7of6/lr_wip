@@ -19,8 +19,7 @@
 		"assets/sprites/obstacles_town.json",
 		"assets/sprites/horses_complete_75percent.json",
 		"assets/sprites/train_complete.json",
-		"assets/sprites/carriage_reflections_1st_class.json",
-		"assets/sprites/carriage_reflections_2nd_class.json"
+		"assets/sprites/carriage_reflections.json"
 	];
 	var audio_manifest = [
 		{src:"assets/audio/game_intro_coup_de_grace_v1.mp3", id:"intro-music"},

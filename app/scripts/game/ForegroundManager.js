@@ -7,6 +7,7 @@ GAME.ForegroundManager = function(engineRef){
 	this.engine = engineRef;
 	this.obstacleMax = 0;
 
+	this.hasTrack = 0;
 	this.hasFloorGaps = 0;
 	this.hasPlatforms = 0;
 	this.hasFloor = 1;
@@ -20,12 +21,14 @@ GAME.ForegroundManager = function(engineRef){
 	// object pools
 	this.objectPools = {
 		floor: [],
+		track: [],
 		obstacles: [],
 		platforms: []
 	}
 
 	// tileables positions
 	this.floorPos = 0;
+	this.trackPos = 0;
 	this.platformPos = 0;
 
 	this.floorFactory = new GAME.FloorFactory();
@@ -58,7 +61,32 @@ GAME.ForegroundManager.prototype.initFloor = function(){
 
 }
 
+GAME.ForegroundManager.prototype.initTrack = function(){
+
+	// add enough track tiles to cover the screen
+	for (var i=0; i<Math.ceil(GAME.width/this.floorFactory.getTrack().texture.width)+1; i++){
+
+		// add track
+		var track = this.floorFactory.getTrack();
+		track.position.x = this.trackPos;
+		track.x = this.trackPos;
+		track.position.y = this.FLOOR_Y;
+		track.y = this.FLOOR_Y;
+
+		this.engine.view.gameFG.addChild(track);
+		this.objectPools.track.push(track);
+
+		this.trackPos += track.width - 1;
+
+	}
+
+	this.hasTrack = 1;
+
+}
+
 GAME.ForegroundManager.prototype.update = function(){
+
+	var obj;
 
 	// move everything in the floor pool
 	for (var i=0; i<this.objectPools.floor.length;i++){
@@ -112,6 +140,14 @@ GAME.ForegroundManager.prototype.update = function(){
 		this.floorPos += floor.width - 1;
 
 		if (this.hasFloorGaps == 1){
+
+			// add bridge struts
+			var bridge = this.floorFactory.getBridge();
+			bridge.position.x = Math.round(floor.position.x + floor.width - 1);
+			bridge.x = this.floorPos - 20;
+			bridge.position.y = this.FLOOR_Y;
+			this.engine.view.gameFG.addChild(bridge);
+			this.objectPools.floor.push(bridge);
 
 			// add cap right
 			cap = this.floorFactory.getFloorCap("right");
@@ -177,6 +213,38 @@ GAME.ForegroundManager.prototype.update = function(){
 		}
 
 	}
+
+	if (this.hasTrack){
+
+		// move everything in the track pool
+		for (var i=0; i<this.objectPools.track.length;i++){
+
+			obj = this.objectPools.track[i];
+
+			obj.position.x = obj.x - GAME.camera.x - 100;
+
+			if (obj.position.x < 0 - obj.width){
+				this.floorFactory.trackPool.returnObject(obj);
+				this.objectPools.track.splice(i, 1);
+				i--;
+				this.engine.view.gameFG.removeChild(obj);
+			}
+
+		}
+
+		// add track
+		if (obj.position.x + obj.width < GAME.width + this.engine.player.speed.x * 40){		
+
+			var track = this.floorFactory.getTrack();
+			track.position.x = Math.round(obj.position.x + obj.width);
+			track.x = this.trackPos;
+			track.position.y = this.FLOOR_Y;
+			this.engine.view.gameFG.addChild(track);
+			this.objectPools.track.push(track);
+			this.trackPos += track.width - 1;
+		}
+
+	}
 	
 
 }
@@ -192,7 +260,8 @@ GAME.ForegroundManager.prototype.addPlatform = function() {
 		if(this.hasFloor){
 			platform.position.y = this.FLOOR_Y + 5;
 		}else{
-			platform.position.y = GAME.height;
+			var offsetY = Math2.randomInt(-50, 50);
+			platform.position.y = GAME.height + offsetY;
 		}
 
 		
@@ -278,7 +347,14 @@ GAME.ForegroundManager.prototype.reset = function() {
     }
     this.objectPools.platforms = [];
 
+    for (var i = 0; i < this.objectPools.track.length; i++) {
+        var obj = this.objectPools.track[i];
+        this.engine.view.gameFG.removeChild(obj);
+    }
+    this.objectPools.track = [];
+
     this.floorPos = 0;
+    this.trackPos = 0;
 
     this.initFloor();
 };

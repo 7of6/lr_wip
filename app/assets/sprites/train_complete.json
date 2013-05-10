@@ -2,99 +2,99 @@
 
 "carriage_1st_class.png":
 {
-	"frame": {"x":2,"y":2,"w":801,"h":213},
+	"frame": {"x":2,"y":2,"w":598,"h":163},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":801,"h":213},
-	"sourceSize": {"w":801,"h":213}
+	"spriteSourceSize": {"x":0,"y":0,"w":598,"h":163},
+	"sourceSize": {"w":598,"h":163}
 },
 "carriage_2nd_class.png":
 {
-	"frame": {"x":2,"y":217,"w":797,"h":199},
+	"frame": {"x":2,"y":167,"w":595,"h":146},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":797,"h":199},
-	"sourceSize": {"w":797,"h":199}
+	"spriteSourceSize": {"x":0,"y":0,"w":595,"h":146},
+	"sourceSize": {"w":595,"h":146}
 },
 "coal_tender.png":
 {
-	"frame": {"x":2,"y":809,"w":354,"h":163},
+	"frame": {"x":602,"y":156,"w":263,"h":119},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":354,"h":163},
-	"sourceSize": {"w":354,"h":163}
+	"spriteSourceSize": {"x":0,"y":0,"w":263,"h":119},
+	"sourceSize": {"w":263,"h":119}
 },
-"train_engine_body.png":
+"locomotive.png":
 {
-	"frame": {"x":2,"y":418,"w":513,"h":207},
+	"frame": {"x":602,"y":2,"w":382,"h":152},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":513,"h":207},
-	"sourceSize": {"w":513,"h":207}
+	"spriteSourceSize": {"x":0,"y":0,"w":382,"h":152},
+	"sourceSize": {"w":382,"h":152}
 },
-"train_running_gear.swf/0000":
+"train_running_gear_75percent.swf/0000":
 {
-	"frame": {"x":358,"y":873,"w":454,"h":89},
+	"frame": {"x":454,"y":576,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0001":
+"train_running_gear_75percent.swf/0001":
 {
-	"frame": {"x":458,"y":782,"w":454,"h":89},
+	"frame": {"x":2,"y":576,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0002":
+"train_running_gear_75percent.swf/0002":
 {
-	"frame": {"x":2,"y":718,"w":454,"h":89},
+	"frame": {"x":454,"y":489,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0003":
+"train_running_gear_75percent.swf/0003":
 {
-	"frame": {"x":458,"y":691,"w":454,"h":89},
+	"frame": {"x":2,"y":489,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0004":
+"train_running_gear_75percent.swf/0004":
 {
-	"frame": {"x":2,"y":627,"w":454,"h":89},
+	"frame": {"x":454,"y":402,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0005":
+"train_running_gear_75percent.swf/0005":
 {
-	"frame": {"x":517,"y":600,"w":454,"h":89},
+	"frame": {"x":2,"y":402,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0006":
+"train_running_gear_75percent.swf/0006":
 {
-	"frame": {"x":517,"y":509,"w":454,"h":89},
+	"frame": {"x":454,"y":315,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 },
-"train_running_gear.swf/0007":
+"train_running_gear_75percent.swf/0007":
 {
-	"frame": {"x":517,"y":418,"w":454,"h":89},
+	"frame": {"x":2,"y":315,"w":450,"h":85},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":454,"h":89},
-	"sourceSize": {"w":454,"h":89}
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
 }},
 "meta": {
 	"app": "http://www.texturepacker.com",
@@ -103,6 +103,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:b926c7a8097b69b7c92d8116a744be57$"
+	"smartupdate": "$TexturePacker:SmartUpdate:3005d9e5488916b2dde84b8af5902691$"
 }
 }

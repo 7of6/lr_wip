@@ -25,6 +25,8 @@ GAME.Engine = function() {
     this.view.screens.addChild(this.titleScreen);
     //this.view.screens.addChild(this.gameoverScreen);
 
+    //this.reset();
+
     this.soundManager.playMusic("intro-music");
 
 }
@@ -64,7 +66,9 @@ GAME.Engine.prototype.reset = function(){
     this.view.reset();
     this.foregroundManager.reset();
     this.sectionManager.reset();
+
     GAME.level = GAME_LEVEL.START;
+
     GAME.counter = 0;
     GAME.gameover = 0;
     this.soundManager.playMusic("game-music");

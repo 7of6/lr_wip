@@ -20,6 +20,13 @@ GAME.BackgroundFactory.prototype.getBackground = function() {
     return obj;
 };
 
+GAME.BackgroundFactory.prototype.getTrainStation = function() {
+    var obj = new PIXI.Sprite(PIXI.Texture.fromFrame("train_station.png"));
+    obj.anchor.x = 0;
+    obj.anchor.y = 1;
+    return obj;
+};
+
 GAME.BackgroundFactory.prototype.setTextures = function(texture){
 
 	switch(texture){

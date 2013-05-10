@@ -11,10 +11,12 @@ GAME.BackgroundManager = function(engineRef){
     this.backgrounds = [];
     this.nextbg = this.spawnCount = 0;
     this.hasMiddistance = 0;
+    this.hasTrain = 0;
 
+    this.FLOOR_Y = 339;
     this.width = 1600;
 	this.scrollPosition;
-    scrollOffset = 10000;
+    this.scrollOffset = 10000;
 
 	this.distance = new GAME.MultiTileBackgroundElement(["bg1.jpg","bg2.jpg","bg1.jpg","bg2.jpg"], this);
 	this.distance.speed = 0.2;
@@ -23,13 +25,10 @@ GAME.BackgroundManager = function(engineRef){
     this.addChild(this.middistance);
     this.middistance.speed = 0.4;
 
-    /*this.train = new GAME.Train();
-    this.train.position.x = GAME.width + 40;
-    this.train.position.y = 128;
-    this.train.speed = 0.05;
-    this.addChild(this.train);*/
+    this.train = new GAME.Train();  
+    this.train.position.y = 171;
+    this.train.speed = 0.08;
 
-   
     this.backgroundFactory = new GAME.BackgroundFactory();
 
 }
@@ -42,7 +41,7 @@ GAME.BackgroundManager.prototype = Object.create(PIXI.DisplayObjectContainer.pro
 //--------------------------------------------------------------------------
 GAME.BackgroundManager.prototype.updateTransform = function() {
 
-	this.scrollPosition = GAME.camera.x + scrollOffset;
+	this.scrollPosition = GAME.camera.x + this.scrollOffset;
     this.distance.setPosition(this.scrollPosition);
 
     // move everything in the backgrounds pool
@@ -62,7 +61,7 @@ GAME.BackgroundManager.prototype.updateTransform = function() {
     }
 
     // move the train
-    if (this.train){
+    if (this.hasTrain){
         this.train.position.x -= this.engine.player.speed.x * this.train.speed;
     }
 
@@ -70,21 +69,36 @@ GAME.BackgroundManager.prototype.updateTransform = function() {
     this.spawnCount += this.engine.player.speed.x * this.middistance.speed;
 
     if (this.hasMiddistance){
-        this.nextbg < this.spawnCount && (this.spawnCount = 0, this.addBackground(GAME.width + 40, 339));
+        this.nextbg < this.spawnCount && (this.spawnCount = 0, this.addBackground(GAME.width + 40, this.FLOOR_Y));
     }
     
     PIXI.DisplayObjectContainer.prototype.updateTransform.call(this)
 };
 
-GAME.BackgroundManager.prototype.addBackground = function(a,b) {
+GAME.BackgroundManager.prototype.addBackground = function(x,y) {
 
-    var c = this.backgroundFactory.getBackground();
-    c.position.x = a;
-    c.position.y = b;
-    this.backgrounds.push(c);
-    this.middistance.addChild(c)
+    var obj = this.backgroundFactory.getBackground();
+    obj.position.x = x;
+    obj.position.y = y;
+    this.backgrounds.push(obj);
+    this.middistance.addChild(obj)
 
-    this.nextbg = c.width;
+    this.nextbg = obj.width;
+}
+
+GAME.BackgroundManager.prototype.addTrain = function() {
+
+    var obj = this.backgroundFactory.getTrainStation();
+    obj.position.x = GAME.width + 40;
+    obj.position.y = this.FLOOR_Y;
+    this.backgrounds.push(obj);
+    this.middistance.addChild(obj);
+
+    this.nextbg = obj.width;
+
+    this.train.position.x = GAME.width + 60;
+    this.addChild(this.train);
+    this.hasTrain = true;
 }
 
 GAME.BackgroundManager.prototype.reset = function(){
@@ -94,6 +108,14 @@ GAME.BackgroundManager.prototype.reset = function(){
         this.middistance.removeChild(obj);
     }
     this.backgrounds = [];
+
+    if (this.hasTrain){
+
+        this.removeChild(this.train);
+        this.hasTrain = false;
+
+    }
+
 }
 
 //--------------------------------------------------------------------------
