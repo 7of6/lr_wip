@@ -73,6 +73,9 @@ GAME.ProgressBar.prototype = Object.create(PIXI.DisplayObjectContainer.prototype
 //--------------------------------------------------------------------------
 GAME.ProgressBar.prototype.reset = function(){
 	this.time = 0;
+	this.timeDisplay.setText("0:00");
+	window.clearInterval(this.timer);
+	this.startTime();
 }
 
 GAME.ProgressBar.prototype.show = function(){
@@ -100,7 +103,7 @@ GAME.ProgressBar.prototype.startTime = function(){
     elapsed = "0:00",
     self = this;
     
-	window.setInterval(function()
+	this.timer = window.setInterval(function()
 	{
 
 		if (!GAME.paused && !GAME.gameover){

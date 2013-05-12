@@ -27,10 +27,10 @@ GAME.GameOver = function(engineRef, gameWon){
     distanceText.position.x = 454;
     distanceText.position.y = 152;
     this.addChild(distanceText);
-    var percText = new PIXI.Text("34.5%", {font: "78px InGameFont", fill: "#f26825", align: "left"});
-    percText.position.x = 540;
-    percText.position.y = 114;
-    this.addChild(percText);
+    this.percText = new PIXI.Text("34.5%", {font: "78px InGameFont", fill: "#f26825", align: "left"});
+    this.percText.position.x = 540;
+    this.percText.position.y = 114;
+    this.addChild(this.percText);
 
     // social buttons
     var shareText = new PIXI.Text("SHARE SCORE", {font: "18px InGameFont", fill: "#ffffff", align: "left"});
@@ -83,6 +83,10 @@ GAME.GameOver = function(engineRef, gameWon){
 
 GAME.GameOver.constructor = GAME.GameOver;
 GAME.GameOver.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
+
+GAME.GameOver.prototype.setProgress = function(perc){
+    this.percText.setText(perc.toFixed(1) + "%");
+}
 
 GAME.GameOver.prototype.handleFacebook = function(data){
     console.log("facebook click");

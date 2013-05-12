@@ -82,7 +82,10 @@ GAME.Engine.prototype.onGameOver = function(){
     this.view.progressbar.hide();
 
     // set some things in game over
-    // ???
+    var current_pos = Math.round((GAME.camera.x + 140)/10);
+    var perc = ((current_pos / GAME.GOAL_DISTANCE)*100);
+
+    this.gameoverScreen.setProgress(perc);
 
     this.view.screens.addChild(this.gameoverScreen);
     this.soundManager.playMusic("failed-music");
