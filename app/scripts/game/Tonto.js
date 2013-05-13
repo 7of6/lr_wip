@@ -9,8 +9,8 @@ GAME.Tonto = function(engineRef){
 	this.position = new PIXI.Point;
 
 	// defaults
-	this.position.y = 338;
-    this.position.x = 40;
+	this.position.y = 355;
+    this.position.x = -100;
     this.currentAnimSpeed = 0.3;
 
     this.baseSpeed = 4;
@@ -18,14 +18,14 @@ GAME.Tonto = function(engineRef){
 
 	// animation frames
 	this.runningFrames = [
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0000"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0001"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0002"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0003"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0004"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0005"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0006"),
-		PIXI.Texture.fromFrame("scout_run_final_v2.swf/0007")
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0000"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0001"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0002"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0003"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0004"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0005"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0006"),
+		PIXI.Texture.fromFrame("scout_run_final_75percent.swf/0007")
 	];
 
 	this.view = new PIXI.MovieClip(this.runningFrames);
@@ -33,8 +33,7 @@ GAME.Tonto = function(engineRef){
     this.view.anchor.y = 1;
 
 	this.view.animationSpeed = this.currentAnimSpeed;
-    this.view.play();
-
+  
     this.view.position.x = this.position.x;
     this.view.position.y = this.position.y;
 
@@ -42,10 +41,22 @@ GAME.Tonto = function(engineRef){
 
 GAME.Tonto.constructor = GAME.Tonto;
 
-GAME.Tonto.prototype.update = function() {
+GAME.Tonto.prototype.catchUp = function(){
+	
+	this.view.play();
+	TweenMax.to(this.view.position, 2, {x:40, delay:3});
 
-    this.position.x += this.speed.x;
-  
-    this.view.position.x = this.position.x - GAME.camera.x;
-    this.view.position.y = this.position.y - GAME.camera.y;
+}
+
+GAME.Tonto.prototype.fallBack = function(){
+
+	var self = this;
+
+	TweenMax.to(this.view.position, 2, {x:-100, delay:3, onComplete:function(){
+		self.view.stop();
+	}});
+}
+
+GAME.Tonto.prototype.reset = function(){
+	this.view.position.x = -100;
 }

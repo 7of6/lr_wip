@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>json</string>
         <key>textureFileName</key>
-        <filename>../../assets/interface.png</filename>
+        <filename>../../assets/sprites/interface.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../assets/interface.json</filename>
+        <filename>../../assets/sprites/interface.json</filename>
         <key>mainExtension</key>
         <string></string>
         <key>forceIdenticalLayout</key>
@@ -160,6 +160,11 @@
             <filename>../images/interface/sound_off.png</filename>
             <filename>../images/interface/sound_on.png</filename>
             <filename>../images/interface/game_over_win.jpg</filename>
+            <filename>../images/ranger/ranger_train.png</filename>
+            <filename>../images/ranger/ranger_village.png</filename>
+            <filename>../images/interface/black_block.png</filename>
+            <filename>../images/interface/white_block.png</filename>
+            <filename>../images/interface/intro_panel.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

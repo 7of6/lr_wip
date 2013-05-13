@@ -38,6 +38,10 @@ GAME.View = function(engineRef) {
     // screens
     this.screens = new PIXI.DisplayObjectContainer;
 
+    this.whiteFill = new PIXI.Sprite(PIXI.Texture.fromFrame("white_block.png"));
+    this.whiteFill.width = GAME.width;
+    this.whiteFill.height = GAME.height;    
+
     // footer
     this.footer = new GAME.Footer;
     this.footer.position.y = 405;
@@ -47,12 +51,17 @@ GAME.View = function(engineRef) {
     this.gameBG = new PIXI.DisplayObjectContainer;
     // interactive foreground items
     this.gameFG = new PIXI.DisplayObjectContainer;
+
+    // fade holder
+    this.fade = new PIXI.DisplayObjectContainer;
+
     // player
     this.playerHolder = new PIXI.DisplayObjectContainer;
     
     this.container.addChild(this.gameBG);
     this.container.addChild(this.gameFG);
     this.container.addChild(this.playerHolder);
+    this.container.addChild(this.fade);
     this.container.addChild(this.screens);
     
     this.stage.addChild(this.container);
@@ -69,8 +78,9 @@ GAME.View.constructor = GAME.View;
 GAME.View.prototype.update = function() {
 
     this.renderer.render(this.stage);
-
-    this.progressbar.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
+    if (!GAME.gameover){
+        this.progressbar.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
+    }
 
 };
 
@@ -93,6 +103,10 @@ GAME.View.prototype.resize = function(width, height) {
     this.footer.position.x = (width - 800) / 2;
     this.screens.position.x = (width - 800) / 2;
     this.soundButton.position.x = width - 40;
+
+    this.whiteFill.position.x = 0;
+    this.whiteFill.width = $(window).width();
+    this.whiteFill.height = height;
  
 };
 
@@ -106,6 +120,19 @@ GAME.View.prototype.soundToggle = function(){
         this.soundButton.removeChild(this.soundOff);
         this.soundButton.addChild(this.soundOn);
     }
+}
+
+GAME.View.prototype.flashScreen = function(){
+
+    var self = this;
+
+    this.fade.addChild(this.whiteFill);
+    TweenMax.to(this.whiteFill, 0.5, {alpha:0, delay:0.2, onComplete:function(){
+
+        self.fade.removeChild(self.whiteFill);
+        self.whiteFill.alpha = 1;
+
+    }});
 }
 
 GAME.View.prototype.toPlatformView = function(){

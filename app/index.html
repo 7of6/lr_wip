@@ -9,6 +9,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <title>The Lone Ranger</title>
         <meta name="description" content="">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="styles/normalize.css">
         <link rel="stylesheet" href="styles/main.css">
@@ -24,6 +25,13 @@
         <div id="loader">loading...</div>
 
         <div id="game-container"></div>
+        <div id="video-container">
+            <video id="lr-video" width="600" height="350">
+                <source src="" type="video/mp4">
+                <source src="" type="video/ogg">
+                <source src="" type="video/webm">
+            </video>
+        </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

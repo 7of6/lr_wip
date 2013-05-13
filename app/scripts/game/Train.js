@@ -24,6 +24,13 @@ GAME.Train = function(engineRef){
     carriage = new GAME.TrainCarriage("second");
     this.addChild(carriage);
 
+    // ranger
+    this.ranger = new PIXI.Sprite(PIXI.Texture.fromFrame("ranger_train.png"));
+    this.ranger.position.x = -12;
+    this.ranger.position.y = 36;
+    this.ranger.alpha = 0;
+    carriage.addChild(this.ranger);
+
     carriage = new GAME.TrainCarriage("first");
     carriage.position.x = carriage.position.x + carriage.width - 33;
     this.addChild(carriage);
@@ -40,6 +47,12 @@ GAME.Train = function(engineRef){
     this.running_gear.animationSpeed = 0.35;
     this.running_gear.play();
     this.addChild(this.running_gear);
+
+    this.ranger2 = new PIXI.Sprite(PIXI.Texture.fromFrame("ranger_train.png"));
+    this.ranger2.position.x = 30;
+    this.ranger2.position.y = -44;
+    this.ranger2.alpha = 0;
+    this.running_gear.addChild(this.ranger2);
 
     this.engine_body = new PIXI.Sprite(PIXI.Texture.fromFrame("locomotive.png"));
     this.engine_body.position.x = this.tender_body.position.x + this.tender_body.width - 52;

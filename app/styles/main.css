@@ -26,6 +26,15 @@ body {
     margin:0 auto;
 }
 
+#video-container {
+    background: #000000;
+    width:600px;
+    height: 350px;
+    position: absolute;
+    top:20px;
+    display: none;
+}
+
 /* =============================================================================
    Disable selection
    ========================================================================== */

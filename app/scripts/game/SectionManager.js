@@ -45,6 +45,8 @@ GAME.SectionManager.prototype.update = function(){
 			case GAME_LEVEL.INDIAN_VILLAGE_RANGER:
 
 				// cut scene
+				this.engine.foregroundManager.addRanger();
+				this.engine.tonto.catchUp();
 
 			break;
 			case GAME_LEVEL.DESERT_INTERLUDE:
@@ -65,13 +67,14 @@ GAME.SectionManager.prototype.update = function(){
 			case GAME_LEVEL.TOWN_ROOFTOPS:
 
 				// town obstacles, town midbackground, platforms, no gaps
-				this.engine.foregroundManager.obstacleMax = 1;
+				this.engine.foregroundManager.obstacleMax = 0;
 				this.engine.view.backgroundManager.hasMiddistance = 1;
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.TOWN);
 				this.engine.view.backgroundManager.backgroundFactory.setTextures(GAME_LEVEL.TOWN);
 				this.engine.foregroundManager.platformFactory.setTextures(GAME_LEVEL.TOWN);
 				this.engine.foregroundManager.hasPlatforms = 1;
 				this.engine.foregroundManager.addStepUp();
+				this.engine.tonto.fallBack();
 
 			break;
 			case GAME_LEVEL.TRAIN_STATION:
@@ -82,6 +85,7 @@ GAME.SectionManager.prototype.update = function(){
 				this.engine.foregroundManager.hasPlatforms = 0;
 				this.engine.foregroundManager.initTrack();
 				this.engine.view.backgroundManager.addTrain();
+				this.engine.tonto.catchUp();
 			break;
 			case GAME_LEVEL.TRAIN_CHASE:
 
@@ -90,6 +94,7 @@ GAME.SectionManager.prototype.update = function(){
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.foregroundManager.obstacleMax = 1;
 				this.engine.foregroundManager.hasFloorGaps = 1;
+				this.engine.tonto.fallBack();
 
 			break;
 			case GAME_LEVEL.TRAIN_RANGER:
@@ -100,6 +105,7 @@ GAME.SectionManager.prototype.update = function(){
 			break;
 			case GAME_LEVEL.CANYONS:
 
+				this.engine.view.hud.addChild(new GAME.Message("GET TO THE ENGINE"));
 				// desert obstacles, train midbackground, platforms, no gaps
 				this.engine.foregroundManager.obstacleMax = 1;
 				this.engine.view.backgroundManager.backgroundFactory.setTextures(GAME_LEVEL.CANYONS);
@@ -117,10 +123,12 @@ GAME.SectionManager.prototype.update = function(){
 				this.engine.foregroundManager.hasPlatforms = 0;
 				this.engine.foregroundManager.obstacleMax = 0;
 				this.engine.foregroundManager.hasTrack = 1;
+				this.engine.tonto.catchUp();
 			break;
 			case GAME_LEVEL.DESERT_TRAIN:
 				// cut scene
 				this.engine.view.hud.addChild(new GAME.Message("GREAT JOB!"));
+				this.engine.view.backgroundManager.train.ranger2.alpha = 1;
 
 			break;
 		}
@@ -136,6 +144,7 @@ GAME.SectionManager.prototype.reset = function(){
 	this.engine.view.backgroundManager.hasMiddistance = 0;
 	this.engine.foregroundManager.hasFloorGaps = 0;
 	this.engine.foregroundManager.obstacleMax = 0;
+	this.engine.foregroundManager.hasPlatforms = 0;
 	this.engine.foregroundManager.hasFloor = 1;
 	this.engine.foregroundManager.hasTrack = 0;
 }
@@ -175,9 +184,9 @@ GAME_MILESTONES[3] = GAME_MILESTONES[2] + 10;
 // GET RANGER CUTSCENE
 GAME_MILESTONES[4] = GAME_MILESTONES[3] + 10;
 // DESERT INTERLUDE
-GAME_MILESTONES[5] = GAME_MILESTONES[4] + 10;
+GAME_MILESTONES[5] = GAME_MILESTONES[4] + 100;
 // TOWN
-GAME_MILESTONES[6] = GAME_MILESTONES[5] + 10;
+GAME_MILESTONES[6] = GAME_MILESTONES[5] + 100;
 // ROOFTOPS
 GAME_MILESTONES[7] = GAME_MILESTONES[6] + 500;
 // TRAIN STATION

@@ -12,6 +12,7 @@ GAME.BackgroundManager = function(engineRef){
     this.nextbg = this.spawnCount = 0;
     this.hasMiddistance = 0;
     this.hasTrain = 0;
+    this.rangerDroppedOff = 0;
 
     this.FLOOR_Y = 339;
     this.width = 1600;
@@ -28,6 +29,7 @@ GAME.BackgroundManager = function(engineRef){
     this.train = new GAME.Train();  
     this.train.position.y = 171;
     this.train.speed = 0.08;
+   //this.train.speed = 0.5;
 
     this.backgroundFactory = new GAME.BackgroundFactory();
 
@@ -63,6 +65,15 @@ GAME.BackgroundManager.prototype.updateTransform = function() {
     // move the train
     if (this.hasTrain){
         this.train.position.x -= this.engine.player.speed.x * this.train.speed;
+
+        if (this.train.position.x <= this.engine.player.view.position.x && !this.rangerDroppedOff){
+
+            // drop off the ranger
+            this.engine.foregroundManager.dropOffRanger();
+            this.rangerDroppedOff = true;
+
+        }
+
     }
 
     // randomly add a background to the middistance
@@ -108,6 +119,10 @@ GAME.BackgroundManager.prototype.reset = function(){
         this.middistance.removeChild(obj);
     }
     this.backgrounds = [];
+
+    this.rangerDroppedOff = false;
+    this.train.ranger.alpha = 0;
+    this.train.ranger2.alpha = 0;
 
     if (this.hasTrain){
 

@@ -30,26 +30,30 @@ GAME.Player = function(engineRef){
     this.height = 90;
 
 	// animation frames with ranger
-	this.runningFrames = [
+	this.rangerRunning = [
 		PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0000"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0001"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0002"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0003"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0004"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0005"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0006"),PIXI.Texture.fromFrame("silver_run_final_75_percent.swf/0007")
 	];
-	this.jumpingFrames = [
+	this.rangerJumping = [
 		PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0005"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0006"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0007"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0008"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0009"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0010"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0011"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0012"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0013"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0014"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0015"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0016"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0017"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0018"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0019"),PIXI.Texture.fromFrame("silver_jump_final_75percent.swf/0020")
 	];
-	this.fallingFrames = [
+	this.rangerFalling = [
 		PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_fall_final_75percent.swf/0005")
 	];
 
 	// animation frames solo
-	/*this.runningFrames = [
-		PIXI.Texture.fromFrame("silver_run_final_solo.swf/0000"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0001"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0002"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0003"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0004"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0005"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0006"),PIXI.Texture.fromFrame("silver_run_final_solo.swf/0007")
+	this.soloRunning = [
+		PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0005"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0006"),PIXI.Texture.fromFrame("silver_run_final_solo_75percent.swf/0007")
 	];
-	this.jumpingFrames = [
-		PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0000"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0001"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0002"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0003"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0004"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0005"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0006"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0007"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0008"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0009"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0010"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0011"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0012"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0013"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0014"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0015"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0016"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0017"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0018"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0019"),PIXI.Texture.fromFrame("silver_jump_final_solo.swf/0020")
+	this.soloJumping = [
+		PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0005"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0006"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0007"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0008"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0009"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0010"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0011"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0012"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0013"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0014"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0015"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0016"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0017"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0018"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0019"),PIXI.Texture.fromFrame("silver_jump_final_solo_75percent.swf/0020")
 	];
-	this.fallingFrames = [
-		PIXI.Texture.fromFrame("silver_fall_final_solo.swf/0000"),PIXI.Texture.fromFrame("silver_fall_final_solo.swf/0001"),PIXI.Texture.fromFrame("silver_fall_final_solo.swf/0002"),PIXI.Texture.fromFrame("silver_fall_final_solo.swf/0003"),PIXI.Texture.fromFrame("silver_fall_final_solo.swf/0004"),PIXI.Texture.fromFrame("silver_fall_final_solo.swf/0005")
-	];*/
+	this.soloFalling = [
+		PIXI.Texture.fromFrame("silver_fall_final_solo_75percent.swf/0000"),PIXI.Texture.fromFrame("silver_fall_final_solo_75percent.swf/0001"),PIXI.Texture.fromFrame("silver_fall_final_solo_75percent.swf/0002"),PIXI.Texture.fromFrame("silver_fall_final_solo_75percent.swf/0003"),PIXI.Texture.fromFrame("silver_fall_final_solo_75percent.swf/0004"),PIXI.Texture.fromFrame("silver_fall_final_solo_75percent.swf/0005")
+	];
+
+	this.runningFrames = this.soloRunning;
+	this.jumpingFrames = this.soloJumping;
+	this.fallingFrames = this.soloFalling;
     
 	this.view = new PIXI.MovieClip(this.runningFrames);
 	this.view.anchor.x = 0.5;
@@ -138,6 +142,26 @@ GAME.Player.prototype.hitWall = function() {
 
 }
 
+GAME.Player.prototype.pickupRanger = function() {
+
+	this.view.stop();
+	this.runningFrames = this.rangerRunning;
+	this.jumpingFrames = this.rangerJumping;
+	this.fallingFrames = this.rangerFalling;
+	this.view.textures = this.runningFrames;
+	this.view.play();
+}
+
+GAME.Player.prototype.dropOffRanger = function() {
+
+	this.view.stop();
+	this.runningFrames = this.soloRunning;
+	this.jumpingFrames = this.soloJumping;
+	this.fallingFrames = this.soloFalling;
+	this.view.textures = this.runningFrames;
+	this.view.play();
+}
+
 
 GAME.Player.prototype.update = function() {
 
@@ -183,6 +207,8 @@ GAME.Player.prototype.reset = function(){
 	this.wasJumping = 0;
 	this.isFalling = 0;
 	this.dead = 0;
+
+	this.dropOffRanger();
 
 	this.position.x = 0;
 	this.position.y = 329;

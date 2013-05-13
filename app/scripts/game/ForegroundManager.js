@@ -264,8 +264,6 @@ GAME.ForegroundManager.prototype.addPlatform = function() {
 			platform.position.y = GAME.height + offsetY;
 		}
 
-		
-	
 		this.engine.view.gameFG.addChild(platform);
 		this.objectPools.platforms.push(platform);
 
@@ -306,14 +304,48 @@ GAME.ForegroundManager.prototype.addStepUp = function() {
 
 }
 
-GAME.ForegroundManager.prototype.addObstacle = function(a,b,c) {
+GAME.ForegroundManager.prototype.addObstacle = function(x,gameX,y) {
 
-    var d = this.obstacleFactory.getObstacle();
-    d.position.x = a;
-    d.x = b
-    d.position.y = c;
-    this.objectPools.obstacles.push(d);
-    this.engine.view.gameFG.addChild(d)
+    var obj = this.obstacleFactory.getObstacle();
+    obj.position.x = x;
+    obj.x = gameX;
+    obj.position.y = y;
+    this.objectPools.obstacles.push(obj);
+    this.engine.view.gameFG.addChild(obj);
+
+}
+
+GAME.ForegroundManager.prototype.addRanger = function(){
+
+	var ranger = new PIXI.Sprite(PIXI.Texture.fromFrame("ranger_village.png"));
+	ranger.anchor.x = 0;
+	ranger.anchor.y = 1;
+	ranger.position.x = GAME.width + 40;
+	ranger.position.y = this.FLOOR_Y + 8;
+	ranger.x = GAME.camera.x + GAME.width + 100;
+	ranger.isRanger = true;
+
+	this.engine.view.gameFG.addChild(ranger);
+	this.objectPools.obstacles.push(ranger);
+
+}
+
+GAME.ForegroundManager.prototype.pickupRanger = function(){
+
+	// flash screen
+	this.engine.view.flashScreen();
+	// swap player textures
+	this.engine.player.pickupRanger();
+
+}
+
+GAME.ForegroundManager.prototype.dropOffRanger = function(){
+
+	// flash screen
+	this.engine.view.flashScreen();
+	// swap player textures
+	this.engine.player.dropOffRanger();
+	this.engine.view.backgroundManager.train.ranger.alpha = 1;
 
 }
 

@@ -49,8 +49,10 @@
 
 	function onResize(){
 
+		console.log("onResize",$(window).width(), screen.width, screen.height);
+
 		if ($(window).width() <= 1024){
-			console.log("onResize");
+			
 			// resize canvas
 			var width = $(window).width();
 	    	var height = $(window).height();
@@ -68,6 +70,8 @@
 		        view.style.width = width + "px"
 
 		        game.view.resize(newWidth, 480);
+
+		        console.log(newWidth, width);
 		   
 		    }
 
@@ -176,7 +180,7 @@
 	//--------------------------------------------------------------------------
 	function update() {
 
-		//stats.begin();
+		stats.begin();
 
 	    game.update();
 
@@ -184,7 +188,7 @@
 	        requestAnimFrame(update);
 	    }
 
-	    //stats.end();
+	    stats.end();
 
 	}
 
