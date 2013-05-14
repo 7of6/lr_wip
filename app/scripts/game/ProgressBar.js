@@ -75,7 +75,6 @@ GAME.ProgressBar.prototype.reset = function(){
 	this.time = 0;
 	this.timeDisplay.setText("0:00");
 	window.clearInterval(this.timer);
-	this.startTime();
 }
 
 GAME.ProgressBar.prototype.show = function(){
@@ -106,7 +105,7 @@ GAME.ProgressBar.prototype.startTime = function(){
 	this.timer = window.setInterval(function()
 	{
 
-		if (!GAME.paused && !GAME.gameover){
+		if (!GAME.pause && !GAME.gameover){
 
 			self.time += 100;
 		    elapsed = Math.floor(self.time / 100);

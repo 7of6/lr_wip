@@ -33,10 +33,6 @@ GAME.Message = function(message){
 	this.bg.play();
 	this.addChild(this.bg);
 
-	
-
-
-
 }
 GAME.Message.constructor = GAME.Message;
 GAME.Message.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);

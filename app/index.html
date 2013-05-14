@@ -25,9 +25,13 @@
         <div id="loader">loading...</div>
 
         <div id="game-container"></div>
-        <div id="video-container">
-            <video id="lr-video" width="600" height="350">
-                <source src="" type="video/mp4">
+        <div id="trailer-container">
+            <div id="header-bar">
+                <div id="title"><span class="orange">THE LONE RANGER:</span> TRAILER</div>
+                <div id="close-button">CLOSE</div>
+            </div>
+            <video id="lr-video" width="800" height="333" controls>
+                <source src="./assets/video/trailer.mp4" type="video/mp4">
                 <source src="" type="video/ogg">
                 <source src="" type="video/webm">
             </video>
@@ -59,6 +63,7 @@
         <script src="scripts/game/View.js"></script>
         <script src="scripts/game/ProgressBar.js"></script>
         <script src="scripts/game/Message.js"></script>
+        <script src="scripts/game/Tutorial.js"></script>
         <script src="scripts/game/Player.js"></script>
         <script src="scripts/game/Tonto.js"></script>
         <script src="scripts/game/Train.js"></script>

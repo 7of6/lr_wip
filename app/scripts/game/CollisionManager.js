@@ -46,14 +46,11 @@ GAME.CollisionManager.prototype.playerVsObstacle = function() {
             } else if (obstacleArr[i].isRanger){
 
               // hit the ranger, pick him up
-              console.log("ranger pickup");
               obstacleArr[i].isHit = true;
               obstacleArr[i].alpha = 0;
               this.engine.foregroundManager.pickupRanger();
 
             }else{
-
-              console.log("also collide");
 
               obstacleArr[i].isHit = 1;
               player.hitObstacle();

@@ -36,7 +36,7 @@ GAME.Footer = function(){
     trailerButton.mousedown = trailerButton.touchstart = this.handleTrailer;
 
     // in cinemas text
-    var cinemaText = new PIXI.Text("IN CINEMAS\nSOON", {font: "14px Arial", fill: "#ffffff", align: "center"});
+    var cinemaText = new PIXI.Text("IN CINEMAS\nSOON", {font: "italic 14px Arial", fill: "#ffffff", align: "center"});
     cinemaText.position.x = 230;
     cinemaText.position.y = 20;
     this.addChild(cinemaText);
@@ -77,4 +77,7 @@ GAME.Footer.prototype.handleSite = function(data){
 
 GAME.Footer.prototype.handleTrailer = function(data){
     console.log("trailer click");
+
+    GAME.openTrailer();
+
 }

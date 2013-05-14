@@ -17,6 +17,7 @@ GAME.View = function(engineRef) {
     this.hud = new PIXI.DisplayObjectContainer;
     this.progressbar = new GAME.ProgressBar();
     this.hud.addChild(this.progressbar);
+    this.tutorial = new GAME.Tutorial(this.engine);
 
     // sound
     this.soundButton = new PIXI.DisplayObjectContainer;
@@ -43,7 +44,7 @@ GAME.View = function(engineRef) {
     this.whiteFill.height = GAME.height;    
 
     // footer
-    this.footer = new GAME.Footer;
+    this.footer = new GAME.Footer(engineRef);
     this.footer.position.y = 405;
     this.hud.addChild(this.footer);
 
@@ -103,6 +104,7 @@ GAME.View.prototype.resize = function(width, height) {
     this.footer.position.x = (width - 800) / 2;
     this.screens.position.x = (width - 800) / 2;
     this.soundButton.position.x = width - 40;
+    this.tutorial.resize();
 
     this.whiteFill.position.x = 0;
     this.whiteFill.width = $(window).width();

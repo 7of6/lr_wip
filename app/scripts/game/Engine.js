@@ -5,7 +5,8 @@ GAME.Engine = function() {
 	console.log("Engine");
 
     GAME.level = GAME_LEVEL.START;
-    GAME.counter = 0;
+    GAME.tutorial = 0;
+    GAME.seenTutorial = 0;
 
 	this.player = new GAME.Player(this);
     this.tonto = new GAME.Tonto(this);
@@ -16,7 +17,7 @@ GAME.Engine = function() {
     this.sectionManager = new GAME.SectionManager(this);
     this.soundManager = new GAME.SoundManager();
     // testing
-    this.soundManager.mute();
+    //this.soundManager.mute();
 
     this.view.playerHolder.addChild(this.tonto.view);
     this.view.playerHolder.addChild(this.player.view);
@@ -81,14 +82,14 @@ GAME.Engine.prototype.reset = function(){
 
 GAME.Engine.prototype.onGameOver = function(){
 
-    GAME.gameover = 1;
-    this.view.progressbar.hide();
-
+    this.soundManager.playSound("gameover-sound");
     // set some things in game over
     var current_pos = Math.round((GAME.camera.x + 140)/10);
     var perc = ((current_pos / GAME.GOAL_DISTANCE)*100);
-
     this.gameoverScreen.setProgress(perc);
+
+    GAME.gameover = 1;
+    this.view.progressbar.hide();
 
     this.view.screens.addChild(this.gameoverScreen);
     this.soundManager.playMusic("failed-music");
@@ -97,13 +98,13 @@ GAME.Engine.prototype.onGameOver = function(){
 
 GAME.Engine.prototype.onGameComplete = function(){
 
-    GAME.gameover = 1;
-    this.view.progressbar.hide();
-
+    this.soundManager.playSound("gameover-sound");
     // set some things in game complete
     var time = this.view.progressbar.timeDisplay.text
-
     this.gamecompleteScreen.setTime(time);
+
+    GAME.gameover = 1;
+    this.view.progressbar.hide();
 
     this.view.screens.addChild(this.gamecompleteScreen);
     this.soundManager.playMusic("complete-music");
@@ -111,5 +112,13 @@ GAME.Engine.prototype.onGameComplete = function(){
 }
 
 GAME.Engine.prototype.onTouch = function() {
-	this.player.jump();
+
+    if (!GAME.pause){
+        if (GAME.tutorial){
+            this.view.tutorial.skip();
+        } else {
+            this.player.jump();
+        }
+    }
+	
 };

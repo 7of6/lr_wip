@@ -23,8 +23,10 @@
 	];
 	var audio_manifest = [
 		{src:"assets/audio/game_intro_coup_de_grace_v1.mp3", id:"intro-music"},
-		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3", id:"failed-music"},
+		{src:"assets/audio/game_failed_black_mask_v1.mp3", id:"failed-music"},
 		{src:"assets/audio/gameplay_coup_de_grace_v1.mp3", id:"game-music"},
+		{src:"assets/audio/game_complete_black_mask_v1.mp3", id:"complete-music"},
+		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3", id:"gameover-sound"}
 	];
 
 	//--------------------------------------------------------------------------
@@ -152,6 +154,10 @@
 	    game.view.renderer.view.addEventListener("touchstart", onTouchStart, true);
     	game.view.renderer.view.addEventListener("touchend", onTouchEnd, true);
 
+    	$("#close-button").mousedown(function(event) {
+    		GAME.closeTrailer();
+    	});
+
     	onResize();
 
 	}
@@ -173,6 +179,41 @@
 
 	function onTouchEnd(event) {
 	    event.preventDefault();
+	}
+
+	GAME.openTrailer = function(){
+
+		if (game){
+
+			if (!game.soundManager.isMute){
+				GAME.wasUnMute = 1;
+				game.soundManager.mute();
+			}
+			
+		}
+
+		$("#trailer-container").css("width", GAME.width);
+    	$("#trailer-container").css("height", GAME.height);
+
+		GAME.pause = 1;
+		$("video")[0].play();
+		$("#trailer-container").css("display", "block");
+	}
+
+	GAME.closeTrailer = function(){
+
+		GAME.pause = 0;
+		$("video")[0].pause();
+		$("#trailer-container").css("display", "none");
+
+		if (game){
+
+			if (GAME.wasUnMute){
+				game.soundManager.unmute();
+				GAME.wasUnMute = 0;
+			}
+		
+		}
 	}
 
 	//--------------------------------------------------------------------------

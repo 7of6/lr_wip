@@ -14,6 +14,7 @@ body {
     background: #ffffff;
     margin:0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
 #loader {
@@ -26,13 +27,50 @@ body {
     margin:0 auto;
 }
 
-#video-container {
-    background: #000000;
+/* =============================================================================
+   Trailer
+   ========================================================================== */
+#trailer-container {
+    background: rgba(0, 0, 0, 0.5);
     width:600px;
-    height: 350px;
+    height: 400px;
     position: absolute;
-    top:20px;
+    top:0px;
+    left:0px;
     display: none;
+}
+
+#trailer-container #header-bar {
+    background: #000000;
+    height: 72px;
+}
+
+#trailer-container #title {
+    font-family: "InGameFont";
+    font-size:24px;
+    color: #ffffff;
+    line-height: 48px;
+    left:20px;
+    position: relative;
+}
+
+#trailer-container #close-button {
+    cursor: pointer;
+    background: url("../assets/images/close_bg.png");
+    width:60px;
+    height: 37px;
+    font-family: "InGameFont";
+    font-size:24px;
+    line-height: 37px;
+    color: #ffffff;
+    position: absolute;
+    top:4px;
+    right: 0px;
+    padding:2px 0 0 30px;
+}
+
+.orange {
+    color: #f26825;
 }
 
 /* =============================================================================

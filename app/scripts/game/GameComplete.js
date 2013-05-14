@@ -62,7 +62,7 @@ GAME.GameComplete = function(engineRef){
 
     // play button
     this.playButton = new PIXI.DisplayObjectContainer();
-    this.playButton.position.x = 552;
+    this.playButton.position.x = 572;
     this.playButton.position.y = 298;
     var playText = new PIXI.Text("PLAY", {font: "40px InGameFont", fill: "#ffffff", align: "left"});
 
