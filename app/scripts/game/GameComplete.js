@@ -1,8 +1,8 @@
 //--------------------------------------------------------------------------
-//  Game Over Screen Class
+//  Game Complete Screen Class
 //--------------------------------------------------------------------------
-GAME.GameOver = function(engineRef){
-	console.log("Game Over");
+GAME.GameComplete = function(engineRef){
+	console.log("Game Complete");
 
     PIXI.DisplayObjectContainer.call(this);
 
@@ -11,26 +11,26 @@ GAME.GameOver = function(engineRef){
     this.engine = engineRef;
 
     // background
-    this.addChild(new PIXI.Sprite(PIXI.Texture.fromFrame("game_over_fail.jpg")));
+    this.addChild(new PIXI.Sprite(PIXI.Texture.fromFrame("game_over_win.jpg")));
 
     // status
     var missionText = new PIXI.Text("MISSION", {font: "27px InGameFont", fill: "#ffffff", align: "left"});
     missionText.position.x = 467;
     missionText.position.y = 65;
     this.addChild(missionText);
-    var failedText = new PIXI.Text("FAILED!", {font: "51px InGameFont", fill: "#ffffff", align: "left"});
+    var failedText = new PIXI.Text("COMPLETE!", {font: "51px InGameFont", fill: "#ffffff", align: "left"});
     failedText.position.x = 543;
     failedText.position.y = 52;
     this.addChild(failedText);
 
-    var distanceText = new PIXI.Text("DISTANCE:", {font: "25px InGameFont", fill: "#000000", align: "left"});
-    distanceText.position.x = 454;
+    var distanceText = new PIXI.Text("TIME:", {font: "25px InGameFont", fill: "#000000", align: "left"});
+    distanceText.position.x = 460;
     distanceText.position.y = 152;
     this.addChild(distanceText);
-    this.percText = new PIXI.Text("34.5%", {font: "78px InGameFont", fill: "#f26825", align: "left"});
-    this.percText.position.x = 540;
-    this.percText.position.y = 114;
-    this.addChild(this.percText);
+    this.resultText = new PIXI.Text("0:00", {font: "78px InGameFont", fill: "#f26825", align: "left"});
+    this.resultText.position.x = 510;
+    this.resultText.position.y = 114;
+    this.addChild(this.resultText);
 
     // social buttons
     var shareText = new PIXI.Text("SHARE SCORE", {font: "18px InGameFont", fill: "#ffffff", align: "left"});
@@ -64,7 +64,7 @@ GAME.GameOver = function(engineRef){
     this.playButton = new PIXI.DisplayObjectContainer();
     this.playButton.position.x = 552;
     this.playButton.position.y = 298;
-    var playText = new PIXI.Text("TRY AGAIN", {font: "40px InGameFont", fill: "#ffffff", align: "left"});
+    var playText = new PIXI.Text("PLAY", {font: "40px InGameFont", fill: "#ffffff", align: "left"});
 
     this.playButton.addChild(playText);
 
@@ -78,25 +78,24 @@ GAME.GameOver = function(engineRef){
     this.playButton.buttonMode = true;
     this.playButton.mousedown = this.playButton.touchstart = function(data){self.handlePlay(data)};
 
-
 }
 
-GAME.GameOver.constructor = GAME.GameOver;
-GAME.GameOver.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
+GAME.GameComplete.constructor = GAME.GameComplete;
+GAME.GameComplete.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 
-GAME.GameOver.prototype.setProgress = function(perc){
-    this.percText.setText(perc.toFixed(1) + "%");
+GAME.GameComplete.prototype.setTime = function(time){
+    this.resultText.setText(time);
 }
 
-GAME.GameOver.prototype.handleFacebook = function(data){
+GAME.GameComplete.prototype.handleFacebook = function(data){
     console.log("facebook click");
 }
 
-GAME.GameOver.prototype.handleTwitter = function(data){
+GAME.GameComplete.prototype.handleTwitter = function(data){
     console.log("twitter click");
 }
 
-GAME.GameOver.prototype.handlePlay = function(data){
+GAME.GameComplete.prototype.handlePlay = function(data){
     console.log("play click");
     this.engine.reset();
 }

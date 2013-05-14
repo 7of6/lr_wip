@@ -2,47 +2,47 @@
 
 "bales.png":
 {
-	"frame": {"x":112,"y":60,"w":97,"h":58},
+	"frame": {"x":96,"y":52,"w":82,"h":49},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":97,"h":58},
-	"sourceSize": {"w":97,"h":58}
+	"spriteSourceSize": {"x":0,"y":0,"w":82,"h":49},
+	"sourceSize": {"w":82,"h":49}
 },
 "barrels.png":
 {
-	"frame": {"x":2,"y":188,"w":67,"h":45},
+	"frame": {"x":193,"y":45,"w":57,"h":38},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":67,"h":45},
-	"sourceSize": {"w":67,"h":45}
+	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":38},
+	"sourceSize": {"w":57,"h":38}
 },
 "box.png":
 {
-	"frame": {"x":2,"y":138,"w":57,"h":48},
+	"frame": {"x":193,"y":2,"w":48,"h":41},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":57,"h":48},
-	"sourceSize": {"w":57,"h":48}
+	"spriteSourceSize": {"x":0,"y":0,"w":48,"h":41},
+	"sourceSize": {"w":48,"h":41}
 },
 "cart.png":
 {
-	"frame": {"x":2,"y":2,"w":222,"h":56},
+	"frame": {"x":2,"y":2,"w":189,"h":48},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":222,"h":56},
-	"sourceSize": {"w":222,"h":56}
+	"spriteSourceSize": {"x":0,"y":0,"w":189,"h":48},
+	"sourceSize": {"w":189,"h":48}
 },
 "crate.png":
 {
-	"frame": {"x":2,"y":60,"w":108,"h":76},
+	"frame": {"x":2,"y":52,"w":92,"h":65},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":108,"h":76},
-	"sourceSize": {"w":108,"h":76}
+	"spriteSourceSize": {"x":0,"y":0,"w":92,"h":65},
+	"sourceSize": {"w":92,"h":65}
 },
 "sack.png":
 {
-	"frame": {"x":226,"y":2,"w":23,"h":38},
+	"frame": {"x":180,"y":85,"w":23,"h":38},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":23,"h":38},
@@ -53,8 +53,8 @@
 	"version": "1.0",
 	"image": "obstacles_town.png",
 	"format": "RGBA8888",
-	"size": {"w":256,"h":256},
+	"size": {"w":256,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:75ea30b44106dfc57580110be38e9db4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:62bedfdb6ee8df63573a71e6b2077489$"
 }
 }

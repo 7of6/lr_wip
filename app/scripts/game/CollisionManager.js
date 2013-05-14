@@ -35,13 +35,15 @@ GAME.CollisionManager.prototype.playerVsObstacle = function() {
 
         if (collide && !player.isJumping){
 
-            if (obstacleArr[i].isLarge){
+            if (obstacleArr[i].isLarge && collide.height > 30){
+
+              console.log(collide.height);
 
               // hit something big, game over
               obstacleArr[i].isHit = 1;
               player.hitWall();
 
-            } if (obstacleArr[i].isRanger){
+            } else if (obstacleArr[i].isRanger){
 
               // hit the ranger, pick him up
               console.log("ranger pickup");
@@ -50,6 +52,8 @@ GAME.CollisionManager.prototype.playerVsObstacle = function() {
               this.engine.foregroundManager.pickupRanger();
 
             }else{
+
+              console.log("also collide");
 
               obstacleArr[i].isHit = 1;
               player.hitObstacle();

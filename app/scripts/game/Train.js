@@ -7,6 +7,8 @@ GAME.Train = function(engineRef){
 
     this.engine = engineRef;
 
+    this.carriages = [];
+
     // animations
     this.wheelFrames = [
         PIXI.Texture.fromFrame("train_running_gear_75percent.swf/0000"),
@@ -23,6 +25,7 @@ GAME.Train = function(engineRef){
     var carriage;
     carriage = new GAME.TrainCarriage("second");
     this.addChild(carriage);
+    this.carriages.push(carriage);
 
     // ranger
     this.ranger = new PIXI.Sprite(PIXI.Texture.fromFrame("ranger_train.png"));
@@ -34,7 +37,7 @@ GAME.Train = function(engineRef){
     carriage = new GAME.TrainCarriage("first");
     carriage.position.x = carriage.position.x + carriage.width - 33;
     this.addChild(carriage);
-
+    this.carriages.push(carriage);
 
     // tender
     this.tender_body = new PIXI.Sprite(PIXI.Texture.fromFrame("coal_tender.png"));
@@ -64,6 +67,23 @@ GAME.Train = function(engineRef){
 
 GAME.Train.constructor = GAME.Train;
 GAME.Train.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
+
+GAME.Train.prototype.reset = function(){
+
+    for (var i=0;i<this.carriages.length;i++){
+        this.carriages[i].reflection.play();
+    }
+    this.running_gear.animationSpeed = 0.35;
+    this.ranger.alpha = 0;
+    this.ranger2.alpha = 0;
+
+}
+
+GAME.Train.prototype.slowDown = function(){
+    for (var i=0;i<this.carriages.length;i++){
+        this.carriages[i].reflection.stop();
+    }
+}
 
 
 GAME.TrainCarriage = function(type){

@@ -60,7 +60,7 @@ GAME.PlatformFactory.prototype.getStepUp = function() {
         s1.addChild(platform);
         s1.addChild(cap);
         s1.hitHeight = 80;
-        s1.width = 300;
+        s1.width = 400;
 
 
         s2 = new PIXI.DisplayObjectContainer();

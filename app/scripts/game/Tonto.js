@@ -59,4 +59,5 @@ GAME.Tonto.prototype.fallBack = function(){
 
 GAME.Tonto.prototype.reset = function(){
 	this.view.position.x = -100;
+	this.view.animationSpeed = this.currentAnimSpeed;
 }

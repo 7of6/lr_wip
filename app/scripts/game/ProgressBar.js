@@ -128,6 +128,10 @@ GAME.ProgressBar.prototype.startTime = function(){
 	}, 1000);
 }
 
+GAME.ProgressBar.prototype.stopTime = function(){
+	window.clearInterval(this.timer);
+}
+
 GAME.ProgressBar.prototype.localiseText = function(){
 
 	this.distanceText.setText("Distance:");

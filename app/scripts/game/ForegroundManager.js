@@ -10,6 +10,7 @@ GAME.ForegroundManager = function(engineRef){
 	this.hasTrack = 0;
 	this.hasFloorGaps = 0;
 	this.hasPlatforms = 0;
+	this.hasLargeObjects = 0;
 	this.hasFloor = 1;
 	this.toNextGap = 0;
 	this.gapAdded = 0;
@@ -167,8 +168,15 @@ GAME.ForegroundManager.prototype.update = function(){
 			for (var i=0; i<Math2.randomInt(0,this.obstacleMax); i++){
 
 				var randomOffset = Math2.randomInt(100, floor.width - 150);
-				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5);
+				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, false);
 
+			}
+
+			if (this.hasLargeObjects){
+				if (Math2.randomInt(0,2)==0){
+					var randomOffset = Math2.randomInt(100, floor.width - 150);
+					this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, true);
+				}
 			}
 
 		}
@@ -274,7 +282,7 @@ GAME.ForegroundManager.prototype.addPlatform = function() {
 	for (var i=0; i<Math2.randomInt(0,this.obstacleMax); i++){
 
 		var randomOffset = Math2.randomInt(100, platform.width - 150);
-		this.addObstacle(platform.position.x + randomOffset, platform.x + randomOffset, platform.position.y - platform.hitHeight + 5);
+		this.addObstacle(platform.position.x + randomOffset, platform.x + randomOffset, platform.position.y - platform.hitHeight + 5, false);
 
 	}
 
@@ -304,9 +312,16 @@ GAME.ForegroundManager.prototype.addStepUp = function() {
 
 }
 
-GAME.ForegroundManager.prototype.addObstacle = function(x,gameX,y) {
+GAME.ForegroundManager.prototype.addObstacle = function(x,gameX,y,large) {
 
-    var obj = this.obstacleFactory.getObstacle();
+	var obj;
+
+	if (large){
+		obj = this.obstacleFactory.getLargeObstacle();
+	}else{
+		obj = this.obstacleFactory.getObstacle();
+	}
+
     obj.position.x = x;
     obj.x = gameX;
     obj.position.y = y;

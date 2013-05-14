@@ -14,9 +14,10 @@ GAME.Player = function(engineRef){
 	this.wasJumping = 0;
 	this.isFalling = 0;
 	this.dead = 0;
+	this.cutScene = 0;
 
 	// defaults
-	this.position.y = 329;
+	this.position.y = 345;
     this.position.x = 0;
     this.currentAnimSpeed = 0.3;
 
@@ -70,7 +71,7 @@ GAME.Player.constructor = GAME.Player;
 
 GAME.Player.prototype.jump = function() {
 
-	if (this.onGround && !GAME.gameover){
+	if (this.onGround && !GAME.gameover && !this.cutScene){
 
 		this.isJumping = 1;
 		this.wasJumping = 1;
@@ -167,20 +168,26 @@ GAME.Player.prototype.update = function() {
 
 	if (!this.dead){
 
-		this.speed.y += this.gravity;
+		if (!this.cutScene || !this.onGround){
+			this.speed.y += this.gravity;
+		}
 
 		if (this.speed.y > 0 && this.isJumping){
 			this.isJumping = 0;
 		}
 
-		if (this.onGround){
-			if (this.speed.x < this.maxSpeed){
-				this.speed.x += this.acceleration;
+		if (!this.cutScene){
+
+			if (this.onGround){
+				if (this.speed.x < this.maxSpeed){
+					this.speed.x += this.acceleration;
+				}
+			} else if (!this.wasJumping && !this.isFalling){
+				// falling
+				this.isFalling = 1;
+				this.fall();
 			}
-		} else if (!this.wasJumping && !this.isFalling){
-			// falling
-			this.isFalling = 1;
-			this.fall();
+
 		}
 
 		if (this.position.y - this.height - 40 > GAME.height){
@@ -207,11 +214,14 @@ GAME.Player.prototype.reset = function(){
 	this.wasJumping = 0;
 	this.isFalling = 0;
 	this.dead = 0;
+	this.cutScene = 0;
+	this.maxSpeed = 12;
+	this.currentAnimSpeed = 0.3;
 
 	this.dropOffRanger();
 
 	this.position.x = 0;
-	this.position.y = 329;
+	this.position.y = 345;
     this.speed.y = 0;
     this.speed.x = this.baseSpeed;
     this.view.textures = this.runningFrames;

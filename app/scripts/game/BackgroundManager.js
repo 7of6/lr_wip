@@ -121,8 +121,7 @@ GAME.BackgroundManager.prototype.reset = function(){
     this.backgrounds = [];
 
     this.rangerDroppedOff = false;
-    this.train.ranger.alpha = 0;
-    this.train.ranger2.alpha = 0;
+    this.train.reset();
 
     if (this.hasTrain){
 
