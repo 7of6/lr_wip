@@ -33,11 +33,9 @@ GAME.CollisionManager.prototype.playerVsObstacle = function() {
 
         var collide = this.calculateIntersection(this.getPlayerBounds(),new PIXI.Rectangle(obstacleArr[i].x, obstacleArr[i].position.y - obstacleArr[i].height, obstacleArr[i].width, obstacleArr[i].height), player.speed.x, player.speed.y);
 
-        if (collide && !player.isJumping){
+        if (collide){
 
             if (obstacleArr[i].isLarge && collide.height > 30){
-
-              console.log(collide.height);
 
               // hit something big, game over
               obstacleArr[i].isHit = 1;
@@ -149,7 +147,7 @@ GAME.CollisionManager.prototype.getPlayerBounds = function(){
 
     var player = this.engine.player;
 
-    var bounds = new PIXI.Rectangle(player.position.x + 100, player.position.y - player.height, 60, 70);
+    var bounds = new PIXI.Rectangle(player.position.x + 60, player.position.y - player.height, 60, 70);
 
     return bounds;
 

@@ -2,7 +2,6 @@
 //  Game Complete Screen Class
 //--------------------------------------------------------------------------
 GAME.GameComplete = function(engineRef){
-	console.log("Game Complete");
 
     PIXI.DisplayObjectContainer.call(this);
 
@@ -14,26 +13,26 @@ GAME.GameComplete = function(engineRef){
     this.addChild(new PIXI.Sprite(PIXI.Texture.fromFrame("game_over_win.jpg")));
 
     // status
-    var missionText = new PIXI.Text("MISSION", {font: "27px InGameFont", fill: "#ffffff", align: "left"});
+    var missionText = new PIXI.Text(GAME.LOCALISED.MISSION, {font: "27px InGameFont", fill: "#ffffff"});
     missionText.position.x = 467;
     missionText.position.y = 65;
     this.addChild(missionText);
-    var failedText = new PIXI.Text("COMPLETE!", {font: "51px InGameFont", fill: "#ffffff", align: "left"});
+    var failedText = new PIXI.Text(GAME.LOCALISED.COMPLETE, {font: "51px InGameFont", fill: "#ffffff"});
     failedText.position.x = 543;
     failedText.position.y = 52;
     this.addChild(failedText);
 
-    var distanceText = new PIXI.Text("TIME:", {font: "25px InGameFont", fill: "#000000", align: "left"});
+    var distanceText = new PIXI.Text(GAME.LOCALISED.TIME.toUpperCase() + ":", {font: "25px InGameFont", fill: "#000000"});
     distanceText.position.x = 460;
     distanceText.position.y = 152;
     this.addChild(distanceText);
-    this.resultText = new PIXI.Text("0:00", {font: "78px InGameFont", fill: "#f26825", align: "left"});
+    this.resultText = new PIXI.Text("0:00", {font: "78px InGameFont", fill: "#f26825"});
     this.resultText.position.x = 510;
     this.resultText.position.y = 114;
     this.addChild(this.resultText);
 
     // social buttons
-    var shareText = new PIXI.Text("SHARE SCORE", {font: "18px InGameFont", fill: "#ffffff", align: "left"});
+    var shareText = new PIXI.Text(GAME.LOCALISED.SHARE, {font: "18px InGameFont", fill: "#ffffff"});
     shareText.position.x = 460;
     shareText.position.y = 238;
     this.addChild(shareText);
@@ -55,16 +54,27 @@ GAME.GameComplete = function(engineRef){
     this.twitter.mousedown = this.twitter.touchstart = this.handleTwitter;
 
     // trailer
-    var trailerText = new PIXI.Text("WATCH THE TRAILER", {font: "18px InGameFont", fill: "#ffffff", align: "left"});
-    trailerText.position.x = 345;
-    trailerText.position.y = 365;
-    this.addChild(trailerText);
+    this.trailerButton = new PIXI.DisplayObjectContainer();
+    var trailerBackground = new PIXI.Sprite(PIXI.Texture.fromFrame("trailer_button.png"));
+    this.trailerButton.addChild(trailerBackground);
+
+    var trailerText = new PIXI.Text(GAME.LOCALISED.WATCH_TRAILER, {font: "18px InGameFont", fill: "#ffffff"});
+    trailerText.position.x = 50;
+    trailerText.position.y = 88;
+    this.trailerButton.addChild(trailerText);
+
+    this.trailerButton.position.x = 290;
+    this.trailerButton.position.y = 280;
+    this.addChild(this.trailerButton);
+    this.trailerButton.setInteractive(true);
+    this.trailerButton.buttonMode = true;
+    this.trailerButton.mousedown = this.trailerButton.touchstart = function(data){self.handleTrailer(data)};
 
     // play button
     this.playButton = new PIXI.DisplayObjectContainer();
     this.playButton.position.x = 572;
     this.playButton.position.y = 298;
-    var playText = new PIXI.Text("PLAY", {font: "40px InGameFont", fill: "#ffffff", align: "left"});
+    var playText = new PIXI.Text(GAME.LOCALISED.PLAY, {font: "40px InGameFont", fill: "#ffffff"});
 
     this.playButton.addChild(playText);
 
@@ -88,14 +98,17 @@ GAME.GameComplete.prototype.setTime = function(time){
 }
 
 GAME.GameComplete.prototype.handleFacebook = function(data){
-    console.log("facebook click");
+    window.open(GAME.LOCALISED.FACEBOOK_SHARE, "_blank");
 }
 
 GAME.GameComplete.prototype.handleTwitter = function(data){
-    console.log("twitter click");
+    window.open(GAME.LOCALISED.TWITTER_SHARE, "_blank");
 }
 
 GAME.GameComplete.prototype.handlePlay = function(data){
-    console.log("play click");
     this.engine.reset();
+}
+
+GAME.GameComplete.prototype.handleTrailer = function(data){
+    GAME.openTrailer();
 }

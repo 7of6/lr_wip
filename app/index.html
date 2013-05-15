@@ -22,19 +22,32 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <div id="loader">loading...</div>
+        <div id="wrapper">
 
-        <div id="game-container"></div>
-        <div id="trailer-container">
-            <div id="header-bar">
-                <div id="title"><span class="orange">THE LONE RANGER:</span> TRAILER</div>
-                <div id="close-button">CLOSE</div>
+            <div id="float">
+
+                <div id="content-container">
+
+                    <div id="trailer-container">
+                        <div id="header-bar">
+                            <div id="title"><span class="orange">THE LONE RANGER:</span> TRAILER</div>
+                            <div id="close-button">CLOSE</div>
+                        </div>
+                        <video id="lr-video" width="100%" height="70%" controls>
+                            <source src="./assets/video/trailer.mp4" type="video/mp4">
+                            <source src="./assets/video/trailer.ogv" type="video/ogg">
+                            <source src="./assets/video/trailer.webm" type="video/webm">
+                        </video>
+                    </div>
+
+                    <div id="loader"><img src="./assets/images/loading_animation.gif"></div>
+                    <div id="no-canvas">Sorry, but you need a more up to date browser in order to play this game. Please upgrade.</div>
+                    <div id="game-container"></div>
+
+                </div>
+
             </div>
-            <video id="lr-video" width="800" height="333" controls>
-                <source src="./assets/video/trailer.mp4" type="video/mp4">
-                <source src="" type="video/ogg">
-                <source src="" type="video/webm">
-            </video>
+
         </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -45,7 +58,7 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
 
-        <!-- build:js scripts/jquery.js -->
+        <!-- build:js scripts/vendor/jquery.js -->
         <script src="components/jquery/jquery.js"></script>
         <!-- endbuild -->
 

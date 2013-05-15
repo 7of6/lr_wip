@@ -9,12 +9,39 @@
     font-style: normal;
 }
 
-
-body {
-    background: #ffffff;
-    margin:0;
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
     padding: 0;
+    background: #000000;
     -webkit-font-smoothing: antialiased;
+}
+
+body {    
+    display: table;    
+}
+
+#wrapper {
+    display:table-row;
+    width: 100%;
+    height: 100%;
+    background: url("../assets/images/background.jpg") no-repeat center;
+    position: relative;
+}
+
+#float {
+    display:table-cell;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+}
+
+#content-container {
+    text-align: center;
+    width:800px;
+    height:480px;
+    margin: 0 auto;
 }
 
 #loader {
@@ -22,7 +49,18 @@ body {
     font-size: 40px;
     text-align: center;
     color: #000000;
-    line-height: 450px;
+    line-height: 480px;
+    width:800px;
+    margin:0 auto;
+}
+
+#no-canvas {
+    display:none;
+    font-family: "InGameFont";
+    font-size: 24px;
+    text-align: center;
+    color: #000000;
+    line-height: 480px;
     width:800px;
     margin:0 auto;
 }
@@ -32,12 +70,12 @@ body {
    ========================================================================== */
 #trailer-container {
     background: rgba(0, 0, 0, 0.5);
-    width:600px;
-    height: 400px;
+    width:800px;
+    height: 480px;
     position: absolute;
-    top:0px;
-    left:0px;
+    text-align: left;
     display: none;
+    z-index:99999;
 }
 
 #trailer-container #header-bar {
@@ -71,6 +109,36 @@ body {
 
 .orange {
     color: #f26825;
+}
+
+/* =============================================================================
+   Mobile exceptions
+   ========================================================================== */
+#wrapper.mobile {
+    display:block;
+    width: 800px;
+    height: 480px;
+    background: none;
+    position: relative;
+}
+
+#float.mobile {
+
+}
+
+#content-container.mobile {
+    width:100%;
+    height: 100%;
+}
+
+#trailer-container.mobile {
+    width:100%;
+    height: 100%;
+
+}
+
+#trailer-container.mobile video {
+    height:74%;
 }
 
 /* =============================================================================

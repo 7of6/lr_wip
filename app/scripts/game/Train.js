@@ -2,7 +2,7 @@
 //  Train Class
 //--------------------------------------------------------------------------
 GAME.Train = function(engineRef){
-	console.log("Train");
+
 	PIXI.DisplayObjectContainer.call(this);
 
     this.engine = engineRef;

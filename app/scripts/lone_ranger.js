@@ -26,7 +26,11 @@
 		{src:"assets/audio/game_failed_black_mask_v1.mp3", id:"failed-music"},
 		{src:"assets/audio/gameplay_coup_de_grace_v1.mp3", id:"game-music"},
 		{src:"assets/audio/game_complete_black_mask_v1.mp3", id:"complete-music"},
-		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3", id:"gameover-sound"}
+		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3", id:"gameover-sound"},
+
+		// localised copy
+		{src:"assets/localisation/copy.json", id:"game-copy"}
+
 	];
 
 	//--------------------------------------------------------------------------
@@ -43,17 +47,22 @@
 	function onReady(){
 
 		gameContainer = document.getElementById("game-container");
-		preLoad();
 		GAME.width = 800;
 		GAME.height = 480;
+
+		if (Modernizr.canvas){
+			preLoad();
+		}else{
+			$("#loader").css("display", "none");
+			$("#game-container").css("display", "none");
+			$("#no-canvas").css("display", "block");
+		}
 
 	}
 
 	function onResize(){
 
-		console.log("onResize",$(window).width(), screen.width, screen.height);
-
-		if ($(window).width() <= 1024){
+		if (GAME.isMobile){
 			
 			// resize canvas
 			var width = $(window).width();
@@ -72,8 +81,6 @@
 		        view.style.width = width + "px"
 
 		        game.view.resize(newWidth, 480);
-
-		        console.log(newWidth, width);
 		   
 		    }
 
@@ -128,6 +135,21 @@
 	function initApp(){
 		
 		//GAME.LO_MODE = true;
+
+		GAME.LOCALISED = audio_assets["game-copy"].copy;
+
+		if ((/iPhone|iPod|iPad|Android/i).test(navigator.userAgent)){
+
+			GAME.isMobile = true;
+
+			// add mobile specific classes
+			$("#wrapper").addClass("mobile");
+			$("#float").addClass("mobile");
+			$("#content-container").addClass("mobile");
+			$("#trailer-container").addClass("mobile");
+
+		}
+
 
 		$("#loader").css("display", "none");
 		game = new GAME.Engine();
@@ -192,9 +214,6 @@
 			
 		}
 
-		$("#trailer-container").css("width", GAME.width);
-    	$("#trailer-container").css("height", GAME.height);
-
 		GAME.pause = 1;
 		$("video")[0].play();
 		$("#trailer-container").css("display", "block");
@@ -221,7 +240,7 @@
 	//--------------------------------------------------------------------------
 	function update() {
 
-		stats.begin();
+		//stats.begin();
 
 	    game.update();
 
@@ -229,7 +248,7 @@
 	        requestAnimFrame(update);
 	    }
 
-	    stats.end();
+	    //stats.end();
 
 	}
 

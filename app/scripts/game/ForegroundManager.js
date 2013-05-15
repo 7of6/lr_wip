@@ -2,7 +2,6 @@
 //  Foreground Manager Class
 //--------------------------------------------------------------------------
 GAME.ForegroundManager = function(engineRef){
-	console.log("ForegroundManager");
 
 	this.engine = engineRef;
 	this.obstacleMax = 0;
@@ -337,7 +336,7 @@ GAME.ForegroundManager.prototype.addRanger = function(){
 	ranger.anchor.y = 1;
 	ranger.position.x = GAME.width + 40;
 	ranger.position.y = this.FLOOR_Y + 8;
-	ranger.x = GAME.camera.x + GAME.width + 100;
+	ranger.x = this.floorPos + 200;
 	ranger.isRanger = true;
 
 	this.engine.view.gameFG.addChild(ranger);

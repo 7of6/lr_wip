@@ -2,7 +2,6 @@
 //  Tonto Class
 //--------------------------------------------------------------------------
 GAME.Tonto = function(engineRef){
-	console.log("Tonto");
 
 	this.engine = engineRef;
 
@@ -58,6 +57,8 @@ GAME.Tonto.prototype.fallBack = function(){
 }
 
 GAME.Tonto.prototype.reset = function(){
+
+	TweenMax.killTweensOf(this.view.position);
 	this.view.position.x = -100;
 	this.view.animationSpeed = this.currentAnimSpeed;
 }

@@ -2,7 +2,6 @@
 //  View Class
 //--------------------------------------------------------------------------
 GAME.View = function(engineRef) {
-	console.log("View");
 
     var self = this;
 

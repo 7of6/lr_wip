@@ -16,7 +16,7 @@ GAME.ProgressBar = function(){
 	this.position.x = Math.round((GAME.width - this.width) / 2);
 
 	// text 
-	this.distanceText = new PIXI.Text("Distance:", {font: "25px InGameFont", fill: "#f26622", align: "left", stroke: "#333333", strokeThickness: 4});
+	this.distanceText = new PIXI.Text(GAME.LOCALISED.DISTANCE + ":", {font: "25px InGameFont", fill: "#f26622", align: "left", stroke: "#333333", strokeThickness: 4});
 	this.distanceText.anchor.x = 0;
 	this.distanceText.anchor.y = 0;
 	this.distanceText.position.x = 15;
@@ -24,7 +24,7 @@ GAME.ProgressBar = function(){
 
 	this.addChild(this.distanceText);
 
-	this.timeText = new PIXI.Text("Time:", {font: "25px InGameFont", fill: "#f26622", align: "left", stroke: "#333333", strokeThickness: 4});
+	this.timeText = new PIXI.Text(GAME.LOCALISED.TIME + ":", {font: "25px InGameFont", fill: "#f26622", align: "left", stroke: "#333333", strokeThickness: 4});
 	this.timeText.anchor.x = 0;
 	this.timeText.anchor.y = 0;
 	this.timeText.position.x = 440;
@@ -61,8 +61,6 @@ GAME.ProgressBar = function(){
 	this.startTime();
 
 	this.setProgress(0);
-
-	this.localiseText();
 
 }
 GAME.ProgressBar.constructor = GAME.ProgressBar;
@@ -129,11 +127,4 @@ GAME.ProgressBar.prototype.startTime = function(){
 
 GAME.ProgressBar.prototype.stopTime = function(){
 	window.clearInterval(this.timer);
-}
-
-GAME.ProgressBar.prototype.localiseText = function(){
-
-	this.distanceText.setText("Distance:");
-	this.timeText.setText("Time:");
-
 }

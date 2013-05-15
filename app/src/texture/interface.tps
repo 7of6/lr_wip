@@ -165,6 +165,7 @@
             <filename>../images/interface/black_block.png</filename>
             <filename>../images/interface/white_block.png</filename>
             <filename>../images/interface/intro_panel.png</filename>
+            <filename>../images/interface/trailer_button.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

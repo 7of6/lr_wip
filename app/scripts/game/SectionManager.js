@@ -2,8 +2,7 @@
 //  Section Manager Class
 //--------------------------------------------------------------------------
 GAME.SectionManager = function(engineRef){
-	console.log("SectionManager");
-
+	
 	this.engine = engineRef;
 
 }
@@ -32,7 +31,7 @@ GAME.SectionManager.prototype.update = function(){
 			break;
 			case GAME_LEVEL.DESERT:
 				this.engine.view.progressbar.startTime();
-				this.engine.view.hud.addChild(new GAME.Message("GET TO THE INDIAN VILLAGE"));
+				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.GO_VILLAGE));
 				// desert obstacles, no midbackground, no platforms, no gaps
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.view.backgroundManager.hasMiddistance = 0;
@@ -45,7 +44,6 @@ GAME.SectionManager.prototype.update = function(){
 
 				// desert + indian obstacles, indian midbackground, no platforms, no gaps
 				this.engine.view.backgroundManager.hasMiddistance = 1;
-				this.engine.foregroundManager.hasFloorGaps = 0;
 				this.engine.view.backgroundManager.backgroundFactory.setTextures(GAME_LEVEL.INDIAN_VILLAGE);
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.INDIAN_VILLAGE);
 
@@ -62,7 +60,7 @@ GAME.SectionManager.prototype.update = function(){
 			case GAME_LEVEL.DESERT_INTERLUDE:
 
 				// desert filler 
-				this.engine.view.hud.addChild(new GAME.Message("GET TO THE TRAIN"));
+				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.GO_TRAIN));
 				this.engine.view.backgroundManager.hasMiddistance = 0;
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.foregroundManager.hasLargeObjects = 1;
@@ -103,12 +101,11 @@ GAME.SectionManager.prototype.update = function(){
 			break;
 			case GAME_LEVEL.TRAIN_CHASE:
 
-				this.engine.view.hud.addChild(new GAME.Message("CATCH THAT TRAIN"));
+				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.CATCH_TRAIN));
 				// desert obstacles, train midbackground, no platforms, gaps
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.foregroundManager.obstacleMax = 1;
-				//this.engine.foregroundManager.hasFloorGaps = 1;
-				this.engine.foregroundManager.hasFloorGaps = 0;
+				this.engine.foregroundManager.hasFloorGaps = 1;
 				this.engine.tonto.fallBack();
 
 			break;
@@ -120,7 +117,7 @@ GAME.SectionManager.prototype.update = function(){
 			break;
 			case GAME_LEVEL.CANYONS:
 
-				this.engine.view.hud.addChild(new GAME.Message("GET TO THE ENGINE"));
+				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.GO_FRONT));
 				// desert obstacles, train midbackground, platforms, no gaps
 				this.engine.foregroundManager.obstacleMax = 1;
 				this.engine.view.backgroundManager.backgroundFactory.setTextures(GAME_LEVEL.CANYONS);
@@ -143,7 +140,7 @@ GAME.SectionManager.prototype.update = function(){
 			break;
 			case GAME_LEVEL.DESERT_TRAIN:
 				// cut scene
-				this.engine.view.hud.addChild(new GAME.Message("GREAT JOB!"));
+				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.DONE));
 				this.engine.view.backgroundManager.train.ranger2.alpha = 1;
 				this.engine.view.backgroundManager.train.speed = 0;
 

@@ -2,7 +2,6 @@
 //  Game Engine Class
 //--------------------------------------------------------------------------
 GAME.Engine = function() {
-	console.log("Engine");
 
     GAME.level = GAME_LEVEL.START;
     GAME.tutorial = 0;
@@ -15,9 +14,7 @@ GAME.Engine = function() {
 	this.foregroundManager = new GAME.ForegroundManager(this);
 	this.collisionManager = new GAME.CollisionManager(this);
     this.sectionManager = new GAME.SectionManager(this);
-    this.soundManager = new GAME.SoundManager();
-    // testing
-    //this.soundManager.mute();
+    this.soundManager = new GAME.SoundManager();   
 
     this.view.playerHolder.addChild(this.tonto.view);
     this.view.playerHolder.addChild(this.player.view);
@@ -27,9 +24,12 @@ GAME.Engine = function() {
     this.titleScreen = new GAME.Title(this);
 
     this.view.screens.addChild(this.titleScreen);
-    //this.view.screens.addChild(this.gamecompleteScreen);
+    //this.view.screens.addChild(this.gameoverScreen);
 
+    // testing
+    //GAME.seenTutorial = 1;
     //this.reset();
+    //this.soundManager.mute();
 
     this.soundManager.playMusic("intro-music");
 
@@ -121,4 +121,4 @@ GAME.Engine.prototype.onTouch = function() {
         }
     }
 	
-};
+}

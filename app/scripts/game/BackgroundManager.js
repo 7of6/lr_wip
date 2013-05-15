@@ -2,7 +2,7 @@
 //  Background Manager Class
 //--------------------------------------------------------------------------
 GAME.BackgroundManager = function(engineRef){
-	console.log("BackgroundManager");
+
 	PIXI.DisplayObjectContainer.call(this);
 
     this.engine = engineRef;

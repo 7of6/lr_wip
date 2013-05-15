@@ -6,17 +6,17 @@ GAME.Tutorial = function(engineRef){
 
 	this.tutorialIndex = 0;
 	this.tutorialCopy = [
-		"Silver is the Lone Ranger's trusty steed,\nalways there to help save the day...",
-		"Your mission is to collect the Lone Ranger\nat the Indian Camp, then race through town\nand help him stop the runaway train...",
-		"Press 'Space', click the mouse or touch\nthe screen to jump",
-		"Hitting small obstacles will slow you\ndown. Hitting large obstacles will end\nthe game. Good luck!"
+		GAME.LOCALISED.TUTORIAL_1,
+		GAME.LOCALISED.TUTORIAL_2,
+		GAME.LOCALISED.TUTORIAL_3,
+		GAME.LOCALISED.TUTORIAL_4		
 	];
 
 	this.bgTexture = PIXI.Texture.fromFrame("intro_panel.png");
 	var bg = new PIXI.Sprite(this.bgTexture);
 	this.addChild(bg);
 
-	var titleText = new PIXI.Text("HOW TO PLAY", {font:"33px InGameFont", fill:"#ffffff", stroke: "#666666", strokeThickness: 4});
+	var titleText = new PIXI.Text(GAME.LOCALISED.TUTORIAL_TITLE, {font:"33px InGameFont", fill:"#ffffff", stroke: "#666666", strokeThickness: 4});
 	titleText.position.x = Math.round((this.bgTexture.width - titleText.width)/ 2);
 	titleText.position.y = 10;
 	this.addChild(titleText);
@@ -26,7 +26,7 @@ GAME.Tutorial = function(engineRef){
 	this.instructionText.position.y = 60;
 	this.addChild(this.instructionText);
 
-	this.continueText = new PIXI.Text("Click to continue", {font:"bold italic 20px Arial", fill:"#000000"});
+	this.continueText = new PIXI.Text(GAME.LOCALISED.CONTINUE, {font:"bold italic 20px Arial", fill:"#000000"});
 	this.continueText.position.x = Math.round((this.bgTexture.width - this.continueText.width) - 40);
 	this.continueText.position.y = 160;
 	this.addChild(this.continueText);
@@ -66,7 +66,7 @@ GAME.Tutorial.prototype.swapToNext = function(){
 
 	} else {
 
-		this.engine.view.hud.addChild(new GAME.Message("3, 2, 1, GO!"));
+		this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.GO));
 		this.engine.sectionManager.setMilestones();
 		this.engine.player.cutScene = 0;
 		GAME.tutorial = 0;

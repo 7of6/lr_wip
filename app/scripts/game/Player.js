@@ -2,8 +2,7 @@
 //  Player Class
 //--------------------------------------------------------------------------
 GAME.Player = function(engineRef){
-	console.log("Player");
-
+	
 	this.engine = engineRef;
 
 	this.position = new PIXI.Point;
@@ -135,7 +134,6 @@ GAME.Player.prototype.hitWall = function() {
 	this.view.animationSpeed = 0.4;
 	this.view.loop = false;
 	this.view.onComplete = function(){
-		console.log("done");
 		self.view.onComplete = null;
 		self.engine.onGameOver();
 	}

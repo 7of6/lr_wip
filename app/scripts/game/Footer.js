@@ -13,9 +13,10 @@ GAME.Footer = function(){
 
     // site button
     var siteButton = new PIXI.DisplayObjectContainer();
-    siteButton.position.x = 60;
-    siteButton.position.y = 21;
-    var siteText = new PIXI.Text("WEBSITE", {font: "26px InGameFont", fill: "#000000", align: "left"});
+    siteButton.position.x = 130;
+    siteButton.position.y = 25;
+    var siteText = new PIXI.Text(GAME.LOCALISED.WEBSITE, {font: "20px InGameFont", fill: "#000000"});
+    siteText.anchor.x = 1;
     siteButton.addChild(siteText);
 
     this.addChild(siteButton);
@@ -26,8 +27,8 @@ GAME.Footer = function(){
     // trailer button
     var trailerButton = new PIXI.DisplayObjectContainer();
     trailerButton.position.x = 676;
-    trailerButton.position.y = 22;
-    var trailerText = new PIXI.Text("TRAILER", {font: "26px InGameFont", fill: "#000000", align: "left"});
+    trailerButton.position.y = 25;
+    var trailerText = new PIXI.Text(GAME.LOCALISED.TRAILER, {font: "20px InGameFont", fill: "#000000"});
     trailerButton.addChild(trailerText);
 
     this.addChild(trailerButton);
@@ -36,9 +37,9 @@ GAME.Footer = function(){
     trailerButton.mousedown = trailerButton.touchstart = this.handleTrailer;
 
     // in cinemas text
-    var cinemaText = new PIXI.Text("IN CINEMAS\nSOON", {font: "italic 14px Arial", fill: "#ffffff", align: "center"});
-    cinemaText.position.x = 230;
-    cinemaText.position.y = 20;
+    var cinemaText = new PIXI.Text(GAME.LOCALISED.CTA, {font: "italic 14px Arial", fill: "#ffffff", align: "center"});
+    cinemaText.position.x = 380;
+    cinemaText.position.y = 25;
     this.addChild(cinemaText);
 
     // social buttons
@@ -58,26 +59,31 @@ GAME.Footer = function(){
     twitter.mousedown = twitter.touchstart = this.handleTwitter;
     this.addChild(twitter);
 
+    // copyright
+    var copyright = new PIXI.Text(GAME.LOCALISED.COPYRIGHT, {font: "italic 9px Arial", fill: "#87878d"});
+    copyright.anchor.x = 1;
+    copyright.position.x = GAME.width - 8;
+    copyright.position.y = 62;
+    this.addChild(copyright);
+
+
 }
 
 GAME.Footer.constructor = GAME.Footer;
 GAME.Footer.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 
 GAME.Footer.prototype.handleFacebook = function(data){
-    console.log("facebook click");
+    window.open(GAME.LOCALISED.FACEBOOK_LINK, "_blank");
 }
 
 GAME.Footer.prototype.handleTwitter = function(data){
-    console.log("twitter click");
+    window.open(GAME.LOCALISED.TWITTER_LINK, "_blank");
 }
 
 GAME.Footer.prototype.handleSite = function(data){
-    console.log("site click");
+    window.open(GAME.LOCALISED.WEBSITE_LINK, "_blank");
 }
 
 GAME.Footer.prototype.handleTrailer = function(data){
-    console.log("trailer click");
-
     GAME.openTrailer();
-
 }
