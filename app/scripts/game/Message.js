@@ -33,6 +33,9 @@ GAME.Message = function(message){
 	this.bg.play();
 	this.addChild(this.bg);
 
+	this.messageText.alpha = 0;
+	this.addChild(this.messageText);
+
 }
 GAME.Message.constructor = GAME.Message;
 GAME.Message.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
@@ -41,7 +44,7 @@ GAME.Message.prototype.showText = function(){
 
 	var self = this;
 
-	this.addChild(this.messageText);
+	this.messageText.alpha = 1;
 
 	TweenMax.to(this.messageText.scale, 0.2, {x:1, y:1, startAt:{x:2, y:2}});
 	TweenMax.to(this.messageText.scale, 0.1, {x:1, y:1, startAt:{x:0.9, y:0.9}, delay:0.2});

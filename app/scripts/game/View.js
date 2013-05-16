@@ -14,7 +14,7 @@ GAME.View = function(engineRef) {
 
     // hud
     this.hud = new PIXI.DisplayObjectContainer;
-    this.progressbar = new GAME.ProgressBar();
+    this.progressbar = new GAME.ProgressBar(this.engine);
     this.hud.addChild(this.progressbar);
     this.tutorial = new GAME.Tutorial(this.engine);
 
@@ -77,10 +77,11 @@ GAME.View.constructor = GAME.View;
 
 GAME.View.prototype.update = function() {
 
-    this.renderer.render(this.stage);
-    if (!GAME.gameover){
-        this.progressbar.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
+    if (!GAME.gameover && !GAME.pause){
+        this.progressbar.update();
     }
+
+    this.renderer.render(this.stage);
 
 };
 

@@ -17,8 +17,6 @@ GAME.SectionManager.prototype.update = function(){
 	if (current_pos > GAME_MILESTONES[GAME.level]){
 		GAME.level ++;
 
-		console.log("Scene change", GAME.level);
-
 		switch (GAME.level){
 			case GAME_LEVEL.TUTORIAL:
 				if (!GAME.seenTutorial){

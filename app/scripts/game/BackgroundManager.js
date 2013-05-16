@@ -43,47 +43,51 @@ GAME.BackgroundManager.prototype = Object.create(PIXI.DisplayObjectContainer.pro
 //--------------------------------------------------------------------------
 GAME.BackgroundManager.prototype.updateTransform = function() {
 
-	this.scrollPosition = GAME.camera.x + this.scrollOffset;
-    this.distance.setPosition(this.scrollPosition);
+    if (!GAME.gameover){
 
-    // move everything in the backgrounds pool
-    for (var i=0; i<this.backgrounds.length;i++){
+    	this.scrollPosition = GAME.camera.x + this.scrollOffset;
+        this.distance.setPosition(this.scrollPosition);
 
-        obj = this.backgrounds[i];
+        // move everything in the backgrounds pool
+        for (var i=0; i<this.backgrounds.length;i++){
 
-        obj.position.x -= this.engine.player.speed.x * this.middistance.speed;
+            obj = this.backgrounds[i];
 
-        if (obj.position.x < 0 - obj.width){
-            this.backgroundFactory.backgroundPool.returnObject(obj);
-            this.backgrounds.splice(i, 1);
-            i--;
-            this.middistance.removeChild(obj);
-        }
+            obj.position.x -= this.engine.player.speed.x * this.middistance.speed;
 
-    }
-
-    // move the train
-    if (this.hasTrain){
-        this.train.position.x -= this.engine.player.speed.x * this.train.speed;
-
-        if (this.train.position.x <= this.engine.player.view.position.x && !this.rangerDroppedOff){
-
-            // drop off the ranger
-            this.engine.foregroundManager.dropOffRanger();
-            this.rangerDroppedOff = true;
+            if (obj.position.x < 0 - obj.width){
+                this.backgroundFactory.backgroundPool.returnObject(obj);
+                this.backgrounds.splice(i, 1);
+                i--;
+                this.middistance.removeChild(obj);
+            }
 
         }
 
-    }
+        // move the train
+        if (this.hasTrain){
+            this.train.position.x -= this.engine.player.speed.x * this.train.speed;
 
-    // randomly add a background to the middistance
-    this.spawnCount += this.engine.player.speed.x * this.middistance.speed;
+            if (this.train.position.x <= this.engine.player.view.position.x && !this.rangerDroppedOff){
 
-    if (this.hasMiddistance){
-        this.nextbg < this.spawnCount && (this.spawnCount = 0, this.addBackground(GAME.width + 40, this.FLOOR_Y));
+                // drop off the ranger
+                this.engine.foregroundManager.dropOffRanger();
+                this.rangerDroppedOff = true;
+
+            }
+
+        }
+
+        // randomly add a background to the middistance
+        this.spawnCount += this.engine.player.speed.x * this.middistance.speed;
+
+        if (this.hasMiddistance){
+            this.nextbg < this.spawnCount && (this.spawnCount = 0, this.addBackground(GAME.width + 40, this.FLOOR_Y));
+        }
+
     }
     
-    PIXI.DisplayObjectContainer.prototype.updateTransform.call(this)
+    PIXI.DisplayObjectContainer.prototype.updateTransform.call(this);
 };
 
 GAME.BackgroundManager.prototype.addBackground = function(x,y) {

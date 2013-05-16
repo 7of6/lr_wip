@@ -1,13 +1,16 @@
 //--------------------------------------------------------------------------
 //  Progress Bar Class
 //--------------------------------------------------------------------------
-GAME.ProgressBar = function(){
+GAME.ProgressBar = function(engineRef){
 	PIXI.DisplayObjectContainer.call(this);
 
+	this.engine = engineRef;
+
 	this.position.y = -100;
-	this.BULLET_START = 110;
+	this.BULLET_START = 4;
 	this.BAR_MAX = 285;
 	this.time = 0;
+	this.last_time = 0;
 
 	var barContainer = PIXI.Texture.fromFrame("progress_bar.png");
 
@@ -16,7 +19,7 @@ GAME.ProgressBar = function(){
 	this.position.x = Math.round((GAME.width - this.width) / 2);
 
 	// text 
-	this.distanceText = new PIXI.Text(GAME.LOCALISED.DISTANCE + ":", {font: "25px InGameFont", fill: "#f26622", align: "left", stroke: "#333333", strokeThickness: 4});
+	this.distanceText = new PIXI.Text(GAME.LOCALISED.DISTANCE + ":", {font: "25px InGameFont", fill: "#f26622", stroke: "#333333", strokeThickness: 4});
 	this.distanceText.anchor.x = 0;
 	this.distanceText.anchor.y = 0;
 	this.distanceText.position.x = 15;
@@ -24,7 +27,7 @@ GAME.ProgressBar = function(){
 
 	this.addChild(this.distanceText);
 
-	this.timeText = new PIXI.Text(GAME.LOCALISED.TIME + ":", {font: "25px InGameFont", fill: "#f26622", align: "left", stroke: "#333333", strokeThickness: 4});
+	this.timeText = new PIXI.Text(GAME.LOCALISED.TIME + ":", {font: "25px InGameFont", fill: "#f26622", stroke: "#333333", strokeThickness: 4});
 	this.timeText.anchor.x = 0;
 	this.timeText.anchor.y = 0;
 	this.timeText.position.x = 440;
@@ -32,7 +35,7 @@ GAME.ProgressBar = function(){
 
 	this.addChild(this.timeText);
 
-	this.timeDisplay = new PIXI.Text("0:00", {font: "40px InGameFont", fill: "#ffffff", align: "left", stroke: "#333333", strokeThickness: 4});
+	this.timeDisplay = new PIXI.Text("0:00", {font: "40px InGameFont", fill: "#ffffff", stroke: "#333333", strokeThickness: 4});
 	this.timeDisplay.anchor.x = 0;
 	this.timeDisplay.anchor.y = 0;
 	this.timeDisplay.position.x = 490;
@@ -41,26 +44,30 @@ GAME.ProgressBar = function(){
 	this.addChild(this.timeDisplay);
 
 	// progress
+
+	var progressContainer = new PIXI.DisplayObjectContainer;
+	progressContainer.position.x = 106;
+	progressContainer.position.y = 15;
+
+
 	var barLeft = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner_left.png"));
-	barLeft.position.x = 106;
-	barLeft.position.y = 27;
-	this.addChild(barLeft);
+	barLeft.position.x = 0;
+	barLeft.position.y = 12;
+	progressContainer.addChild(barLeft);
 
 	this.bar = new PIXI.Sprite(PIXI.Texture.fromFrame("bar_inner.png"));
-	this.bar.position.x = 108;
-	this.bar.position.y = 26;
+	this.bar.position.x = 2;
+	this.bar.position.y = 11;
 	this.bar.width = 1;
-	this.addChild(this.bar);
+	progressContainer.addChild(this.bar);
 
 
 	this.bullet = new PIXI.Sprite(PIXI.Texture.fromFrame("silver_bullet.png"));
-	this.bullet.position.y = 15;
+	this.bullet.position.y = 0;
 	this.bullet.position.x = this.BULLET_START;
-	this.addChild(this.bullet);
+	progressContainer.addChild(this.bullet);
 
-	this.startTime();
-
-	this.setProgress(0);
+	this.addChild(progressContainer);
 
 }
 GAME.ProgressBar.constructor = GAME.ProgressBar;
@@ -69,6 +76,17 @@ GAME.ProgressBar.prototype = Object.create(PIXI.DisplayObjectContainer.prototype
 //--------------------------------------------------------------------------
 //  API
 //--------------------------------------------------------------------------
+GAME.ProgressBar.prototype.update = function(){
+	
+	this.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
+
+	if (this.last_time != this.time){
+		this.timeDisplay.setText(Math2.formatTime(this.time));
+		this.last_time = this.time;
+	}
+
+}
+
 GAME.ProgressBar.prototype.reset = function(){
 	this.time = 0;
 	this.timeDisplay.setText("0:00");
@@ -88,37 +106,21 @@ GAME.ProgressBar.prototype.setProgress = function(perc){
 
 	var perc = (perc > 1) ? 1 : perc;
 
-	this.bar.width = this.BAR_MAX * perc;
-	this.bullet.position.x = this.BAR_MAX * perc + this.BULLET_START - this.bullet.width;
+	this.bar.width = Math.round(this.BAR_MAX * perc);
+	this.bullet.position.x = Math.round(this.BAR_MAX * perc + this.BULLET_START - this.bullet.width);
 
 }
 
 GAME.ProgressBar.prototype.startTime = function(){
 
-	var minutes = 0,
-	seconds = 0,
-    elapsed = "0:00",
-    self = this;
+	var self = this;
     
 	this.timer = window.setInterval(function()
 	{
 
 		if (!GAME.pause && !GAME.gameover){
 
-			self.time += 100;
-		    elapsed = Math.floor(self.time / 100);
-
-		    if (elapsed >= 60){
-		    	minutes = Math.floor(elapsed / 60);
-		    }
-
-		    seconds = elapsed - (60 * minutes);
-
-		    if (seconds < 10){
-		    	seconds = "0" + seconds;
-		    }
-		    
-		    self.timeDisplay.setText( minutes + ":" + seconds );
+			self.time += 100; 
 
 		}
 

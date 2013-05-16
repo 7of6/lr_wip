@@ -240,7 +240,7 @@
 	//--------------------------------------------------------------------------
 	function update() {
 
-		//stats.begin();
+		stats.begin();
 
 	    game.update();
 
@@ -248,7 +248,7 @@
 	        requestAnimFrame(update);
 	    }
 
-	    //stats.end();
+	    stats.end();
 
 	}
 
