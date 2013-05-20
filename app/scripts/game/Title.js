@@ -35,5 +35,8 @@ GAME.Title.constructor = GAME.Title;
 GAME.Title.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 
 GAME.Title.prototype.handlePlay = function(data){
+
     this.engine.reset();
+    ga('send', 'event', 'Game', 'Play', 'Title Screen');
+    
 }

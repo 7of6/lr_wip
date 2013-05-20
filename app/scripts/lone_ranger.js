@@ -22,11 +22,11 @@
 		"assets/sprites/carriage_reflections.json"
 	];
 	var audio_manifest = [
-		{src:"assets/audio/game_intro_coup_de_grace_v1.mp3", id:"intro-music"},
-		{src:"assets/audio/game_failed_black_mask_v1.mp3", id:"failed-music"},
-		{src:"assets/audio/gameplay_coup_de_grace_v1.mp3", id:"game-music"},
-		{src:"assets/audio/game_complete_black_mask_v1.mp3", id:"complete-music"},
-		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3", id:"gameover-sound"},
+		{src:"assets/audio/game_intro_coup_de_grace_v1.mp3|assets/audio/game_intro_coup_de_grace_v1.ogg", id:"intro-music"},
+		{src:"assets/audio/game_failed_black_mask_v1.mp3|assets/audio/game_failed_black_mask_v1.ogg", id:"failed-music"},
+		{src:"assets/audio/gameplay_coup_de_grace_v1.mp3|assets/audio/gameplay_coup_de_grace_v1.ogg", id:"game-music"},
+		{src:"assets/audio/game_complete_black_mask_v1.mp3|assets/audio/game_complete_black_mask_v1.ogg", id:"complete-music"},
+		{src:"assets/audio/game_over_impact_coup_de_grace_v1.mp3|assets/audio/game_over_impact_coup_de_grace_v1.ogg", id:"gameover-sound"},
 
 		// localised copy
 		{src:"assets/localisation/copy.json", id:"game-copy"}
@@ -56,6 +56,7 @@
 			$("#loader").css("display", "none");
 			$("#game-container").css("display", "none");
 			$("#no-canvas").css("display", "block");
+			$("#wrapper").addClass("no-canvas-bg");
 		}
 
 	}
@@ -63,29 +64,34 @@
 	function onResize(){
 
 		if (GAME.isMobile){
+
+			if (window.innerWidth > window.innerHeight){
 			
-			// resize canvas
-			var width = $(window).width();
-	    	var height = $(window).height();
-
-		    var ratio = height / 480;
+				// resize canvas
+				var width = window.innerWidth;//$(window).width();
+		    	var height = window.innerHeight;//$(window).height();
 
 
-		    if (game) {
-		        var view = game.view.renderer.view;
+			    var ratio = height / 480;
 
-		        view.style.height = 480 * ratio + "px"
 
-		        var newWidth = (width / ratio);
+			    if (game) {
+			        var view = game.view.renderer.view;
 
-		        view.style.width = width + "px"
+			        view.style.height = 480 * ratio + "px"
 
-		        game.view.resize(newWidth, 480);
-		   
-		    }
+			        var newWidth = (width / ratio);
 
-		    GAME.width = (width / ratio);
-		    GAME.height = 480;
+			        view.style.width = width + "px"
+
+			        game.view.resize(newWidth, 480);
+			   
+			    }
+
+			    GAME.width = (width / ratio);
+			    GAME.height = 480;
+
+			}
 		}
     
 	}
@@ -205,33 +211,52 @@
 
 	GAME.openTrailer = function(){
 
-		if (game){
+		if (!GAME.trailerOpen){
 
-			if (!game.soundManager.isMute){
-				GAME.wasUnMute = 1;
-				game.soundManager.mute();
+			GAME.trailerOpen = 1;
+
+			if (game){
+
+				if (!game.soundManager.isMute){
+					GAME.wasUnMute = 1;
+					game.soundManager.mute();
+				}
+				
+			}
+
+			GAME.pause = 1;
+
+			if (GAME.isMobile){
+				$("video")[0].width = window.innerWidth;
+				$("video")[0].height = window.innerHeight - 200;
 			}
 			
+			$("video")[0].play();
+			$("#trailer-container").css("display", "block");
+
 		}
 
-		GAME.pause = 1;
-		$("video")[0].play();
-		$("#trailer-container").css("display", "block");
 	}
 
 	GAME.closeTrailer = function(){
 
-		GAME.pause = 0;
-		$("video")[0].pause();
-		$("#trailer-container").css("display", "none");
+		if (GAME.trailerOpen){
 
-		if (game){
+			GAME.trailerOpen = 0;
 
-			if (GAME.wasUnMute){
-				game.soundManager.unmute();
-				GAME.wasUnMute = 0;
+			GAME.pause = 0;
+			$("video")[0].pause();
+			$("#trailer-container").css("display", "none");
+
+			if (game){
+
+				if (GAME.wasUnMute){
+					game.soundManager.unmute();
+					GAME.wasUnMute = 0;
+				}
+			
 			}
-		
+
 		}
 	}
 
@@ -240,15 +265,15 @@
 	//--------------------------------------------------------------------------
 	function update() {
 
-		stats.begin();
+		//stats.begin();
 
-	    game.update();
+		game.update();
 
 	    if (!GAME.LO_MODE) {
 	        requestAnimFrame(update);
 	    }
 
-	    stats.end();
+	    //stats.end();
 
 	}
 

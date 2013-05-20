@@ -100,16 +100,20 @@ GAME.GameOver.prototype.setProgress = function(perc){
 
 GAME.GameOver.prototype.handleFacebook = function(data){
     window.open(GAME.LOCALISED.FACEBOOK_SHARE, "_blank");
+    ga('send', 'event', 'Game', 'Facebook Share', 'Game Over');
 }
 
 GAME.GameOver.prototype.handleTwitter = function(data){
     window.open(GAME.LOCALISED.TWITTER_SHARE, "_blank");
+    ga('send', 'event', 'Game', 'Twitter Share', 'Game Over');
 }
 
 GAME.GameOver.prototype.handlePlay = function(data){
     this.engine.reset();
+    ga('send', 'event', 'Game', 'Play', 'Game Over');
 }
 
 GAME.GameOver.prototype.handleTrailer = function(data){
     GAME.openTrailer();
+    ga('send', 'event', 'Game', 'Trailer', 'Game Over');
 }

@@ -39,8 +39,16 @@ GAME.View = function(engineRef) {
     this.screens = new PIXI.DisplayObjectContainer;
 
     this.whiteFill = new PIXI.Sprite(PIXI.Texture.fromFrame("white_block.png"));
-    this.whiteFill.width = GAME.width;
-    this.whiteFill.height = GAME.height;    
+    this.whiteFill.anchor.x = 0.25;
+    this.whiteFill.anchor.y = 0.25;
+    this.whiteFill.width = GAME.width * 2;
+    this.whiteFill.height = GAME.height * 2;   
+
+    this.blackFill = new PIXI.Sprite(PIXI.Texture.fromFrame("black_block.png"));
+    this.blackFill.anchor.x = 0.25;
+    this.blackFill.anchor.y = 0.25;
+    this.blackFill.width = GAME.width * 2;
+    this.blackFill.height = GAME.height * 2;   
 
     // footer
     this.footer = new GAME.Footer(engineRef);
@@ -71,6 +79,8 @@ GAME.View = function(engineRef) {
 
 	this.gameBG.addChild(this.backgroundManager);
 
+    this.fade.addChild(this.blackFill);
+
 }
 GAME.View.constructor = GAME.View;
 
@@ -92,6 +102,7 @@ GAME.View.prototype.reset = function(){
     this.playerHolder.position.y = 0;
     this.backgroundManager.middistance.position.y = 0;
     this.platformView = false;
+    this.fade.removeChild(this.blackFill);
     
 }
 
@@ -104,12 +115,7 @@ GAME.View.prototype.resize = function(width, height) {
     this.footer.position.x = (width - 800) / 2;
     this.screens.position.x = (width - 800) / 2;
     this.soundButton.position.x = width - 40;
-    this.tutorial.resize();
-
-    this.whiteFill.position.x = 0;
-    this.whiteFill.width = $(window).width();
-    this.whiteFill.height = height;
- 
+    this.tutorial.resize(); 
 };
 
 GAME.View.prototype.soundToggle = function(){

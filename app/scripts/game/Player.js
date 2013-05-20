@@ -82,7 +82,7 @@ GAME.Player.prototype.jump = function() {
 		this.view.stop();
 		this.view.currentFrame = 0;
 		this.view.textures = this.jumpingFrames;
-		this.view.animationSpeed = 0.5;
+		this.view.animationSpeed = 0.45;
 		this.view.loop = false;
 		this.view.play();
 

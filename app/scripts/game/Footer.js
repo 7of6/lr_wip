@@ -74,16 +74,20 @@ GAME.Footer.prototype = Object.create(PIXI.DisplayObjectContainer.prototype);
 
 GAME.Footer.prototype.handleFacebook = function(data){
     window.open(GAME.LOCALISED.FACEBOOK_LINK, "_blank");
+    ga('send', 'event', 'Game', 'Facebook', 'Footer');
 }
 
 GAME.Footer.prototype.handleTwitter = function(data){
     window.open(GAME.LOCALISED.TWITTER_LINK, "_blank");
+    ga('send', 'event', 'Game', 'Twitter', 'Footer');
 }
 
 GAME.Footer.prototype.handleSite = function(data){
     window.open(GAME.LOCALISED.WEBSITE_LINK, "_blank");
+    ga('send', 'event', 'Game', 'Official Site', 'Footer');
 }
 
 GAME.Footer.prototype.handleTrailer = function(data){
     GAME.openTrailer();
+    ga('send', 'event', 'Game', 'Trailer', 'Footer');
 }

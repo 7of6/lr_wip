@@ -1299,7 +1299,8 @@ PIXI.InteractionManager.prototype.setTarget = function(target)
 		this.target = target;
 		target.view.addEventListener('mousemove',  this.onMouseMove.bind(this), true);
 		target.view.addEventListener('mousedown',  this.onMouseDown.bind(this), true);
-	 	document.body.addEventListener('mouseup',  this.onMouseUp.bind(this), true);
+		target.view.addEventListener('mouseup',  this.onMouseUp.bind(this), true);
+	 	//document.body.addEventListener('mouseup',  this.onMouseUp.bind(this), true);
 	 	target.view.addEventListener('mouseout',   this.onMouseUp.bind(this), true);
 		
 		// aint no multi touch just yet!

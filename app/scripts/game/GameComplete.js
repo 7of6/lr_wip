@@ -74,7 +74,7 @@ GAME.GameComplete = function(engineRef){
     this.playButton = new PIXI.DisplayObjectContainer();
     this.playButton.position.x = 572;
     this.playButton.position.y = 298;
-    var playText = new PIXI.Text(GAME.LOCALISED.PLAY, {font: "40px InGameFont", fill: "#ffffff"});
+    var playText = new PIXI.Text(GAME.LOCALISED.REPLAY, {font: "40px InGameFont", fill: "#ffffff"});
 
     this.playButton.addChild(playText);
 
@@ -99,16 +99,20 @@ GAME.GameComplete.prototype.setTime = function(time){
 
 GAME.GameComplete.prototype.handleFacebook = function(data){
     window.open(GAME.LOCALISED.FACEBOOK_SHARE, "_blank");
+    ga('send', 'event', 'Game', 'Facebook Share', 'Game Complete');
 }
 
 GAME.GameComplete.prototype.handleTwitter = function(data){
     window.open(GAME.LOCALISED.TWITTER_SHARE, "_blank");
+    ga('send', 'event', 'Game', 'Twitter Share', 'Game Complete');
 }
 
 GAME.GameComplete.prototype.handlePlay = function(data){
     this.engine.reset();
+    ga('send', 'event', 'Game', 'Play', 'Game Complete');
 }
 
 GAME.GameComplete.prototype.handleTrailer = function(data){
     GAME.openTrailer();
+    ga('send', 'event', 'Game', 'Trailer', 'Game Complete');
 }

@@ -24,12 +24,12 @@ GAME.Engine = function() {
     this.titleScreen = new GAME.Title(this);
 
     this.view.screens.addChild(this.titleScreen);
-    //this.view.screens.addChild(this.gameoverScreen);
-
+    
     // testing
     //GAME.seenTutorial = 1;
     //this.reset();
     //this.soundManager.mute();
+    //this.view.screens.addChild(this.gamecompleteScreen);
 
     this.soundManager.playMusic("intro-music");
 
@@ -91,6 +91,8 @@ GAME.Engine.prototype.onGameOver = function(){
     GAME.gameover = 1;
     this.view.progressbar.hide();
 
+    this.view.fade.addChild(this.view.blackFill);
+
     this.view.screens.addChild(this.gameoverScreen);
     this.soundManager.playMusic("failed-music");
 
@@ -106,8 +108,12 @@ GAME.Engine.prototype.onGameComplete = function(){
     GAME.gameover = 1;
     this.view.progressbar.hide();
 
+    this.view.fade.addChild(this.view.blackFill);
+
     this.view.screens.addChild(this.gamecompleteScreen);
     this.soundManager.playMusic("complete-music");
+
+    ga('send', 'event', 'Game', 'Complete');
 
 }
 

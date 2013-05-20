@@ -26,7 +26,16 @@ GAME.Tutorial = function(engineRef){
 	this.instructionText.position.y = 60;
 	this.addChild(this.instructionText);
 
-	this.continueText = new PIXI.Text(GAME.LOCALISED.CONTINUE, {font:"bold italic 20px Arial", fill:"#000000"});
+
+	var continueCopy;
+
+	if (GAME.isMobile){
+		continueCopy = GAME.LOCALISED.CONTINUE_MOBILE;
+	} else {
+		continueCopy = GAME.LOCALISED.CONTINUE;
+	}
+
+	this.continueText = new PIXI.Text(continueCopy, {font:"bold italic 20px Arial", fill:"#000000"});
 	this.continueText.position.x = Math.round((this.bgTexture.width - this.continueText.width) - 40);
 	this.continueText.position.y = 160;
 	this.addChild(this.continueText);
