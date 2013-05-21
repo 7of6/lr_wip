@@ -2,7 +2,7 @@
 
 "crates.png":
 {
-	"frame": {"x":2,"y":585,"w":481,"h":76},
+	"frame": {"x":505,"y":580,"w":481,"h":76},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":481,"h":76},
@@ -26,7 +26,7 @@
 },
 "house2.png":
 {
-	"frame": {"x":2,"y":663,"w":356,"h":248},
+	"frame": {"x":2,"y":658,"w":356,"h":248},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":356,"h":248},
@@ -34,7 +34,7 @@
 },
 "house3.png":
 {
-	"frame": {"x":360,"y":663,"w":353,"h":248},
+	"frame": {"x":360,"y":658,"w":353,"h":248},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":353,"h":248},
@@ -42,11 +42,11 @@
 },
 "house4.png":
 {
-	"frame": {"x":608,"y":291,"w":402,"h":302},
+	"frame": {"x":608,"y":291,"w":402,"h":287},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":302},
-	"sourceSize": {"w":402,"h":302}
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":287},
+	"sourceSize": {"w":402,"h":287}
 },
 "long_house.png":
 {
@@ -58,7 +58,7 @@
 },
 "wagon.png":
 {
-	"frame": {"x":715,"y":595,"w":198,"h":110},
+	"frame": {"x":2,"y":908,"w":198,"h":110},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":198,"h":110},
@@ -71,6 +71,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1024,"h":1024},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:7971fb5f941c440fef1ff09dd0964b3e$"
+	"smartupdate": "$TexturePacker:SmartUpdate:99f7205a3e7df39333f3cd0fd23568bf$"
 }
 }

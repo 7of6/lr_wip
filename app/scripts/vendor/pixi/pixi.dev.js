@@ -927,10 +927,10 @@ PIXI.Text.prototype.updateText = function()
 		lineWidths[i] = lineWidth;
 		maxLineWidth = Math.max(maxLineWidth, lineWidth);
 	}
-	this.canvas.width = maxLineWidth + this.style.strokeThickness;
+	this.canvas.width = maxLineWidth + this.style.strokeThickness + 2;
 	
 	//calculate text height
-	var lineHeight = this.determineFontHeight("font: " + this.style.font  + ";") + this.style.strokeThickness;
+	var lineHeight = this.determineFontHeight("font: " + this.style.font  + ";") + this.style.strokeThickness - 4;
 	this.canvas.height = lineHeight * lines.length;
 
 	//set canvas text styles

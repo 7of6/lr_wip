@@ -73,7 +73,7 @@ GAME.ForegroundManager.prototype.initTrack = function(){
 		track.position.y = this.FLOOR_Y;
 		track.y = this.FLOOR_Y;
 
-		this.engine.view.gameFG.addChild(track);
+		this.engine.view.gameMG.addChild(track);
 		this.objectPools.track.push(track);
 
 		this.trackPos += track.width - 1;
@@ -234,7 +234,7 @@ GAME.ForegroundManager.prototype.update = function(){
 				this.floorFactory.trackPool.returnObject(obj);
 				this.objectPools.track.splice(i, 1);
 				i--;
-				this.engine.view.gameFG.removeChild(obj);
+				this.engine.view.gameMG.removeChild(obj);
 			}
 
 		}
@@ -246,7 +246,7 @@ GAME.ForegroundManager.prototype.update = function(){
 			track.position.x = Math.round(obj.position.x + obj.width);
 			track.x = this.trackPos;
 			track.position.y = this.FLOOR_Y;
-			this.engine.view.gameFG.addChild(track);
+			this.engine.view.gameMG.addChild(track);
 			this.objectPools.track.push(track);
 			this.trackPos += track.width - 1;
 		}

@@ -21,7 +21,7 @@ GAME.Player = function(engineRef){
     this.currentAnimSpeed = 0.3;
 
     this.gravity = 0.4;
-    this.acceleration = 0.05;
+    this.acceleration = 0.08;
     this.baseSpeed = 4;
     this.maxSpeed = 12;
     this.speed = new PIXI.Point(this.baseSpeed, 0);

@@ -7,7 +7,7 @@ GAME.PlatformFactory = function() {
 
 	this.townTextures = ["house1.png", "house2.png", "house3.png", "house4.png", "long_house.png"];
     this.canyonTextures = ["canyon_platform_small.png", "canyon_platform_medium.png", "canyon_platform_large.png"];
-    this.platformPool = new GAME.ObjectPool(GAME.Platform)
+    this.platformPool = new GAME.ObjectPool(GAME.Platform);
 };
 GAME.PlatformFactory.constructor = GAME.PlatformFactory;
 
@@ -24,6 +24,7 @@ GAME.PlatformFactory.prototype.setTextures = function(texture){
             GAME.platformTextures = this.canyonTextures;
         break;
     }   
+
 }
 
 GAME.PlatformFactory.prototype.getPlatform = function() {
@@ -115,7 +116,7 @@ GAME.Platform = function() {
             this.hitHeight = 195;
         break;
         case "house4.png":
-            this.hitHeight = 240;
+            this.hitHeight = 225;
         break;
         case "long_house.png":
             this.hitHeight = 183;

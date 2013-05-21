@@ -17,11 +17,14 @@ GAME.Message = function(message){
 		PIXI.Texture.fromFrame("brush_stroke.swf/0010")
 	]);
 
-	this.messageText = new PIXI.Text(message, {font:"40px InGameFont", fill:"#000000"});
+	this.messageText = new PIXI.Text(message, {font:"38px Anton", fill:"#000000"});
 	this.messageText.anchor.x = 0.5;
 	this.messageText.anchor.y = 0.5;
 	this.messageText.position.x = Math.round(GAME.width / 2);
-	this.messageText.position.y = Math.round(GAME.height / 2) - 15;	
+	this.messageText.position.y = Math.round(GAME.height / 2) - 18;	
+    if (GAME.isFireFox){
+        this.messageText.position.y += 13;
+    }
 
 	this.bg.animationSpeed = 0.5;
 	this.bg.anchor.x = 0.5;

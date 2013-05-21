@@ -19,27 +19,39 @@ GAME.ProgressBar = function(engineRef){
 	this.position.x = Math.round((GAME.width - this.width) / 2);
 
 	// text 
-	this.distanceText = new PIXI.Text(GAME.LOCALISED.DISTANCE + ":", {font: "25px InGameFont", fill: "#f26622", stroke: "#333333", strokeThickness: 4});
+	this.distanceText = new PIXI.Text(GAME.LOCALISED.DISTANCE + ":", {font: "20px Anton", fill: "#f26622", stroke: "#333333", strokeThickness: 4});
 	this.distanceText.anchor.x = 0;
 	this.distanceText.anchor.y = 0;
-	this.distanceText.position.x = 15;
-	this.distanceText.position.y = 15;
+	this.distanceText.position.x = 12;
+	this.distanceText.position.y = 17;
+
+	if (GAME.isFireFox){
+        this.distanceText.position.y += 7;
+    }
 
 	this.addChild(this.distanceText);
 
-	this.timeText = new PIXI.Text(GAME.LOCALISED.TIME + ":", {font: "25px InGameFont", fill: "#f26622", stroke: "#333333", strokeThickness: 4});
-	this.timeText.anchor.x = 0;
+	this.timeText = new PIXI.Text(GAME.LOCALISED.TIME + ":", {font: "20px Anton", fill: "#f26622", stroke: "#333333", strokeThickness: 4});
+	this.timeText.anchor.x = 1;
 	this.timeText.anchor.y = 0;
-	this.timeText.position.x = 440;
-	this.timeText.position.y = 15;
+	this.timeText.position.x = 470;
+	this.timeText.position.y = 17;
+
+	if (GAME.isFireFox){
+        this.timeText.position.y += 7;
+    }
 
 	this.addChild(this.timeText);
 
-	this.timeDisplay = new PIXI.Text("0:00", {font: "40px InGameFont", fill: "#ffffff", stroke: "#333333", strokeThickness: 4});
+	this.timeDisplay = new PIXI.Text("0:00", {font: "38px Anton", fill: "#ffffff", stroke: "#333333", strokeThickness: 4});
 	this.timeDisplay.anchor.x = 0;
 	this.timeDisplay.anchor.y = 0;
-	this.timeDisplay.position.x = 490;
-	this.timeDisplay.position.y = 5;
+	this.timeDisplay.position.x = 475;
+	this.timeDisplay.position.y = 4;
+
+	if (GAME.isFireFox){
+        this.timeDisplay.position.y += 13;
+    }
 
 	this.addChild(this.timeDisplay);
 

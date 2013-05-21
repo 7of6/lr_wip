@@ -15,10 +15,11 @@
 
 
 "TUTORIAL_TITLE"   :   "HOW TO PLAY",
-"TUTORIAL_1"       :   "Silver is the Lone Ranger's trusty steed,\nalways there to help save the day...",
+"TUTORIAL_1"       :   "Silver is the Lone Ranger's trusty steed, always\nthere to help save the day...",
 "TUTORIAL_2"       :   "Your mission is to collect the Lone Ranger\nat the Indian Camp, then race through town\nand help him stop the runaway train...",
-"TUTORIAL_3"       :   "Press 'Space', click the mouse or touch\nthe screen to jump",
-"TUTORIAL_4"       :   "Hitting small obstacles will slow you\ndown. Hitting large obstacles will end\nthe game. Good luck!",
+"TUTORIAL_3"       :   "Press 'Space' or click the mouse to jump...",
+"TUTORIAL_3_MOBILE":   "Tap the screen to jump...",
+"TUTORIAL_4"       :   "Hitting small obstacles will slow you down.\nHitting large obstacles will end the game.\nGood luck!",
 "CONTINUE"         :   "Press 'Space' to continue",
 "CONTINUE_MOBILE"  :   "Tap to continue",
 

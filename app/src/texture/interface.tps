@@ -150,22 +150,34 @@
             <filename>../images/interface/bar_inner.png</filename>
             <filename>../images/interface/progress_bar.png</filename>
             <filename>../images/interface/silver_bullet.png</filename>
-            <filename>../images/interface/facebook_button.png</filename>
             <filename>../images/interface/game_over_fail.jpg</filename>
             <filename>../images/interface/play_button.png</filename>
-            <filename>../images/interface/twitter_button.png</filename>
             <filename>../images/interface/footer.jpg</filename>
             <filename>../../../../../../../../Volumes/Tech_and_Creative_temp/WDSMP/The Lone Ranger/Hi Ho Silver game/05_Flash_assets/01_WIP/brush_stroke.swf</filename>
             <filename>../images/interface/title_screen.jpg</filename>
             <filename>../images/interface/sound_off.png</filename>
             <filename>../images/interface/sound_on.png</filename>
-            <filename>../images/interface/game_over_win.jpg</filename>
             <filename>../images/ranger/ranger_train.png</filename>
             <filename>../images/ranger/ranger_village.png</filename>
             <filename>../images/interface/black_block.png</filename>
             <filename>../images/interface/white_block.png</filename>
             <filename>../images/interface/intro_panel.png</filename>
             <filename>../images/interface/trailer_button.png</filename>
+            <filename>../images/interface/facebook_off.png</filename>
+            <filename>../images/interface/footer_trailer_off.png</filename>
+            <filename>../images/interface/footer_trailer_on.png</filename>
+            <filename>../images/interface/footer_website_off.png</filename>
+            <filename>../images/interface/footer_website_on.png</filename>
+            <filename>../images/interface/play_off.png</filename>
+            <filename>../images/interface/play_on.png</filename>
+            <filename>../images/interface/trailer_off.png</filename>
+            <filename>../images/interface/trailer_on.png</filename>
+            <filename>../images/interface/twitter_off.png</filename>
+            <filename>../images/interface/twitter_on.png</filename>
+            <filename>../images/interface/footer_trailer_icon.png</filename>
+            <filename>../images/interface/footer_website_icon.png</filename>
+            <filename>../images/interface/facebook_on.png</filename>
+            <filename>../images/interface/game_over_win.jpg</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

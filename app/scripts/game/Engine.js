@@ -16,7 +16,7 @@ GAME.Engine = function() {
     this.sectionManager = new GAME.SectionManager(this);
     this.soundManager = new GAME.SoundManager();   
 
-    this.view.playerHolder.addChild(this.tonto.view);
+    this.view.gameFG.addChild(this.tonto.view);
     this.view.playerHolder.addChild(this.player.view);
 
     this.gameoverScreen = new GAME.GameOver(this);

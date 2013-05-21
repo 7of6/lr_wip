@@ -33,6 +33,22 @@
 
 	];
 
+	WebFontConfig = {
+	    google: { families: [ 'Anton::latin', 'Titillium+Web:600italic,700italic:latin' ] },
+	    active: function(){ 
+	    	onFontsPreloaded();
+	    }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })();
+
 	//--------------------------------------------------------------------------
 	//  Window events
 	//--------------------------------------------------------------------------
@@ -49,6 +65,11 @@
 		gameContainer = document.getElementById("game-container");
 		GAME.width = 800;
 		GAME.height = 480;
+
+		var video = document.getElementById('video');
+		video.addEventListener('click',function(){
+		  video.play();
+		},false);
 
 		if (Modernizr.canvas){
 			preLoad();
@@ -91,6 +112,18 @@
 			    GAME.width = (width / ratio);
 			    GAME.height = 480;
 
+			} else {
+
+				GAME.width = 800;
+				GAME.height = 480;
+
+				if (game) {
+			        var view = game.view.renderer.view;
+			        view.style.height = 480 + "px"
+			        view.style.width = 800 + "px"
+			        game.view.resize(800, 480);
+			    }
+
 			}
 		}
     
@@ -128,12 +161,17 @@
 		checkLoaded();
 	}
 
+	function onFontsPreloaded(){
+		loaded++;
+		checkLoaded();
+	}
+
 
 	//--------------------------------------------------------------------------
 	//  Initialization
 	//--------------------------------------------------------------------------
 	function checkLoaded(){
-		if (loaded >= 2){
+		if (loaded >= 3){
 			initApp();
 		}
 	}
@@ -154,6 +192,10 @@
 			$("#content-container").addClass("mobile");
 			$("#trailer-container").addClass("mobile");
 
+		}
+
+		if ((/Firefox/i).test(navigator.userAgent)){
+			GAME.isFireFox = true;
 		}
 
 
@@ -226,12 +268,15 @@
 
 			GAME.pause = 1;
 
+			var video = document.getElementById('video');
+
 			if (GAME.isMobile){
 				$("video")[0].width = window.innerWidth;
 				$("video")[0].height = window.innerHeight - 200;
 			}
 			
-			$("video")[0].play();
+			//$("video")[0].play();
+			video.play();
 			$("#trailer-container").css("display", "block");
 
 		}

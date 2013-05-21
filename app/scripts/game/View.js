@@ -57,6 +57,8 @@ GAME.View = function(engineRef) {
 
     // non-interactive background items
     this.gameBG = new PIXI.DisplayObjectContainer;
+    // non-interactive midground items
+    this.gameMG = new PIXI.DisplayObjectContainer;
     // interactive foreground items
     this.gameFG = new PIXI.DisplayObjectContainer;
 
@@ -67,6 +69,7 @@ GAME.View = function(engineRef) {
     this.playerHolder = new PIXI.DisplayObjectContainer;
     
     this.container.addChild(this.gameBG);
+    this.container.addChild(this.gameMG);
     this.container.addChild(this.gameFG);
     this.container.addChild(this.playerHolder);
     this.container.addChild(this.fade);
@@ -148,6 +151,7 @@ GAME.View.prototype.toPlatformView = function(){
     this.platformView = true;
     // move the view up for rooftops
     TweenMax.to(this.gameFG.position, 1, {y:150, delay:0});
+    TweenMax.to(this.gameMG.position, 1, {y:150, delay:0});
     TweenMax.to(this.playerHolder.position, 1, {y:150, delay:0});
     TweenMax.to(this.backgroundManager.middistance.position, 1, {y:150, delay:0});
     TweenMax.to(this.backgroundManager.train.position, 1, {y:150 + 171, delay:0});
@@ -159,6 +163,7 @@ GAME.View.prototype.toNormalView = function(){
     this.platformView = false;
     // move the view back down to floor level
     TweenMax.to(this.gameFG.position, 1, {y:0, delay:0});
+    TweenMax.to(this.gameMG.position, 1, {y:0, delay:0});
     TweenMax.to(this.playerHolder.position, 1, {y:0, delay:0});
     TweenMax.to(this.backgroundManager.middistance.position, 1, {y:0, delay:0});
     TweenMax.to(this.backgroundManager.train.position, 1, {y:171, delay:0});
