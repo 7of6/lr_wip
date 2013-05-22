@@ -90,7 +90,7 @@ GAME.ProgressBar.prototype = Object.create(PIXI.DisplayObjectContainer.prototype
 //--------------------------------------------------------------------------
 GAME.ProgressBar.prototype.update = function(){
 	
-	this.setProgress((this.engine.player.position.x / 10) / GAME.GOAL_DISTANCE);
+	this.setProgress(((this.engine.player.position.x / 10)  - GAME_MILESTONES[1]) / GAME.GOAL_DISTANCE);
 
 	if (this.last_time != this.time){
 		this.timeDisplay.setText(Math2.formatTime(this.time));
@@ -117,6 +117,7 @@ GAME.ProgressBar.prototype.hide = function(){
 GAME.ProgressBar.prototype.setProgress = function(perc){
 
 	var perc = (perc > 1) ? 1 : perc;
+	perc = (perc < 0) ? 0 : perc;
 
 	this.bar.width = Math.round(this.BAR_MAX * perc);
 	this.bullet.position.x = Math.round(this.BAR_MAX * perc + this.BULLET_START - this.bullet.width);

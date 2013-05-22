@@ -141,13 +141,15 @@ GAME.ForegroundManager.prototype.update = function(){
 
 		if (this.hasFloorGaps == 1){
 
-			// add bridge struts
-			var bridge = this.floorFactory.getBridge();
-			bridge.position.x = Math.round(floor.position.x + floor.width - 1);
-			bridge.x = this.floorPos - 20;
-			bridge.position.y = this.FLOOR_Y;
-			this.engine.view.gameFG.addChild(bridge);
-			this.objectPools.floor.push(bridge);
+			if (this.hasTrack){
+				// add bridge struts
+				var bridge = this.floorFactory.getBridge();
+				bridge.position.x = Math.round(floor.position.x + floor.width - 1);
+				bridge.x = this.floorPos - 20;
+				bridge.position.y = this.FLOOR_Y;
+				this.engine.view.gameFG.addChild(bridge);
+				this.objectPools.floor.push(bridge);
+			}
 
 			// add cap right
 			cap = this.floorFactory.getFloorCap("right");
@@ -157,14 +159,65 @@ GAME.ForegroundManager.prototype.update = function(){
 			this.engine.view.gameFG.addChild(cap);
 			this.objectPools.floor.push(cap);
 			// declare gap
-			this.floorPos += Math2.randomInt(250, this.FLOOR_GAP_WIDTH);
+			if (this.hasTrack){
+				this.floorPos += Math2.randomInt(250, this.FLOOR_GAP_WIDTH);
+			}else{
+				this.floorPos += Math2.randomInt(200, this.FLOOR_GAP_WIDTH - 100);
+			}
 			this.gapAdded = 1;
 		}
 
 		// add obstacles to floor if we don't have platforms
 		if (!this.hasPlatforms){
 
-			for (var i=0; i<Math2.randomInt(0,this.obstacleMax); i++){
+			var obstaclesAdded = 0;
+
+			if (this.obstacleMax == 2){
+
+				// add either side of middle
+				if (Math2.randomInt(0,1)==0){
+
+					var randomOffset = Math2.randomInt(150, 548);
+					this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, false);
+
+					obstaclesAdded ++;
+
+				}
+
+				if (Math2.randomInt(0,1)==0){
+
+					var randomOffset = Math2.randomInt(698, 1097);
+					this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, false);
+
+					obstaclesAdded ++;
+
+				}
+
+
+
+			} else if (this.obstacleMax == 1) {
+
+				// add in middle
+				if (Math2.randomInt(0,1)==0){
+
+					var randomOffset = Math2.randomInt(150, 1097);
+					this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, false);
+
+					obstaclesAdded ++;
+
+				}
+
+			}
+
+			if (this.hasLargeObjects && obstaclesAdded == 0){
+				if (Math2.randomInt(0,2)==0){
+					var randomOffset = Math2.randomInt(150, 1097);
+					this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, true);
+				}
+			}
+
+
+			/*for (var i=0; i<Math2.randomInt(0,this.obstacleMax); i++){
 
 				var randomOffset = Math2.randomInt(100, floor.width - 150);
 				this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, false);
@@ -176,7 +229,7 @@ GAME.ForegroundManager.prototype.update = function(){
 					var randomOffset = Math2.randomInt(100, floor.width - 150);
 					this.addObstacle(floor.position.x + randomOffset, floor.x + randomOffset, this.FLOOR_Y + 5, true);
 				}
-			}
+			}*/
 
 		}
 
@@ -395,7 +448,7 @@ GAME.ForegroundManager.prototype.reset = function() {
 
     for (var i = 0; i < this.objectPools.track.length; i++) {
         var obj = this.objectPools.track[i];
-        this.engine.view.gameFG.removeChild(obj);
+        this.engine.view.gameMG.removeChild(obj);
     }
     this.objectPools.track = [];
 

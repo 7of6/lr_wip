@@ -209,15 +209,15 @@
 	        requestAnimFrame(update);
 	    }
 
-	    $(game.view.renderer.view).mousedown(function(event) {
+	    /*$(game.view.renderer.view).mousedown(function(event) {
 	        event.preventDefault();
 	        onTouch();
-	    });
+	    });*/
 
 	    $(document).keydown(function(event) {
             if (event.keyCode == 32) {
                 event.preventDefault()
-            	onTouch();
+            	GAME.onTouch();
            	}
         });
 
@@ -235,13 +235,13 @@
 	//--------------------------------------------------------------------------
 	//  Interaction
 	//--------------------------------------------------------------------------
-	function onTouch() {
+	/*function onTouch() {
 		//console.log("touch");
 		if (game){
 			game.onTouch();
 		}
 	}
-
+	*/
 	function onTouchStart(event) {
 	    event.preventDefault();
 	    onTouch();
@@ -249,6 +249,12 @@
 
 	function onTouchEnd(event) {
 	    event.preventDefault();
+	}
+
+	GAME.onTouch = function(){
+		if (game){
+			game.onTouch();
+		}
 	}
 
 	GAME.openTrailer = function(){

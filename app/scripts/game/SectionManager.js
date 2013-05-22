@@ -33,6 +33,21 @@ GAME.SectionManager.prototype.update = function(){
 				// desert obstacles, no midbackground, no platforms, no gaps
 				this.engine.foregroundManager.obstacleFactory.setTextures(GAME_LEVEL.DESERT);
 				this.engine.view.backgroundManager.hasMiddistance = 0;
+				this.engine.foregroundManager.obstacleMax = 2;
+				this.engine.foregroundManager.hasLargeObjects = 1;
+
+			break;
+			case GAME_LEVEL.DESERT_GAPS:
+				
+				// desert obstacles, no midbackground, no platforms, gaps
+				this.engine.foregroundManager.hasFloorGaps = 1;
+				this.engine.foregroundManager.obstacleMax = 1;
+				this.engine.foregroundManager.hasLargeObjects = 0;
+
+			break;
+			case GAME_LEVEL.DESERT_PREVILLAGE:
+				
+				// desert obstacles, no midbackground, no platforms, no gaps
 				this.engine.foregroundManager.hasFloorGaps = 0;
 				this.engine.foregroundManager.obstacleMax = 2;
 				this.engine.foregroundManager.hasLargeObjects = 1;
@@ -201,31 +216,38 @@ GAME.SectionManager.prototype.setMilestones = function(){
 	GAME_MILESTONES[13] = GAME_MILESTONES[12] + 100;*/
 
 	// DESERT
-	GAME_MILESTONES[2] = GAME_MILESTONES[1] + 600;
-	// INDIAN VILLAGE
-	GAME_MILESTONES[3] = GAME_MILESTONES[2] + 400;
-	// GET RANGER CUTSCENE
-	GAME_MILESTONES[4] = GAME_MILESTONES[3] + 200;
-	// DESERT INTERLUDE
-	GAME_MILESTONES[5] = GAME_MILESTONES[4] + 500;
-	// TOWN
-	GAME_MILESTONES[6] = GAME_MILESTONES[5] + 800;
-	// ROOFTOPS
-	GAME_MILESTONES[7] = GAME_MILESTONES[6] + 1000;
-	// TRAIN STATION
-	GAME_MILESTONES[8] = GAME_MILESTONES[7] + 200;
-	// TRAIN CHASE
-	GAME_MILESTONES[9] = GAME_MILESTONES[8] + 1000;
-	// TRAIN RANGER
-	GAME_MILESTONES[10] = GAME_MILESTONES[9] + 400;
-	// CANYONS
-	GAME_MILESTONES[11] = GAME_MILESTONES[10] + 1000;
-	// CANYONS INTERLUDE
-	GAME_MILESTONES[12] = GAME_MILESTONES[11] + 400;
-	// DESERT_TRAIN
-	GAME_MILESTONES[13] = GAME_MILESTONES[12] + 100;
+	GAME_MILESTONES[2] = GAME_MILESTONES[1] + 800;
 
-	GAME.GOAL_DISTANCE = GAME_MILESTONES[13];
+	// DESERT GAPS
+	GAME_MILESTONES[3] = GAME_MILESTONES[2] + 800;
+
+	// DESERT PRE VILLAGE
+	GAME_MILESTONES[4] = GAME_MILESTONES[3] + 600;
+
+	// INDIAN VILLAGE
+	GAME_MILESTONES[5] = GAME_MILESTONES[4] + 400;
+	// GET RANGER CUTSCENE
+	GAME_MILESTONES[6] = GAME_MILESTONES[5] + 200;
+	// DESERT INTERLUDE
+	GAME_MILESTONES[7] = GAME_MILESTONES[6] + 500;
+	// TOWN
+	GAME_MILESTONES[8] = GAME_MILESTONES[7] + 800;
+	// ROOFTOPS
+	GAME_MILESTONES[9] = GAME_MILESTONES[8] + 1000;
+	// TRAIN STATION
+	GAME_MILESTONES[10] = GAME_MILESTONES[9] + 200;
+	// TRAIN CHASE
+	GAME_MILESTONES[11] = GAME_MILESTONES[10] + 1000;
+	// TRAIN RANGER
+	GAME_MILESTONES[12] = GAME_MILESTONES[11] + 400;
+	// CANYONS
+	GAME_MILESTONES[13] = GAME_MILESTONES[12] + 1000;
+	// CANYONS INTERLUDE
+	GAME_MILESTONES[14] = GAME_MILESTONES[13] + 400;
+	// DESERT_TRAIN
+	GAME_MILESTONES[15] = GAME_MILESTONES[14] + 100;
+
+	GAME.GOAL_DISTANCE = GAME_MILESTONES[15] - GAME_MILESTONES[1];
 }
 
 //--------------------------------------------------------------------------
@@ -235,17 +257,19 @@ var GAME_LEVEL = {
 	START: 0,
 	TUTORIAL: 1,
     DESERT: 2,
-    INDIAN_VILLAGE: 3,
-    INDIAN_VILLAGE_RANGER: 4,
-    DESERT_INTERLUDE: 5,
-    TOWN: 6,
-    TOWN_ROOFTOPS: 7,
-    TRAIN_STATION: 8,
-    TRAIN_CHASE: 9,
-    TRAIN_RANGER: 10,
-    CANYONS: 11,
-    CANYONS_INTERLUDE: 12,
-    DESERT_TRAIN: 13
+    DESERT_GAPS: 3,
+    DESERT_PREVILLAGE: 4,
+    INDIAN_VILLAGE: 5,
+    INDIAN_VILLAGE_RANGER: 6,
+    DESERT_INTERLUDE: 7,
+    TOWN: 8,
+    TOWN_ROOFTOPS: 9,
+    TRAIN_STATION: 10,
+    TRAIN_CHASE: 11,
+    TRAIN_RANGER: 12,
+    CANYONS: 13,
+    CANYONS_INTERLUDE: 14,
+    DESERT_TRAIN: 15
 };
 
 var GAME_MILESTONES = {};
@@ -255,7 +279,7 @@ var GAME_MILESTONES = {};
 // START
 GAME_MILESTONES[0] = 0;
 // TUTORIAL
-GAME_MILESTONES[1] = GAME_MILESTONES[0] + 10000000;
+GAME_MILESTONES[1] = GAME_MILESTONES[0] + 9999999999;
 
 GAME.GOAL_DISTANCE = GAME_MILESTONES[1];
 

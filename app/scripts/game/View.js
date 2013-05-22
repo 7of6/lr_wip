@@ -10,6 +10,11 @@ GAME.View = function(engineRef) {
 	this.stage = new PIXI.Stage(0x000000, true);
 
 	this.container = new PIXI.DisplayObjectContainer;
+
+    this.container.setInteractive(true);
+    this.container.mousedown = this.container.touchstart = function(){ GAME.onTouch(); }
+
+
     this.platformView = false;
 
     // hud
