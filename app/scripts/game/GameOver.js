@@ -70,7 +70,7 @@ GAME.GameOver = function(engineRef){
     this.addChild(this.facebook);
     this.facebook.setInteractive(true);
     this.facebook.buttonMode = true;
-    this.facebook.mousedown = this.facebook.touchstart = this.handleFacebook;
+    this.facebook.mousedown = this.facebook.touchstart = function(data){self.handleFacebook(data)};
 
     if (!GAME.isMobile){
 
@@ -89,7 +89,7 @@ GAME.GameOver = function(engineRef){
     this.addChild(this.twitter);
     this.twitter.setInteractive(true);
     this.twitter.buttonMode = true;
-    this.twitter.mousedown = this.twitter.touchstart = this.handleTwitter;
+    this.twitter.mousedown = this.twitter.touchstart = function(data){self.handleTwitter(data)};
 
     if (!GAME.isMobile){
 
@@ -188,12 +188,18 @@ GAME.GameOver.prototype.setProgress = function(perc){
 }
 
 GAME.GameOver.prototype.handleFacebook = function(data){
-    window.open(GAME.LOCALISED.FACEBOOK_SHARE, "_blank");
+
+    var shareData = GAME.LOCALISED.FACEBOOK_SHARE.replace("{{result}}", this.percText.text + "%");
+
+    window.open(shareData, "_blank");
     ga('send', 'event', 'Game', 'Facebook Share', 'Game Over');
 }
 
 GAME.GameOver.prototype.handleTwitter = function(data){
-    window.open(GAME.LOCALISED.TWITTER_SHARE, "_blank");
+
+    var shareData = GAME.LOCALISED.TWITTER_SHARE.replace("{{result}}", this.percText.text + "%25");
+
+    window.open(shareData, "_blank");
     ga('send', 'event', 'Game', 'Twitter Share', 'Game Over');
 }
 
