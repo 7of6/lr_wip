@@ -153,16 +153,19 @@ GAME.SectionManager.prototype.update = function(){
 			break;
 			case GAME_LEVEL.DESERT_TRAIN:
 				// cut scene
-				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.DONE));
+				this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.DONE, true));
 				this.engine.view.backgroundManager.train.ranger2.alpha = 1;
 				this.engine.view.backgroundManager.train.speed = 0;
 
 				this.engine.view.progressbar.stopTime();
+
+				// ending
 				this.engine.view.backgroundManager.train.slowDown();
-				TweenMax.to(this.engine.player.speed, 2, {x:0});
+				/*TweenMax.to(this.engine.player.speed, 2, {x:0});
 				TweenMax.to(this.engine.player.view, 2, {animationSpeed:0});
 				TweenMax.to(this.engine.tonto.view, 2, {animationSpeed:0});
-				TweenMax.to(this.engine.view.backgroundManager.train.running_gear, 2, {animationSpeed:0});
+				TweenMax.to(this.engine.view.backgroundManager.train.running_gear, 2, {animationSpeed:0});*/
+				this.engine.view.backgroundManager.train.speed = 0;
 				this.engine.player.cutScene = 1;
 
 				TweenMax.delayedCall(3, this.engine.onGameComplete, null, this.engine);
@@ -189,31 +192,40 @@ GAME.SectionManager.prototype.reset = function(){
 
 GAME.SectionManager.prototype.setMilestones = function(){
 	// TUTORIAL
-	GAME_MILESTONES[1] = GAME_MILESTONES[0] + Math.round((GAME.camera.x + 140)/10) + 100;
+	GAME_MILESTONES[1] = GAME_MILESTONES[0] + Math.round((GAME.camera.x + 140)/10) + 250;
+
 	/*// DESERT
 	GAME_MILESTONES[2] = GAME_MILESTONES[1] + 10;
-	// INDIAN VILLAGE
+
+	// DESERT GAPS
 	GAME_MILESTONES[3] = GAME_MILESTONES[2] + 10;
-	// GET RANGER CUTSCENE
+
+	// DESERT PRE VILLAGE
 	GAME_MILESTONES[4] = GAME_MILESTONES[3] + 10;
+
+	// INDIAN VILLAGE
+	GAME_MILESTONES[5] = GAME_MILESTONES[4] + 10;
+	// GET RANGER CUTSCENE
+	GAME_MILESTONES[6] = GAME_MILESTONES[5] + 10;
 	// DESERT INTERLUDE
-	GAME_MILESTONES[5] = GAME_MILESTONES[4] + 100;
+	GAME_MILESTONES[7] = GAME_MILESTONES[6] + 10;
 	// TOWN
-	GAME_MILESTONES[6] = GAME_MILESTONES[5] + 100;
+	GAME_MILESTONES[8] = GAME_MILESTONES[7] + 10;
 	// ROOFTOPS
-	GAME_MILESTONES[7] = GAME_MILESTONES[6] + 100;
-	// TRAIN STATION
-	GAME_MILESTONES[8] = GAME_MILESTONES[7] + 200;
-	// TRAIN CHASE
 	GAME_MILESTONES[9] = GAME_MILESTONES[8] + 10;
+	// TRAIN STATION
+	GAME_MILESTONES[10] = GAME_MILESTONES[9] + 200;
+	// TRAIN CHASE
+	GAME_MILESTONES[11] = GAME_MILESTONES[10] + 1000;
 	// TRAIN RANGER
-	GAME_MILESTONES[10] = GAME_MILESTONES[9] + 400;
-	// CANYONS
-	GAME_MILESTONES[11] = GAME_MILESTONES[10] + 10;
-	// CANYONS INTERLUDE
 	GAME_MILESTONES[12] = GAME_MILESTONES[11] + 400;
+	// CANYONS
+	GAME_MILESTONES[13] = GAME_MILESTONES[12] + 1000;
+	// CANYONS INTERLUDE
+	GAME_MILESTONES[14] = GAME_MILESTONES[13] + 400;
 	// DESERT_TRAIN
-	GAME_MILESTONES[13] = GAME_MILESTONES[12] + 100;*/
+	GAME_MILESTONES[15] = GAME_MILESTONES[14] + 100;*/
+	
 
 	// DESERT
 	GAME_MILESTONES[2] = GAME_MILESTONES[1] + 800;
@@ -273,8 +285,6 @@ var GAME_LEVEL = {
 };
 
 var GAME_MILESTONES = {};
-
-// DISTANCE FROM LAST MILESTONE
 
 // START
 GAME_MILESTONES[0] = 0;

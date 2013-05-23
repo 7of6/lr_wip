@@ -90,7 +90,7 @@ GAME.ProgressBar.prototype = Object.create(PIXI.DisplayObjectContainer.prototype
 //--------------------------------------------------------------------------
 GAME.ProgressBar.prototype.update = function(){
 	
-	this.setProgress(((this.engine.player.position.x / 10)  - GAME_MILESTONES[1]) / GAME.GOAL_DISTANCE);
+	this.setProgress(((this.engine.player.position.x / 10) - GAME_MILESTONES[1]) / GAME.GOAL_DISTANCE);
 
 	if (this.last_time != this.time){
 		this.timeDisplay.setText(Math2.formatTime(this.time));

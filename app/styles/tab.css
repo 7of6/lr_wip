@@ -1,0 +1,11 @@
+.tab {
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+#banner-container {
+    text-align: center;
+    width:810px;
+    height:184px;
+    margin: 0 auto;
+}

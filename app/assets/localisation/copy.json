@@ -24,11 +24,11 @@
 "CONTINUE_MOBILE"  :   "Tap to continue",
 
 
-"GO"               :   "3, 2, 1, GO!",
+"GO"               :   "GO!",
 "GO_VILLAGE"       :   "GET TO THE INDIAN VILLAGE",
 "GO_TRAIN"         :   "GET TO THE TRAIN",
 "CATCH_TRAIN"      :   "CATCH THAT TRAIN",
-"GO_FRONT"         :   "GET TO THE ENGINE",
+"GO_FRONT"         :   "KEEP UP WITH THE TRAIN!",
 "DONE"             :   "GREAT JOB!",
 
 
@@ -41,7 +41,7 @@
 "REPLAY"    	   :   "REPLAY",
 
 
-"FACEBOOK_SHARE"   :   "https://www.facebook.com/dialog/feed?app_id=201359353321318&link=http%3A%2F%2Fwww.lonerangerhiyosilver.com&picture=http%3A%2F%2Fwww.lonerangerhiyosilver.com%2Fassets%2Fimages%2Ffb_icon.jpg&name=The Lone Ranger 'Hi Yo Silver' game&caption&description=I scored {{result}} on Disney's Lone Ranger game, 'Hi Yo Silver!' See if you can beat that: click here to play it now:&redirect_uri=http%3A%2F%2Fwww.facebook.com",
+"FACEBOOK_SHARE"   :   "https://www.facebook.com/dialog/feed?app_id=201359353321318&link=http%3A%2F%2Fwww.lonerangerhiyosilver.com&picture=http%3A%2F%2Fwww.lonerangerhiyosilver.com%2Fuk%2Fassets%2Fimages%2Ffb_icon.jpg&name=The Lone Ranger 'Hi Yo Silver' game&caption&description=I scored {{result}} on Disney's Lone Ranger game, 'Hi Yo Silver!' See if you can beat that: click here to play it now:&redirect_uri=http%3A%2F%2Fwww.facebook.com",
 "TWITTER_SHARE"    :   "https://twitter.com/intent/tweet?original_referer=http://lonerangerhiyosilver.com&text=I played Disney's The %23LoneRanger game 'Hi Yo Silver!' and scored {{result}} - See if you can do better! Click here: &tw_p=tweetbutton&url=http://lonerangerhiyosilver.com",
 
 

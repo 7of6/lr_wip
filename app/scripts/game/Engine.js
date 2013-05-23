@@ -84,7 +84,7 @@ GAME.Engine.prototype.onGameOver = function(){
 
     this.soundManager.playSound("gameover-sound");
     // set some things in game over
-    var current_pos = Math.round((GAME.camera.x + 140)/10);
+    var current_pos = Math.round((this.player.position.x / 10) - GAME_MILESTONES[1]);
     var perc = ((current_pos / GAME.GOAL_DISTANCE)*100);
     this.gameoverScreen.setProgress(perc);
 

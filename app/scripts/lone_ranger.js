@@ -66,13 +66,16 @@
 		GAME.width = 800;
 		GAME.height = 480;
 
-		var video = document.getElementById('video');
-		video.addEventListener('click',function(){
-		  video.play();
-		},false);
-
 		if (Modernizr.canvas){
+
+			var video = document.getElementById('video');
+			video.addEventListener('click',function(){
+			  video.play();
+			},false);
+
+
 			preLoad();
+
 		}else{
 			$("#loader").css("display", "none");
 			$("#game-container").css("display", "none");
@@ -252,6 +255,7 @@
 	}
 
 	GAME.onTouch = function(){
+		$(window).focus();
 		if (game){
 			game.onTouch();
 		}

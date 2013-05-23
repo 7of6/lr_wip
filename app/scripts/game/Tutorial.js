@@ -95,7 +95,7 @@ GAME.Tutorial.prototype.swapToNext = function(){
 
 	} else {
 
-		this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.GO));
+		this.engine.view.hud.addChild(new GAME.Message(GAME.LOCALISED.GO, true, true));
 		this.engine.sectionManager.setMilestones();
 		this.engine.player.cutScene = 0;
 		GAME.tutorial = 0;
