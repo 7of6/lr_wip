@@ -1,0 +1,108 @@
+{"frames": {
+
+"carriage_1st_class.png":
+{
+	"frame": {"x":2,"y":2,"w":598,"h":163},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":598,"h":163},
+	"sourceSize": {"w":598,"h":163}
+},
+"carriage_2nd_class.png":
+{
+	"frame": {"x":2,"y":167,"w":595,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":595,"h":146},
+	"sourceSize": {"w":595,"h":146}
+},
+"coal_tender.png":
+{
+	"frame": {"x":602,"y":156,"w":263,"h":119},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":263,"h":119},
+	"sourceSize": {"w":263,"h":119}
+},
+"locomotive.png":
+{
+	"frame": {"x":602,"y":2,"w":382,"h":152},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":382,"h":152},
+	"sourceSize": {"w":382,"h":152}
+},
+"train_running_gear_75percent.swf/0000":
+{
+	"frame": {"x":454,"y":576,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0001":
+{
+	"frame": {"x":2,"y":576,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0002":
+{
+	"frame": {"x":454,"y":489,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0003":
+{
+	"frame": {"x":2,"y":489,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0004":
+{
+	"frame": {"x":454,"y":402,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0005":
+{
+	"frame": {"x":2,"y":402,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0006":
+{
+	"frame": {"x":454,"y":315,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+},
+"train_running_gear_75percent.swf/0007":
+{
+	"frame": {"x":2,"y":315,"w":450,"h":85},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":450,"h":85},
+	"sourceSize": {"w":450,"h":85}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "train_complete.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:3005d9e5488916b2dde84b8af5902691$"
+}
+}

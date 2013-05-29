@@ -1,0 +1,52 @@
+{"copy": {
+
+
+"PLAY"             :   "PLAY",
+
+
+"WEBSITE"          :   "WEBSITE",
+"TRAILER"          :   "TRAILER",
+"CTA"              :   "IN CINEMAS\nSOON",
+"COPYRIGHT"        :   "© 2012 Disney.  LONE RANGER™ & © Classic Media",
+
+
+"DISTANCE"         :   "Distance",
+"TIME"             :   "Time",
+
+
+"TUTORIAL_TITLE"   :   "HOW TO PLAY",
+"TUTORIAL_1"       :   "Silver is the Lone Ranger's trusty steed, always\nthere to help save the day...",
+"TUTORIAL_2"       :   "Your mission is to collect the Lone Ranger\nat the Indian Camp, then race through town\nand help him stop the runaway train...",
+"TUTORIAL_3"       :   "Press 'Space' or click the mouse to jump...",
+"TUTORIAL_3_MOBILE":   "Tap the screen to jump...",
+"TUTORIAL_4"       :   "Hitting small obstacles will slow you down.\nHitting large obstacles will end the game.\nGood luck!",
+"CONTINUE"         :   "Press 'Space' to continue",
+"CONTINUE_MOBILE"  :   "Tap to continue",
+
+
+"GO"               :   "GO!",
+"GO_VILLAGE"       :   "GET TO THE INDIAN VILLAGE",
+"GO_TRAIN"         :   "GET TO THE TRAIN",
+"CATCH_TRAIN"      :   "CATCH THAT TRAIN",
+"GO_FRONT"         :   "KEEP UP WITH THE TRAIN!",
+"DONE"             :   "GREAT JOB!",
+
+
+"MISSION"          :   "MISSION",
+"FAILED"           :   "FAILED!",
+"COMPLETE"         :   "COMPLETE!",
+"SHARE"            :   "SHARE SCORE",
+"TRY_AGAIN"        :   "TRY AGAIN",
+"WATCH_TRAILER"    :   "WATCH THE TRAILER",
+"REPLAY"    	   :   "REPLAY",
+
+
+"FACEBOOK_SHARE"   :   "https://www.facebook.com/dialog/feed?app_id=201359353321318&link=http://www.lonerangerhiyosilver.com&picture=http://www.lonerangerhiyosilver.com/uk/assets/images/fb_icon.jpg&name=The Lone Ranger 'Hi Yo Silver' game&caption&description=I scored {{result}} on Disney's Lone Ranger game, 'Hi Yo Silver!' See if you can beat that: click here to play it now:&redirect_uri=http://www.facebook.com",
+"TWITTER_SHARE"    :   "https://twitter.com/intent/tweet?original_referer=http://lonerangerhiyosilver.com&text=I played Disney's The %23LoneRanger game 'Hi Yo Silver!' and scored {{result}} - See if you can do better! Click here: &tw_p=tweetbutton&url=http://lonerangerhiyosilver.com",
+
+
+"FACEBOOK_LINK"    :   "https://www.facebook.com/TheLoneRanger",
+"TWITTER_LINK"     :   "https://twitter.com/LoneRanger",
+"WEBSITE_LINK"     :   "http://disney.go.com/the-lone-ranger"
+
+}}

@@ -1,0 +1,76 @@
+{"frames": {
+
+"crates.png":
+{
+	"frame": {"x":505,"y":580,"w":481,"h":76},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":481,"h":76},
+	"sourceSize": {"w":481,"h":76}
+},
+"hay_barn.png":
+{
+	"frame": {"x":2,"y":291,"w":604,"h":109},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":604,"h":109},
+	"sourceSize": {"w":604,"h":109}
+},
+"house1.png":
+{
+	"frame": {"x":2,"y":402,"w":501,"h":181},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":501,"h":181},
+	"sourceSize": {"w":501,"h":181}
+},
+"house2.png":
+{
+	"frame": {"x":2,"y":658,"w":356,"h":248},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":356,"h":248},
+	"sourceSize": {"w":356,"h":248}
+},
+"house3.png":
+{
+	"frame": {"x":360,"y":658,"w":353,"h":248},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":353,"h":248},
+	"sourceSize": {"w":353,"h":248}
+},
+"house4.png":
+{
+	"frame": {"x":608,"y":291,"w":402,"h":287},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":402,"h":287},
+	"sourceSize": {"w":402,"h":287}
+},
+"long_house.png":
+{
+	"frame": {"x":2,"y":2,"w":899,"h":287},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":899,"h":287},
+	"sourceSize": {"w":899,"h":287}
+},
+"wagon.png":
+{
+	"frame": {"x":2,"y":908,"w":198,"h":110},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":198,"h":110},
+	"sourceSize": {"w":198,"h":110}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "town_platforms.png",
+	"format": "RGBA8888",
+	"size": {"w":1024,"h":1024},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:99f7205a3e7df39333f3cd0fd23568bf$"
+}
+}

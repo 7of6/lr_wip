@@ -1,0 +1,44 @@
+{"frames": {
+
+"tipi_closed.png":
+{
+	"frame": {"x":384,"y":2,"w":120,"h":134},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":120,"h":134},
+	"sourceSize": {"w":120,"h":134}
+},
+"tipi_group.png":
+{
+	"frame": {"x":2,"y":2,"w":380,"h":140},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":380,"h":140},
+	"sourceSize": {"w":380,"h":140}
+},
+"tipi_open.png":
+{
+	"frame": {"x":2,"y":276,"w":128,"h":131},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":128,"h":131},
+	"sourceSize": {"w":128,"h":131}
+},
+"tipi_partial.png":
+{
+	"frame": {"x":384,"y":138,"w":117,"h":136},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":117,"h":136},
+	"sourceSize": {"w":117,"h":136}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "indian_bg.png",
+	"format": "RGBA8888",
+	"size": {"w":512,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d1e88bcc3db82d19b1b6010e24d31499$"
+}
+}

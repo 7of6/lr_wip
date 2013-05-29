@@ -54,8 +54,16 @@ body {
 }
 
 .flag {
+
+    /* <--- remove when we get more flags
+
     float:left;
     margin:10px;
+    width:68px;
+    height:45px;
+    */
+
+    margin: 40px auto;
     width:68px;
     height:45px;
 }
